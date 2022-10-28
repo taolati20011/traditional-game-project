@@ -1,0 +1,45 @@
+#content-wrapper {
+    width: 800px;
+    margin: auto;
+    height: 500px;
+    position: relative;
+    right: 50px;
+    margin-top: 50px;
+}
+
+#content-left {
+    width: 30%;
+    margin-top: 50px;
+}
+
+#content-right {
+    width: 60%;
+    height: 70%;
+    background-color: #240436;
+}
+
+.image-container {
+    width: 100%;
+    object-fit: fill;
+}
+
+.button-container {
+    width: 100%;
+}
+
+.content-button {
+    height: 50px;
+    width: 100px;
+    background-color: #5cb85c;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.content-button:hover {
+    background-color: #5cb85cc5;
+}
+
+.content-button:active {
+    background-color: #5cb85c9a;
+}
