@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
-import './css/style.css';
-import './css/o-an-quan-style.css';
-import Page from './html/o-an-quan.js';
-import Home from './html/index.js';
+import '../App.css';
+import '../css/style.css';
+import '../css/style1.css';
+import Page from '../html/Page';
+import {useParams} from "react-router-dom";
 
-const gamePage = () => {
-
+const PageGame = () => {
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(false);
+  let { id } = useParams();
 
-  const URL = "api/game/get-detail/" + "?game-id=5";
+  const URL = "/api/game/get-detail/" + "?game-id=" + id;
 
   useEffect(() => {
     setLoading(true);
@@ -32,4 +32,4 @@ const gamePage = () => {
   );
 }
 
-export default gamePage;
+export default PageGame;

@@ -1,13 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import './css/style.css';
-import './css/o-an-quan-style.css';
-import Page from './html/Page.js';
 import Home from './html/Home.js';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useRoutes,
+} from "react-router-dom";
+import PageGame from "../src/pages/PageGame";
+
+const AppLink = () => {
+  let routes = useRoutes([
+    { path: "/", element: <Home /> },
+    { path: "/game/:id", element: <PageGame/> },
+    // ...
+  ]);
+  return routes;
+};
 
 const App = () => {
   return (
-    <Home></Home>
+    <Router>
+      <AppLink />
+    </Router>
   );
 }
 

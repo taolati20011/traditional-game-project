@@ -1,10 +1,17 @@
+import '../App.css';
+import '../../src/css/style.css';
+import '../../src/css/style1.css';
+import '../css/style2.css'
+import React, { useEffect, useState } from 'react';
+import Image from './images/124010.png';
+
 const Home = () => {
     return (
   <body>
     <div id="head-wrapper">
       <div class="logo">
         <i class="game-logo">
-          <a href=""> <img src="images/124010.png" /> </a>
+          <a href=""> <img src={Image} /> </a>
         </i>
         <p>The Game Zone</p>
       </div>
@@ -33,25 +40,25 @@ const Home = () => {
           <h4>Tình yêu</h4>
           <br />
           <div class="section-1-img">
-            <a href="#">
+            <a href="/game/1">
               <div class="img img-1"></div>
-              <figcaption>ten game</figcaption>
+              <figcaption>Dung dăng dung dẻ</figcaption>
             </a>
-            <a href="#"
+            <a href="/game/2"
               ><div class="img img-2"></div>
-              <figcaption>ten game</figcaption>
+              <figcaption>Ô ăn quan</figcaption>
             </a>
-            <a href="#">
+            <a href="/game/3">
               <div class="img img-3"></div>
-              <figcaption>ten game</figcaption>
+              <figcaption>Mèo đuổi chuột - đuổi bắt</figcaption>
             </a>
-            <a href="#">
+            <a href="/game/4">
               <div class="img img-4"></div>
-              <figcaption>ten game</figcaption>
+              <figcaption>Rồng rắn lên mây - đuổi bắt</figcaption>
             </a>
-            <a href="#">
+            <a href="/game/5">
               <div class="img img-5"></div>
-              <figcaption>ten game</figcaption>
+              <figcaption>Oẳn tù tì</figcaption>
             </a>
             <a href="#">
               <div class="img img-6"></div>
