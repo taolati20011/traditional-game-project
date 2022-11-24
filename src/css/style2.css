@@ -37,10 +37,22 @@
     display: flex;
 }
 
+.section-1-img a{
+    width: 120px;
+    text-decoration: none;
+    margin: 0px 20px 0px 20px;
+}
+
 .section-1-img a figcaption{
     text-align: center;
     color: #FEC53A;
+    width: 100%;
 }
+
+.section-1-img a figcaption:hover{
+    color: #fec63aa8;
+}
+
 
 .section-1-img .img{
     width: 120px;
@@ -48,7 +60,7 @@
     background: url(../html/images/images.jpg);
     background-size: cover;
     background-position: center;
-    margin: 0 20px 15px 20px;
+    margin: 0 0px 15px 0px;
     border-radius: 10px;
 }
 
