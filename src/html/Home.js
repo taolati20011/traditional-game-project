@@ -50,11 +50,11 @@ const Home = () => {
             </a>
             <a href="/game/3">
               <div class="img img-3"></div>
-              <figcaption>Mèo đuổi chuột - đuổi bắt</figcaption>
+              <figcaption>Mèo đuổi chuột</figcaption>
             </a>
             <a href="/game/4">
               <div class="img img-4"></div>
-              <figcaption>Rồng rắn lên mây - đuổi bắt</figcaption>
+              <figcaption>Rồng rắn lên mây</figcaption>
             </a>
             <a href="/game/5">
               <div class="img img-5"></div>
