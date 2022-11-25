@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import PageGame from "../src/pages/PageGame";
 import ForgetPassword from './login/ForgetPassword.js';
+import ResetPassword from './login/ResetPassword.js';
 
 const AppLink = () => {
   let routes = useRoutes([
@@ -19,7 +20,8 @@ const AppLink = () => {
     { path: "/login", element: <Login/>},
     { path: "/list-user", element: <ListUser/>},
     { path: "/register", element: <Register/>},
-    { path: "/forget-password", element: <ForgetPassword/>}
+    { path: "/forget-password", element: <ForgetPassword/>},
+    { path: "/reset-password", element: <ResetPassword/>}
     // ...
   ]);
   return routes;
