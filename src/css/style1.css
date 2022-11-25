@@ -18,6 +18,17 @@
     background-color: #240436;
 }
 
+#content-right h1{
+    font-size: 30px;
+    color: #fac02e;
+}
+
+#content-right p{
+    text-align: justify;
+    color: #ffd05b;
+    font-size: 22px;
+}
+
 .image-container {
     width: 100%;
     object-fit: fill;

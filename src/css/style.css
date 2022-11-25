@@ -1,13 +1,12 @@
 body {
     background: #1a0327;
     font-family: 'Poppins', sans-serif;
-    height: 350vh;
     margin: 0;
 }
 
 h1 {
     color: #FEC53A;
-    font-size: 40px;
+    font-size: 60px;
     position: relative;
     font-weight: bold;
 }
@@ -21,7 +20,7 @@ h4 {
 }
 
 p {
-    color: #FEC53A;
+    color: #ffcd4e;
     font-size: 1.5rem;
     position: relative;
     font-weight: 400;
@@ -117,4 +116,8 @@ ul.navbar li a:hover:not(.active) {
     font-weight: bold;
     text-align: right;
     padding-right: 40px;
+}
+
+.list-page {
+    background-color: white;
 }
