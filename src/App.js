@@ -1,6 +1,7 @@
 import Home from './html/Home.js';
 import React from "react";
-import Login from './html/Login.js';
+import Login from './login/Login.js';
+import Register from './login/Register.js'
 import ListUser from './html/ListUser.js';
 import {
   BrowserRouter as Router,
@@ -15,7 +16,8 @@ const AppLink = () => {
     { path: "/", element: <Home /> },
     { path: "/game/:id", element: <PageGame/> },
     { path: "/login", element: <Login/>},
-    { path: "/list-user", element: <ListUser/>}
+    { path: "/list-user", element: <ListUser/>},
+    { path: "/register", element: <Register/>}
     // ...
   ]);
   return routes;
