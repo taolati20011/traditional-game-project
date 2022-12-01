@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 
 export default class ForgetPassword extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            "recipient": ""
+            "recipient": "",
         }
     }
 
@@ -13,6 +13,9 @@ export default class ForgetPassword extends Component {
     }
 
     forgetpw = () => {
+        // let currentURL = "/forget-password"
+        // let navigate = useNavigate();
+        // let t = false;
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
@@ -29,20 +32,14 @@ export default class ForgetPassword extends Component {
           
           fetch("http://localhost:8080/api/user/forgotpassword", requestOptions)
           .then(response => {
-            console.log(response.text)
-            if (response.status == 200) {
-                return response
-            }
-            throw Error(response.status)
-        })
-        .then(result => {
-            console.log(result)
-            alert("Request success, We'll send an mail to you!")
-        })
-        .catch(error => {
-            console.log('error', error)
-            alert('Wrong email format!')
-        })
+                return response.text()
+            })
+            .then(result => {
+                alert(result)
+                if (result == "Request success, We'll send an mail to you!") {
+                    window.location.replace("/reset-password");
+                }
+            })
     }
 
     render() {

@@ -41,20 +41,13 @@ export default class Register extends Component {
 
         fetch("http://localhost:8080/api/user/signup", requestOptions)
             .then(response => {
-                console.log(response.text)
-                if (response.status == 200) {
-                    return response
-                }
-                throw Error(response.status)
+                return response.text()
             })
             .then(result => {
-                console.log(result)
-                localStorage.setItem("accessToken", result.accessToken)
-                alert("Register success, We'll send an mail to you!")
-            })
-            .catch(error => {
-                console.log('error', error)
-                alert('Wrong format!')
+                alert(result)
+                if (result == "Register successful") {
+                    window.location.replace("/login")
+                }
             })
     }
 

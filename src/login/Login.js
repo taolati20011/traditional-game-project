@@ -34,20 +34,14 @@ export default class Login extends Component {
 
         fetch("http://localhost:8080/api/user/login", requestOptions)
             .then(response => {
-                console.log(response.status)
-                if (response.status == 200) {
-                    return response
-                }
-                throw Error(response.status)
+                return response.text()
             })
             .then(result => {
-                console.log(result)
                 localStorage.setItem("accessToken", result.accessToken)
-                alert("Login success")
-            })
-            .catch(error => {
-                console.log('error', error)
-                alert('Username or password wrong!')
+                alert(result)
+                if (result == "Login Successful!") {
+                    window.location.replace("/")
+                }
             })
     }
 
@@ -66,13 +60,13 @@ export default class Login extends Component {
             </div>
             <div>
                 <label>Password:</label>
-                <input type="text" name="password" placeholder="Enter password" onChange={this.setParams}></input>
+                <input type="password" name="password" placeholder="Enter password" onChange={this.setParams}></input>
             </div>
             <div>
                 <button type="button" onClick={this.login}>Login</button>
             </div>
-            <a href="#">Forget your password?</a><br></br>
-            <a href="#">Dont have an account?</a>
+            <a href="/forget-password">Forget your password?</a><br></br>
+            <a href="/register">Dont have an account?</a>
         </form>
         </div>
         </div>

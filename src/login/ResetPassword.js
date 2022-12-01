@@ -31,19 +31,13 @@ export default class ResetPassword extends Component {
           
           fetch("http://localhost:8080/api/user/resetpassword", requestOptions)
           .then(response => {
-            console.log(response.text)
-            if (response.status == 200) {
-                return response
-            }
-            throw Error(response.status)
+            return response.text()
         })
         .then(result => {
-            console.log(result)
-            alert("Reset password success!")
-        })
-        .catch(error => {
-            console.log('error', error)
-            alert('Wrong password format!')
+            alert(result)
+            if (result == "Password Change Successful") {
+                window.location.replace("/login")
+            }
         })
     }
 
