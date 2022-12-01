@@ -44,6 +44,11 @@ export default class Register extends Component {
                 return response.text()
             })
             .then(result => {
+                result = result.replace(/","/g, "\n").replace(/"/g, "")
+                                .replace('[', '').replace(']', '')
+                for (let i = 0; i <= result.length; i++) {
+                    console.log(result[i])
+                }
                 alert(result)
                 if (result == "Register successful") {
                     window.location.replace("/login")
