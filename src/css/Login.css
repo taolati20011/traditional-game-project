@@ -1,11 +1,14 @@
 .login-body-container {
-    width: 1920px;
-    height: 100vh;
     margin: 0;
     padding: 0;
     background-size: cover;
     background-position: center;
     font-family: sans-serif;
+}
+
+.background-login {
+    height: 100%;
+    width: 100%;
 }
 
 .loginbox {

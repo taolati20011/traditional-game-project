@@ -7,7 +7,7 @@ import Image from './images/124010.png';
 
 const Home = () => {
     return (
-  <body>
+  <body class="home-body">
     <div id="head-wrapper">
       <div class="logo">
         <i class="game-logo">

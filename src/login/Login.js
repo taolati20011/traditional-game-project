@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import background from '../html/images/background_1.jpg';
+import avatar from '../html/images/avatar.png';
+import "../css/Login.css"
 
 export default class Login extends Component {
     constructor(props) {
@@ -50,19 +53,30 @@ export default class Login extends Component {
 
     render() {
         return (
+        <body>
+        <div class="login-body-container">
+        <img class="background-login" src={background}></img>
+            <div class="loginbox">
+                <img src={avatar} class="avatar"></img>
+                <h1> Login Here </h1>
         <form>
             <div>
                 <label>Username:</label>
-                <input type="text" name="username" onChange={this.setParams}></input>
+                <input type="text" name="username" placeholder="Enter username" onChange={this.setParams}></input>
             </div>
             <div>
                 <label>Password:</label>
-                <input type="text" name="password" onChange={this.setParams}></input>
+                <input type="text" name="password" placeholder="Enter password" onChange={this.setParams}></input>
             </div>
             <div>
                 <button type="button" onClick={this.login}>Login</button>
             </div>
+            <a href="#">Forget your password?</a><br></br>
+            <a href="#">Dont have an account?</a>
         </form>
+        </div>
+        </div>
+        </body>
         )
     }
 }
