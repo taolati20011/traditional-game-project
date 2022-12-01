@@ -4,7 +4,7 @@ import gameIcon from './images/images.jpg'
 
 const Page = (gameName, description) => {
     return (
-    <body>
+    <body class="home-body">
     <div id="head-wrapper">
       <div class="logo">
         <i class="game-logo">
