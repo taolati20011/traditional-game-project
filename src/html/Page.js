@@ -4,16 +4,16 @@ import gameIcon from './images/images.jpg'
 
 const Page = (gameName, description) => {
     return (
-    <body class="home-body">
+    <body class="page-body">
     <div id="head-wrapper">
       <div class="logo">
         <i class="game-logo">
-          <a href=""> <img src={fbIcon} /> </a>
+          <a href="/"> <img src={fbIcon} /> </a>
         </i>
         <p>The Game Zone</p>
       </div>
       <ul class="navbar">
-        <li><a href="http://localhost:3000/" class="active"> Home </a></li>
+        <li><a href="/" class="active"> Home </a></li>
         <li><a href="#">Tình yêu</a></li>
         <li><a href="#">Phong tục</a></li>
         <li><a href="#">Chiến trận</a></li>

@@ -11,7 +11,7 @@ const Home = () => {
     <div id="head-wrapper">
       <div class="logo">
         <i class="game-logo">
-          <a href=""> <img src={Image} /> </a>
+          <a href="/"> <img src={Image} /> </a>
         </i>
         <p>The Game Zone</p>
       </div>

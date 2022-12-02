@@ -5,6 +5,13 @@
     /* height: 100vh; */
 }
 
+.page-body {
+    background: #1a0327;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    height: 100vh;
+}
+
 h1 {
     color: #FEC53A;
     font-size: 60px;
