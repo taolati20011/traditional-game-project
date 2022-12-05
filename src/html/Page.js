@@ -20,7 +20,7 @@ const Page = (gameName, description) => {
         <li><a href="#">Trí tuệ</a></li>
         <li><a href="#">Nghề nghiệp</a></li>
       </ul>
-      <button type="button" id="btn"><i class="play-logo"></i>PLAY NOW</button>
+      <button type="button" id="btn"><a href="/login"><i class="play-logo"></i>Login</a></button>
     </div>
     <div id="content-wrapper" class="flex-row-justify-between">
       <div id="content-left" class="flex-col-align-center">

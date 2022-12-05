@@ -53,7 +53,10 @@ export default class Login extends Component {
             <div class="loginbox">
                 <img src={avatar} class="avatar"></img>
                 <h1> Login Here </h1>
-        <form>
+        <form onSubmit = {e => {
+            e.preventDefault();
+            this.login()
+        }}>
             <div>
                 <label>Username:</label>
                 <input type="text" name="username" placeholder="Enter username" onChange={this.setParams}></input>
@@ -63,7 +66,7 @@ export default class Login extends Component {
                 <input type="password" name="password" placeholder="Enter password" onChange={this.setParams}></input>
             </div>
             <div>
-                <button type="button" onClick={this.login}>Login</button>
+                <button type="submit">Login</button>
             </div>
             <a href="/forget-password">Forget your password?</a><br></br>
             <a href="/register">Dont have an account?</a>

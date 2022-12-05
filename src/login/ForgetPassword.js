@@ -44,13 +44,16 @@ export default class ForgetPassword extends Component {
 
     render() {
         return (
-            <form>
+            <form onSubmit = {e => {
+                e.preventDefault();
+                this.forgetpw()
+            }}>
                 <div>
                     <label>Input your email here:</label>
                     <input type="text" name="recipient" onChange={this.setParams}></input>
                 </div>
                 <div>
-                    <button type="button" onClick={this.forgetpw}>Submit</button>
+                    <button type="submit">Submit</button>
                 </div>
             </form>
         )

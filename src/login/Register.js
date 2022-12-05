@@ -58,7 +58,10 @@ export default class Register extends Component {
 
     render() {
         return (
-        <form>
+        <form onSubmit = {e => {
+            e.preventDefault();
+            this.register();
+        }}>
             <div>
                 <label>Username:</label>
                 <input type="text" name="username" onChange={this.setParams}></input>
@@ -88,7 +91,7 @@ export default class Register extends Component {
                 <input type="text" name="userGender" onChange={this.setParams}></input>
             </div>
             <div>
-                <button type="button" onClick={this.register}>Register</button>
+                <button type="submit">Register</button>
             </div>
         </form>
         )

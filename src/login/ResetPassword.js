@@ -43,7 +43,10 @@ export default class ResetPassword extends Component {
 
     render() {
         return (
-            <form>
+            <form onSubmit = {e => {
+                e.preventDefault();
+                this.resetpw()
+            }}>
                 <div>
                     <label>Input new password here:</label>
                     <input type="text" name="password" onChange={this.setParams}></input>
@@ -53,7 +56,7 @@ export default class ResetPassword extends Component {
                     <input type="text" name="token" onChange={this.setParams}></input>
                 </div>
                 <div>
-                    <button type="button" onClick={this.resetpw}>Submit</button>
+                    <button type="submit">Submit</button>
                 </div>
             </form>
         )
