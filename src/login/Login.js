@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import background from '../html/images/background_1.jpg';
 import avatar from '../html/images/avatar.png';
 import "../css/Login.css"
+import axios from 'axios';
 
 export default class Login extends Component {
     constructor(props) {
@@ -34,13 +35,22 @@ export default class Login extends Component {
 
         fetch("http://localhost:8080/api/user/login", requestOptions)
             .then(response => {
-                return response.text()
+                if (response.status == 400) {
+                    alert("Username or password is wrong! Please check it again!")
+                    return
+                }
+                else return response.json()
             })
             .then(result => {
-                localStorage.setItem("accessToken", result.accessToken)
-                alert(result)
-                if (result == "Login Successful!") {
+                console.log(result)
+                if (result.accessToken) {
+                    alert("Login Successful")
+                    localStorage.setItem("username", result.username)
+                    localStorage.setItem("accessToken", result.accessToken)
                     window.location.replace("/")
+                }
+                else {
+                    alert("Server is down!\nPlease contact admin to open server!")
                 }
             })
     }

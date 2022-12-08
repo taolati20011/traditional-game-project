@@ -49,6 +49,14 @@ p {
     box-shadow: 0px 0px 40px 0px rgba(91, 91, 91, 0.2);
 }
 
+.introduction-container p {
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 100px;
+    padding-left: 300px;
+    padding-right: 300px;
+}
+
 .flex-row-justify-between {
     display: flex;
     flex-direction: row;
@@ -96,12 +104,15 @@ ul.navbar {
 ul.navbar li {
     width: 120px;
     padding-right: 10px;
+    text-align: center;
+    vertical-align: middle;
 }
 
 ul.navbar li a {
     text-decoration: none;
     color: #fff;
     font-weight: bold;
+
 }
 
 ul.navbar li a.active {
@@ -124,6 +135,30 @@ ul.navbar li a:hover:not(.active) {
     font-weight: bold;
     text-align: right;
     padding-right: 40px;
+}
+
+.hello-user {
+    width: 250px;
+    height: 100%;
+    background: red;
+    color: #000;
+    outline: none;
+    border: none;
+    clip-path: polygon(35% 0, 100% 0, 100% 100%, 0% 100%);
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: right;
+    /* padding-right: 20px; */
+}
+
+.hello-user p {
+    width: 250px;
+    margin-left: 10px;
+    font-size: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .list-page {
