@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import background from '../html/images/background_1.jpg';
 import avatar from '../html/images/avatar.png';
 import "../css/form.css"
@@ -15,6 +15,14 @@ export default class Register extends Component {
             "userPhone": "",
             "userEmail": "",
             "userGender": ""
+        }
+    }
+
+    componentDidUpdate() {
+        if (localStorage.getItem("username")) {
+            alert("Please sign out first!");
+            window.location.replace("/");
+            return;
         }
     }
 

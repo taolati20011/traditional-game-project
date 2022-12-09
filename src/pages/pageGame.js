@@ -33,7 +33,7 @@ const PageGame = () => {
   }
 
   return (
-    Page(groups.gameName, groups.gameDescription)
+    <Page gameName={groups.gameName} description={groups.gameDescription}></Page>
   );
 }
 
