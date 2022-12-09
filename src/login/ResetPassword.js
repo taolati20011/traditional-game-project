@@ -48,9 +48,9 @@ export default class ResetPassword extends Component {
         return (
             <div class="form-body-container">
                 <img class="background-form" src={background}></img>
-                <div class="formbox loginbox">
+                <div class="formbox resetbox">
                     <img src={avatar} class="avatar"></img>
-                    <h1>Type new password</h1>
+                    <h1>Reset password</h1>
                     <form onSubmit={e => {
                         e.preventDefault();
                         this.resetpw()

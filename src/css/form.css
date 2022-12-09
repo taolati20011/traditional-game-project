@@ -135,3 +135,12 @@ input[type="password"] {
 .registerrow div {
     width: 45%;
 }
+
+.resetbox {
+    width: 320px;
+    height: 420px;
+}
+
+.resetbox h1 {
+    color: #000;
+}
