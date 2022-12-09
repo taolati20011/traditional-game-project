@@ -1,4 +1,7 @@
 import React, { Component, useEffect } from 'react'
+import background from '../html/images/background_1.jpg';
+import avatar from '../html/images/forget-password.png';
+import "../css/form.css"
 
 export default class ForgetPassword extends Component {
     constructor(props) {
@@ -9,7 +12,7 @@ export default class ForgetPassword extends Component {
     }
 
     setParams = (event) => {
-        this.setState({[event.target.name] : event.target.value})
+        this.setState({ [event.target.name]: event.target.value })
     }
 
     forgetpw = () => {
@@ -21,17 +24,17 @@ export default class ForgetPassword extends Component {
 
         var raw = JSON.stringify({
             "recipient": this.state.recipient
-          });
-          
-          var requestOptions = {
+        });
+
+        var requestOptions = {
             method: 'POST',
             headers: myHeaders,
             body: raw,
             redirect: 'follow'
-          };
-          
-          fetch("http://localhost:8080/api/user/forgotpassword", requestOptions)
-          .then(response => {
+        };
+
+        fetch("http://localhost:8080/api/user/forgotpassword", requestOptions)
+            .then(response => {
                 return response.text()
             })
             .then(result => {
@@ -44,18 +47,27 @@ export default class ForgetPassword extends Component {
 
     render() {
         return (
-            <form onSubmit = {e => {
-                e.preventDefault();
-                this.forgetpw()
-            }}>
-                <div>
-                    <label>Input your email here:</label>
-                    <input type="text" name="recipient" onChange={this.setParams}></input>
+            <body>
+                <div class="form-body-container">
+                    <img class="background-form" src={background}></img>
+                    <div class="formbox forgetbox">
+                        <img src={avatar} class="avatar"></img>
+                        <h1> Forget your password? </h1>
+                        <form onSubmit={e => {
+                            e.preventDefault();
+                            this.forgetpw()
+                        }}>
+                            <div>
+                                <label>Input your email here:</label>
+                                <input type="text" name="recipient" onChange={this.setParams}></input>
+                            </div>
+                            <div>
+                                <button type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div>
-                    <button type="submit">Submit</button>
-                </div>
-            </form>
+            </body>
         )
     }
 }

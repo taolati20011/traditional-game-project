@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import background from '../html/images/background_1.jpg';
 import avatar from '../html/images/avatar.png';
-import "../css/Login.css"
+import "../css/form.css"
 import axios from 'axios';
 
 export default class Login extends Component {
@@ -58,10 +58,10 @@ export default class Login extends Component {
     render() {
         return (
         <body>
-        <div class="login-body-container">
-        <img class="background-login" src={background}></img>
-            <div class="loginbox">
-                <img src={avatar} class="avatar"></img>
+        <div class="form-body-container">
+        <img class="background-form" src={background}></img>
+            <div class="formbox">
+                <img src={avatar} class="avatar" alt="avatar icon"></img>
                 <h1> Login Here </h1>
         <form onSubmit = {e => {
             e.preventDefault();

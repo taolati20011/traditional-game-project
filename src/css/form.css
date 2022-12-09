@@ -1,4 +1,4 @@
-.login-body-container {
+.form-body-container {
     margin: 0;
     padding: 0;
     background-size: cover;
@@ -6,14 +6,12 @@
     font-family: sans-serif;
 }
 
-.background-login {
-   height: 100vh;
-   width: 100vw;
+.background-form {
+    height: 100vh;
+    width: 100vw;
 }
 
-.loginbox {
-    width: 320px;
-    height: 420px;
+.formbox {
     color: #000;
     background: #fff;
     top: 50%;
@@ -33,36 +31,36 @@
     left: calc(50% - 50px);
 }
 
-.loginbox h1 {
+.formbox h1 {
     margin: 0;
     padding: 0 0 20px;
     text-align: center;
     font-size: 22px;
 }
 
-.loginbox p {
+.formbox p {
     margin: 0;
     padding: 0;
     font-weight: bold;
 }
 
-.loginbox input {
+.formbox input {
     width: 100%;
     margin-bottom: 20px;
 }
 
-.loginbox input[type="text"],
+.formbox input[type="text"],
 input[type="password"] {
     border: none;
-    border-bottom: 1px solid #000   ;
+    border-bottom: 1px solid #000;
     background: transparent;
-    outline: noen;
+    outline: none;
     height: 40px;
     color: #000;
     font-size: 16px;
 }
 
-.loginbox input[type="submit"] {
+.formbox input[type="submit"] {
     border: none;
     outline: none;
     height: 40px;
@@ -72,19 +70,68 @@ input[type="password"] {
     border-radius: 20px;
 }
 
-.loginbox input[type="submit"]:hover {
+.formbox input[type="submit"]:hover {
     cursor: pointer;
     background: #ffc107;
     color: #000;
 }
 
-.loginbox a{
+.formbox a {
     text-decoration: none;
     font-size: 12px;
     line-height: 20px;
     color: darkgray;
 }
 
-.loginbox a:hover{
+.formbox a:hover {
     color: #ffc107;
+}
+
+.formbox button {
+    background-color: #f0f0f0;
+}
+
+.formbox button:hover {
+    background-color: #e4e2e2;
+}
+
+.formbox button:active {
+    background-color: #f0f0f0;
+    box-shadow: 0 1px #666;
+    transform: translateY(2px);
+  }
+
+.loginbox {
+    width: 320px;
+    height: 420px;
+}
+
+.forgetbox {
+    width: 320px;
+    height: 270px;
+}
+
+.forgetbox h1 {
+    color: #000;
+}
+
+.registerbox {
+    width: 500px;
+    height: 820px;
+}
+
+.registerbox h1 {
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.registerrow {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.registerrow div {
+    width: 45%;
 }

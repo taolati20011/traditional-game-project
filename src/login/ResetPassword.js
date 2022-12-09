@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import background from '../html/images/background_1.jpg';
+import avatar from '../html/images/forget-password.png';
+import "../css/form.css"
 
 export default class ResetPassword extends Component {
     constructor(props) {
@@ -10,7 +13,7 @@ export default class ResetPassword extends Component {
     }
 
     setParams = (event) => {
-        this.setState({[event.target.name] : event.target.value})
+        this.setState({ [event.target.name]: event.target.value })
     }
 
     resetpw = () => {
@@ -20,45 +23,52 @@ export default class ResetPassword extends Component {
         var raw = JSON.stringify({
             "password": this.state.password,
             "token": this.state.token
-          });
-          
-          var requestOptions = {
+        });
+
+        var requestOptions = {
             method: 'POST',
             headers: myHeaders,
             body: raw,
             redirect: 'follow'
-          };
-          
-          fetch("http://localhost:8080/api/user/resetpassword", requestOptions)
-          .then(response => {
-            return response.text()
-        })
-        .then(result => {
-            alert(result)
-            if (result == "Password Change Successful") {
-                window.location.replace("/login")
-            }
-        })
+        };
+
+        fetch("http://localhost:8080/api/user/resetpassword", requestOptions)
+            .then(response => {
+                return response.text()
+            })
+            .then(result => {
+                alert(result)
+                if (result == "Password Change Successful") {
+                    window.location.replace("/login")
+                }
+            })
     }
 
     render() {
         return (
-            <form onSubmit = {e => {
-                e.preventDefault();
-                this.resetpw()
-            }}>
-                <div>
-                    <label>Input new password here:</label>
-                    <input type="text" name="password" onChange={this.setParams}></input>
+            <div class="form-body-container">
+                <img class="background-form" src={background}></img>
+                <div class="formbox loginbox">
+                    <img src={avatar} class="avatar"></img>
+                    <h1>Type new password</h1>
+                    <form onSubmit={e => {
+                        e.preventDefault();
+                        this.resetpw()
+                    }}>
+                        <div>
+                            <label>Input new password here:</label>
+                            <input type="text" name="password" onChange={this.setParams}></input>
+                        </div>
+                        <div>
+                            <label>Input token here:</label>
+                            <input type="text" name="token" onChange={this.setParams}></input>
+                        </div>
+                        <div>
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
                 </div>
-                <div>
-                    <label>Input token here:</label>
-                    <input type="text" name="token" onChange={this.setParams}></input>
-                </div>
-                <div>
-                    <button type="submit">Submit</button>
-                </div>
-            </form>
+            </div>
         )
     }
 }

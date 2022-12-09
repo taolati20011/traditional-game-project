@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import background from '../html/images/background_1.jpg';
+import avatar from '../html/images/avatar.png';
+import "../css/form.css"
+import "../css/style.css"
 
 export default class Register extends Component {
     constructor(props) {
@@ -15,7 +19,7 @@ export default class Register extends Component {
     }
 
     setParams = (event) => {
-        this.setState({[event.target.name] : event.target.value})
+        this.setState({ [event.target.name]: event.target.value })
     }
 
     register = () => {
@@ -45,7 +49,7 @@ export default class Register extends Component {
             })
             .then(result => {
                 result = result.replace(/","/g, "\n").replace(/"/g, "")
-                                .replace('[', '').replace(']', '')
+                    .replace('[', '').replace(']', '')
                 for (let i = 0; i <= result.length; i++) {
                     console.log(result[i])
                 }
@@ -58,42 +62,57 @@ export default class Register extends Component {
 
     render() {
         return (
-        <form onSubmit = {e => {
-            e.preventDefault();
-            this.register();
-        }}>
-            <div>
-                <label>Username:</label>
-                <input type="text" name="username" onChange={this.setParams}></input>
+            <div class="form-body-container">
+                <img class="background-form" src={background}></img>
+                <div class="formbox registerbox">
+                    <img src={avatar} class="avatar"></img>
+                    <h1>Register</h1>
+                    <form onSubmit={e => {
+                        e.preventDefault();
+                        this.register();
+                    }}>
+                        <div class="registerrow">
+                            <div>
+                                <label>Username:</label>
+                                <input type="text" name="username" onChange={this.setParams}></input>
+                            </div>
+
+                            <div>
+                                <label>Password:</label>
+                                <input type="text" name="password" onChange={this.setParams}></input>
+                            </div>
+                        </div>
+                        <div class="registerrow">
+                            <div>
+                                <label>userAddress:</label>
+                                <input type="text" name="userAddress" onChange={this.setParams}></input>
+                            </div>
+                            <div>
+                                <label>userFullName:</label>
+                                <input type="text" name="userFullName" onChange={this.setParams}></input>
+                            </div>
+                        </div>
+                        <div class="registerrow">
+                            <div>
+                                <label>userPhone:</label>
+                                <input type="text" name="userPhone" onChange={this.setParams}></input>
+                            </div>
+                            <div>
+                                <label>userGender:</label>
+                                <input type="text" name="userGender" onChange={this.setParams}></input>
+
+                            </div>
+                        </div>
+
+                        <div>
+                            <label>userEmail:</label>
+                            <input type="text" name="userEmail" onChange={this.setParams}></input>
+                            <button type="submit">Register</button>
+                        </div>
+
+                    </form>
+                </div>
             </div>
-            <div>
-                <label>Password:</label>
-                <input type="text" name="password" onChange={this.setParams}></input>
-            </div>
-            <div>
-                <label>userAddress:</label>
-                <input type="text" name="userAddress" onChange={this.setParams}></input>
-            </div>
-            <div>
-                <label>userFullName:</label>
-                <input type="text" name="userFullName" onChange={this.setParams}></input>
-            </div>
-            <div>
-                <label>userPhone:</label>
-                <input type="text" name="userPhone" onChange={this.setParams}></input>
-            </div>
-            <div>
-                <label>userEmail:</label>
-                <input type="text" name="userEmail" onChange={this.setParams}></input>
-            </div>
-            <div>
-                <label>userGender:</label>
-                <input type="text" name="userGender" onChange={this.setParams}></input>
-            </div>
-            <div>
-                <button type="submit">Register</button>
-            </div>
-        </form>
         )
     }
 }
