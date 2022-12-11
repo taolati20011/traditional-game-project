@@ -50,7 +50,7 @@ class Page extends Component {
         {currentUser ? (
               <div class="hello-user"> 
                 <p> Hello, {currentUser}  <br></br>
-                <a class="log-out" onClick={this.logOut} href="."> Sign out </a> </p>
+                <a class="log-out" onClick={this.logOut} href="/"> Sign out </a> </p>
               </div>
             ) : (<button type="button" id="btn"><a href="/login"><i class="play-logo"></i>Login</a></button>)} 
       </div>
