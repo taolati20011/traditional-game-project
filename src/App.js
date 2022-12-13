@@ -21,7 +21,7 @@ const AppLink = () => {
     { path: "/list-user", element: <ListUser/>},
     { path: "/register", element: <Register/>},
     { path: "/forget-password", element: <ForgetPassword/>},
-    { path: "/reset-password", element: <ResetPassword/>}
+    { path: "/reset-password", element: <ResetPassword/>},
     // ...
   ]);
   return routes;

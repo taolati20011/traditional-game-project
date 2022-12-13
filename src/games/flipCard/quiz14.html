@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="quiz14.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Bắt đầu game -->
+    <div id="start-game">
+        <h1>Memomry card</h1>
+        <div class="level-container">
+            <p>Chọn level game</p>
+            <div class="select-container">
+                <select id="level-option">
+                    <option value="1">Level 1</option>
+                    <option value="2">Level 2</option>
+                    <option value="3">Level 3</option>
+                </select>
+            </div>
+            <button id="btn-start-game">Bắt đầu</button>
+        </div>
+    </div>
+
+    <!--choi game-->
+    <div id="game-container">
+        <div id="info-container">
+            <p id="score-board">Score: 0</p>
+            <span>
+                <span id="hour" >00</span>:
+                <span id="minute">00</span>:
+                <span id="second">00</span><br>
+            </span>
+            <p id="move-count">Move count: 0</p>
+        </div>
+        <div id="board" class="flex-row"></div>
+    </div>
+    <div id="game-result"></div>
+    <script src="quiz14.js"></script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import fbIcon from './images/124010.png';
-import gameIcon from './images/images.jpg'
+import gameIcon from './images/images.jpg';
 
 class Page extends Component {
   constructor(props) {
@@ -30,6 +30,21 @@ class Page extends Component {
 
   renderPage(props) {
     const {currentUser} = this.state;
+    var urlGame = null;
+    switch (props.gameName) {
+      case "Ô ăn quan":
+        urlGame = "http://127.0.0.1:5500/src/games/o-an-quan/index.html";
+        break;
+      case "Lật thẻ":
+        urlGame = "http://127.0.0.1:5500/src/games/flipCard/quiz14.html";
+        break;    
+      case "Cờ toán Việt Nam":
+        urlGame = "http://127.0.0.1:5500/src/games/chess_vn/index.html";
+        break;
+      case "Tíc tắc toe":
+        urlGame = "http://127.0.0.1:5500/src/games/tic-tac-toe/index.html";
+        break;
+      }
     return (
       <body class="page-body">
       <div id="head-wrapper">
@@ -60,7 +75,7 @@ class Page extends Component {
             <img src={gameIcon} alt="game_pic"/>
           </div>
           <div class="button-container">
-            <button class="content-button">Chơi game</button>
+            <button class="content-button"><a href={urlGame}>Chơi game</a></button>
           </div>
         </div>
         <div id="content-right" class ="flex-col-align-center">

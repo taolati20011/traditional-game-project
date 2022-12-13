@@ -84,15 +84,15 @@ export default class Home extends Component {
                 </a>
                 <a href="/game/3">
                   <div class="img img-3"></div>
-                  <figcaption>Mèo đuổi chuột</figcaption>
+                  <figcaption>Lật thẻ</figcaption>
                 </a>
                 <a href="/game/4">
                   <div class="img img-4"></div>
-                  <figcaption>Rồng rắn lên mây</figcaption>
+                  <figcaption>Cờ toán Việt Nam</figcaption>
                 </a>
                 <a href="/game/5">
                   <div class="img img-5"></div>
-                  <figcaption>Oẳn tù tì</figcaption>
+                  <figcaption>Tíc tắc toe</figcaption>
                 </a>
                 <a href="#">
                   <div class="img img-6"></div>
