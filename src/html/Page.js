@@ -35,7 +35,7 @@ class Page extends Component {
       case "Ô ăn quan":
         urlGame = "http://127.0.0.1:5500/src/games/o-an-quan/index.html";
         break;
-      case "Lật thẻ":
+      case "Lật bài":
         urlGame = "http://127.0.0.1:5500/src/games/flipCard/quiz14.html";
         break;    
       case "Cờ toán Việt Nam":
