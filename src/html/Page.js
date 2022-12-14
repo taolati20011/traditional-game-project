@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import fbIcon from './images/124010.png';
-
+import notAvailable from "../html/images/not-available.png";
+import oAnQuan from "../html/images/o-an-quan.jpg";
+import latBai from "../html/images/lat-bai.png";
+import coToan from "../html/images/co-toan.jpg";
+import coCaro from "../html/images/co-caro.png";
 
 class Page extends Component {
   constructor(props) {
@@ -31,23 +35,23 @@ class Page extends Component {
   renderPage(props) {
     const { currentUser } = this.state;
     var urlGame = null;
-    var gameIcon = "../html/images/not-available.png";
+    var gameIcon = notAvailable;
     switch (props.gameName) {
       case "Ô ăn quan":
         urlGame = "http://127.0.0.1:5500/src/games/o-an-quan/index.html";
-        gameIcon = "../html/images/o-an-quan.jpg";
+        gameIcon = oAnQuan;
         break;
       case "Lật bài":
         urlGame = "http://127.0.0.1:5500/src/games/flipCard/quiz14.html";
-        gameIcon = "../html/images/lat-bai.png";
+        gameIcon = latBai;
         break;
       case "Cờ toán Việt Nam":
         urlGame = "http://127.0.0.1:5500/src/games/chess_vn/index.html";
-        gameIcon = "../html/images/co-toan.jpg";
+        gameIcon = coToan;
         break;
       case "Tíc tắc toe":
         urlGame = "http://127.0.0.1:5500/src/games/tic-tac-toe/index.html";
-        gameIcon = "../html/images/co-caro.png";
+        gameIcon = coCaro;
         break;
     }
     return (
@@ -77,7 +81,7 @@ class Page extends Component {
         <div id="content-wrapper" class="flex-row-justify-between">
           <div id="content-left" class="flex-col-align-center">
             <div class="image-container">
-              <img src={gameIcon} alt="game_pic" />
+              <img src={gameIcon} width="225px" height="225px" alt="game_pic" />
             </div>
             <div class="button-container">
               {urlGame ? (
