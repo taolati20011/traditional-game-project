@@ -67,6 +67,12 @@ p {
     justify-content: space-between;
 }
 
+.flex-row-justify-end {
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-end;
+}
+
 .flex-col-align-center {
     display: flex;
     flex-direction: column;
@@ -186,7 +192,7 @@ footer span, p {
 }
 
 .footer-vertical {
-    width: 60%;
+    width: 80%;
     height: 50%;
 }
 
@@ -195,7 +201,7 @@ footer span, p {
     height: 100%;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    justify-content: flex-end;
     margin: 10px 0px 0px;
 }
 
