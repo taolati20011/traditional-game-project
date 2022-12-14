@@ -43,10 +43,10 @@ export default class Home extends Component {
           </div>
           <ul class="navbar">
             <li><a href="." class="active"> Home </a></li>
-            <li><a href="#type1">Tình yêu</a></li>
+            <li><a href="#type1">Trí tuệ</a></li>
             <li><a href="#type2">Phong tục</a></li>
             <li><a href="#type3">Chiến trận</a></li>
-            <li><a href="#type4">Trí tuệ</a></li>
+            <li><a href="#type4">Tình yêu</a></li>
             <li><a href="#type5">Nghề nghiệp</a></li>
           </ul>
           {currentUser ? (
@@ -71,7 +71,7 @@ export default class Home extends Component {
           <div class="section-1-wrapper">
             <h1>Thể loại</h1>
             <div class="section-1-container" id="type1">
-              <h4>Tình yêu</h4>
+              <h4>Trí tuệ</h4>
               <br />
               <div class="section-1-img">
                 <a href="/game/1">
@@ -144,7 +144,7 @@ export default class Home extends Component {
             </div>
 
             <div class="section-1-container" id="type4">
-              <h4>Trí tuệ</h4>
+              <h4>Tình yêu</h4>
               <br />
               <div class="section-1-img">
                 <a href="#">

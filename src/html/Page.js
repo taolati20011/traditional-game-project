@@ -75,7 +75,12 @@ class Page extends Component {
             <img src={gameIcon} alt="game_pic"/>
           </div>
           <div class="button-container">
-            <button class="content-button"><a href={urlGame}>Chơi game</a></button>
+            {urlGame ? (
+              <button class="content-button">
+              <a href={urlGame}>Chơi game
+              </a>
+            </button>
+            ) : (<button class="content-button-black"> <a>Chơi game</a></button>)}
           </div>
         </div>
         <div id="content-right" class ="flex-col-align-center">
