@@ -101,7 +101,73 @@
 }
 
 .section-1-img .img-6 {
-    background: url(../html/images/images.jpg);
+    background: url(../html/images/ban-bi.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.section-1-img .img-7 {
+    background: url(../html/images/bit-mat-bat-de.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.section-1-img .img-8 {
+    background: url(../html/images/ca-sau-len-bo.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.section-1-img .img-9 {
+    background: url(../html/images/keo-co.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.section-1-img .img-10 {
+    background: url(../html/images/keo-cua-lua-xe.jfif);
+    background-size: cover;
+    background-position: center;
+}
+
+.section-1-img .img-11 {
+    background: url(../html/images/meo-duoi-chuot.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.section-1-img .img-12 {
+    background: url(../html/images/mot-hai-ba.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.section-1-img .img-13 {
+    background: url(../html/images/nhay-day.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.section-1-img .img-14 {
+    background: url(../html/images/nhay-lo-co.jfif);
+    background-size: cover;
+    background-position: center;
+}
+
+.section-1-img .img-15 {
+    background: url(../html/images/oan-tu-ti.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.section-1-img .img-16 {
+    background: url(../html/images/rong-ran-len-may.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.section-1-img .img-17 {
+    background: url(../html/images/tron-tim.jpg);
     background-size: cover;
     background-position: center;
 }

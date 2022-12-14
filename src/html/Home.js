@@ -101,21 +101,21 @@ export default class Home extends Component {
               <h4>Phong tục</h4>
               <br />
               <div class="section-1-img">
-                <a href="#">
-                  <div class="img img-0"></div>
-                  <figcaption>ten game</figcaption>
+                <a href="/game/6">
+                  <div class="img img-6"></div>
+                  <figcaption>Bắn Bi</figcaption>
                 </a>
-                <a href="#"
-                ><div class="img img-0"></div>
-                  <figcaption>ten game</figcaption>
+                <a href="/game/7"
+                ><div class="img img-7"></div>
+                  <figcaption>Bịt mắt bắt dê</figcaption>
                 </a>
-                <a href="#">
-                  <div class="img img-0"></div>
-                  <figcaption>ten game</figcaption>
+                <a href="/game/8">
+                  <div class="img img-8"></div>
+                  <figcaption>Cá sấu lên bờ</figcaption>
                 </a>
-                <a href="#">
-                  <div class="img img-0"></div>
-                  <figcaption>ten game</figcaption>
+                <a href="/game/9">
+                  <div class="img img-9"></div>
+                  <figcaption>Kéo co</figcaption>
                 </a>          
               </div>
             </div>
@@ -124,21 +124,21 @@ export default class Home extends Component {
               <h4>Chiến trận</h4>
               <br />
               <div class="section-1-img">
-                <a href="#">
-                  <div class="img img-0"></div>
-                  <figcaption>ten game</figcaption>
+                <a href="/game/10">
+                  <div class="img img-10"></div>
+                  <figcaption>Kéo cưa lừa xẻ</figcaption>
                 </a>
-                <a href="#"
-                ><div class="img img-0"></div>
-                  <figcaption>ten game</figcaption>
+                <a href="/game/11"
+                ><div class="img img-11"></div>
+                  <figcaption>Mèo đuổi chuột</figcaption>
                 </a>
-                <a href="#">
-                  <div class="img img-0"></div>
-                  <figcaption>ten game</figcaption>
+                <a href="/game/12">
+                  <div class="img img-12"></div>
+                  <figcaption>Một hai ba</figcaption>
                 </a>
-                <a href="#">
-                  <div class="img img-0"></div>
-                  <figcaption>ten game</figcaption>
+                <a href="/game/13">
+                  <div class="img img-13"></div>
+                  <figcaption>Nhảy dây</figcaption>
                 </a>
               </div>
             </div>
@@ -147,21 +147,21 @@ export default class Home extends Component {
               <h4>Tình yêu</h4>
               <br />
               <div class="section-1-img">
-                <a href="#">
-                  <div class="img img-0"></div>
-                  <figcaption>Keo co</figcaption>
+                <a href="/game/14">
+                  <div class="img img-14"></div>
+                  <figcaption>Nhảy lò cò</figcaption>
                 </a>
-                <a href="#"
-                ><div class="img img-0"></div>
-                  <figcaption>O an quan</figcaption>
+                <a href="/game/15"
+                ><div class="img img-15"></div>
+                  <figcaption>Oẳn tù tì</figcaption>
                 </a>
-                <a href="#">
-                  <div class="img img-0"></div>
-                  <figcaption>ten game</figcaption>
+                <a href="/game/16">
+                  <div class="img img-16"></div>
+                  <figcaption>Rồng rắn lên mây</figcaption>
                 </a>
-                <a href="#">
-                  <div class="img img-0"></div>
-                  <figcaption>ten game</figcaption>
+                <a href="/game/17">
+                  <div class="img img-17"></div>
+                  <figcaption>Trốn tìm</figcaption>
                 </a>
               </div>
             </div>

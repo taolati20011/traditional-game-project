@@ -5,6 +5,19 @@ import oAnQuan from "../html/images/o-an-quan.jpg";
 import latBai from "../html/images/lat-bai.png";
 import coToan from "../html/images/co-toan.jpg";
 import coCaro from "../html/images/co-caro.png";
+import banBi from "../html/images/ban-bi.jpg";
+import bitMatBatDe from "../html/images/bit-mat-bat-de.png";
+import caSauLenBo from "../html/images/ca-sau-len-bo.jpg";
+import keoCo from "../html/images/keo-co.png";
+import keoCua from "../html/images/keo-cua-lua-xe.jfif";
+import meoDuoiChuot from "../html/images/meo-duoi-chuot.jpg";
+import motHaiBa from "../html/images/mot-hai-ba.jpg";
+import nhayDay from "../html/images/nhay-day.png";
+import nhayLoCo from "../html/images/nhay-lo-co.jfif";
+import oanTuTi from "../html/images/oan-tu-ti.jpg";
+import rongRan from "../html/images/rong-ran-len-may.png";
+import tronTim from "../html/images/tron-tim.jpg";
+import dungDang from "../html/images/dung-dang-dung-de.jpg";
 
 class Page extends Component {
   constructor(props) {
@@ -53,6 +66,45 @@ class Page extends Component {
         urlGame = "http://127.0.0.1:5500/src/games/tic-tac-toe/index.html";
         gameIcon = coCaro;
         break;
+      case "Bắn bi":
+        gameIcon = banBi;
+        break;
+      case "Bịt mắt bắt dê":
+        gameIcon = bitMatBatDe;
+        break;
+      case "Cá sấu lên bờ":
+        gameIcon = caSauLenBo;
+        break;
+      case "Kéo co":
+        gameIcon = keoCo;
+        break;
+      case "Kéo cưa lừa xẻ":
+        gameIcon = keoCua;
+        break;
+      case "Mèo đuổi chuột":
+        gameIcon = meoDuoiChuot;
+        break;
+      case "Một hai ba":
+        gameIcon = motHaiBa;
+        break;
+      case "Nhảy dây":
+        gameIcon = nhayDay;
+        break;
+      case "Nhảy lò cò":
+        gameIcon = nhayLoCo;
+        break;
+      case "Oẳn tù tì":
+        gameIcon = oanTuTi;
+        break;
+      case "Rồng rắn lên mây":
+        gameIcon = rongRan;
+        break;
+      case "Trốn tìm":
+        gameIcon = tronTim;
+        break;
+      case "Dung dăng dung dẻ":
+        gameIcon = dungDang;
+        break; 
     }
     return (
       <body class="page-body">
