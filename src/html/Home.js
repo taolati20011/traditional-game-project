@@ -25,12 +25,12 @@ export default class Home extends Component {
   }
 
   logOut() {
-      localStorage.removeItem("username")
-      localStorage.removeItem("accessToken")
+    localStorage.removeItem("username")
+    localStorage.removeItem("accessToken")
   }
 
   render() {
-    const {currentUser} = this.state;
+    const { currentUser } = this.state;
 
     return (
       <body class="home-body">
@@ -50,23 +50,23 @@ export default class Home extends Component {
             <li><a href="#type5">Nghề nghiệp</a></li>
           </ul>
           {currentUser ? (
-            <div class="hello-user"> 
+            <div class="hello-user">
               <p> Hello, {currentUser}  <br></br>
-              <a class="log-out" onClick={this.logOut} href="."> Sign out </a> </p>
+                <a class="log-out" onClick={this.logOut} href="."> Sign out </a> </p>
             </div>
-          ) : (<button type="button" id="btn"><a href="/login"><i class="play-logo"></i>Login</a></button>)} 
+          ) : (<button type="button" id="btn"><a href="/login"><i class="play-logo"></i>Login</a></button>)}
         </div>
-    
+
         <div id="introduction-wrapper">
           <div class="introduction-container">
             <h1>Giới thiệu</h1>
-            <p>Trò chơi dân gian là những hoạt động vui chơi giải trí do quần chúng nhân dân sáng tạo ra và được lưu truyền tự nhiên qua nhiều thế hệ. 
+            <p>Trò chơi dân gian là những hoạt động vui chơi giải trí do quần chúng nhân dân sáng tạo ra và được lưu truyền tự nhiên qua nhiều thế hệ.
               Trò chơi dân gian diễn ra mọi lúc, mọi nơi, không hạn định về mặt thời gian, không gian và phản ánh đời sống tinh thần, văn hóa của dân tộc.
               Trò chơi dân gian là tài sản chung của cả một xã hội, nó không phải của riêng một cá nhân nào, trò chơi dân gian gắn liền với sự tồn tại, phát triển của một cộng đồng người trong nhiều chặng đường phát triển khác nhau.
             </p>
           </div>
         </div>
-    
+
         <div class="content-wrapper">
           <div class="section-1-wrapper">
             <h1>Thể loại</h1>
@@ -79,7 +79,7 @@ export default class Home extends Component {
                   <figcaption>Dung dăng dung dẻ</figcaption>
                 </a>
                 <a href="/game/2"
-                  ><div class="img img-2"></div>
+                ><div class="img img-2"></div>
                   <figcaption>Ô ăn quan</figcaption>
                 </a>
                 <a href="/game/3">
@@ -94,141 +94,117 @@ export default class Home extends Component {
                   <div class="img img-5"></div>
                   <figcaption>Tíc tắc toe</figcaption>
                 </a>
-                <a href="#">
-                  <div class="img img-6"></div>
-                  <figcaption>ten game</figcaption>
-                </a>
               </div>
             </div>
-    
+
             <div class="section-1-container" id="type2">
               <h4>Phong tục</h4>
               <br />
               <div class="section-1-img">
                 <a href="#">
-                  <div class="img img-1"></div>
+                  <div class="img img-0"></div>
                   <figcaption>ten game</figcaption>
                 </a>
                 <a href="#"
-                  ><div class="img img-2"></div>
+                ><div class="img img-0"></div>
                   <figcaption>ten game</figcaption>
                 </a>
                 <a href="#">
-                  <div class="img img-3"></div>
+                  <div class="img img-0"></div>
                   <figcaption>ten game</figcaption>
                 </a>
                 <a href="#">
-                  <div class="img img-4"></div>
+                  <div class="img img-0"></div>
                   <figcaption>ten game</figcaption>
-                </a>
-                <a href="#">
-                  <div class="img img-5"></div>
-                  <figcaption>ten game</figcaption>
-                </a>
-                <a href="#">
-                  <div class="img img-6"></div>
-                  <figcaption>ten game</figcaption>
-                </a>
+                </a>          
               </div>
             </div>
-    
+
             <div class="section-1-container" id="type3">
               <h4>Chiến trận</h4>
               <br />
               <div class="section-1-img">
                 <a href="#">
-                  <div class="img img-1"></div>
+                  <div class="img img-0"></div>
                   <figcaption>ten game</figcaption>
                 </a>
                 <a href="#"
-                  ><div class="img img-2"></div>
+                ><div class="img img-0"></div>
                   <figcaption>ten game</figcaption>
                 </a>
                 <a href="#">
-                  <div class="img img-3"></div>
+                  <div class="img img-0"></div>
                   <figcaption>ten game</figcaption>
                 </a>
                 <a href="#">
-                  <div class="img img-4"></div>
-                  <figcaption>ten game</figcaption>
-                </a>
-                <a href="#">
-                  <div class="img img-5"></div>
-                  <figcaption>ten game</figcaption>
-                </a>
-                <a href="#">
-                  <div class="img img-6"></div>
+                  <div class="img img-0"></div>
                   <figcaption>ten game</figcaption>
                 </a>
               </div>
             </div>
-    
+
             <div class="section-1-container" id="type4">
               <h4>Trí tuệ</h4>
               <br />
               <div class="section-1-img">
                 <a href="#">
-                  <div class="img img-1"></div>
+                  <div class="img img-0"></div>
                   <figcaption>Keo co</figcaption>
                 </a>
                 <a href="#"
-                  ><div class="img img-2"></div>
+                ><div class="img img-0"></div>
                   <figcaption>O an quan</figcaption>
                 </a>
                 <a href="#">
-                  <div class="img img-3"></div>
+                  <div class="img img-0"></div>
                   <figcaption>ten game</figcaption>
                 </a>
                 <a href="#">
-                  <div class="img img-4"></div>
-                  <figcaption>ten game</figcaption>
-                </a>
-                <a href="#">
-                  <div class="img img-5"></div>
-                  <figcaption>ten game</figcaption>
-                </a>
-                <a href="#">
-                  <div class="img img-6"></div>
+                  <div class="img img-0"></div>
                   <figcaption>ten game</figcaption>
                 </a>
               </div>
             </div>
-    
+
             <div class="section-1-container" id="type5">
               <h4>Nghề nghiệp</h4>
               <br />
               <div class="section-1-img">
                 <a href="#">
-                  <div class="img img-1"></div>
+                  <div class="img img-0"></div>
                   <figcaption>ten game</figcaption>
                 </a>
                 <a href="#"
-                  ><div class="img img-2"></div>
+                ><div class="img img-0"></div>
                   <figcaption>ten game</figcaption>
                 </a>
                 <a href="#">
-                  <div class="img img-3"></div>
+                  <div class="img img-0"></div>
                   <figcaption>ten game</figcaption>
                 </a>
                 <a href="#">
-                  <div class="img img-4"></div>
-                  <figcaption>ten game</figcaption>
-                </a>
-                <a href="#">
-                  <div class="img img-5"></div>
-                  <figcaption>ten game</figcaption>
-                </a>
-                <a href="#">
-                  <div class="img img-6"></div>
+                  <div class="img img-0"></div>
                   <figcaption>ten game</figcaption>
                 </a>
               </div>
             </div>
           </div>
         </div>
+        <footer>
+          <div class="footer-vertical flex-row-justify-between">
+            <div class="vertical-child-left">
+            </div>
+            <div class="vertical-child-right">
+            </div>
+          </div>
+          <div class="footer-vertical flex-col-align-center">
+            <span>© Copyright 2022. All rights reserved</span>
+            <span ><a class="footer-a">Terms of Service</a> | <a class="footer-a">Privacy Policy</a></span>
+          </div>
+        </footer>
       </body>
-    
-        );
+
+    );
   }
 
 }

@@ -92,28 +92,28 @@ export default class Register extends Component {
                         </div>
                         <div class="registerrow">
                             <div>
-                                <label>userAddress:</label>
+                                <label>Address:</label>
                                 <input type="text" name="userAddress" onChange={this.setParams}></input>
                             </div>
                             <div>
-                                <label>userFullName:</label>
+                                <label>FullName:</label>
                                 <input type="text" name="userFullName" onChange={this.setParams}></input>
                             </div>
                         </div>
                         <div class="registerrow">
                             <div>
-                                <label>userPhone:</label>
+                                <label>Phone:</label>
                                 <input type="text" name="userPhone" onChange={this.setParams}></input>
                             </div>
                             <div>
-                                <label>userGender:</label>
+                                <label>Gender:</label>
                                 <input type="text" name="userGender" onChange={this.setParams}></input>
 
                             </div>
                         </div>
 
                         <div>
-                            <label>userEmail:</label>
+                            <label>Email:</label>
                             <input type="text" name="userEmail" onChange={this.setParams}></input>
                             <button type="submit">Register</button>
                         </div>

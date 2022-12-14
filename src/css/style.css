@@ -8,8 +8,9 @@
 .page-body {
     background: #1a0327;
     font-family: 'Poppins', sans-serif;
-    margin: 0;
-    height: 100vh;
+    min-height: 100vh;
+    width: 100vw;
+    overflow: auto;
 }
 
 h1 {
@@ -50,11 +51,14 @@ p {
 }
 
 .introduction-container p {
-    text-align: center;
+    text-align: justify;
     vertical-align: middle;
     padding-top: 100px;
     padding-left: 300px;
     padding-right: 300px;
+    width: 1726px;
+    font-size: 32px;
+    font-weight: 700;
 }
 
 .flex-row-justify-between {
@@ -163,4 +167,51 @@ ul.navbar li a:hover:not(.active) {
 
 .list-page {
     background-color: white;
+}
+
+
+footer {
+    border-top-style: solid;
+    border-width: 1px;
+    border-top-color: rgb(255, 255, 255);
+    width: 100vw;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer span, p {
+    color: white;
+}
+
+.footer-vertical {
+    width: 60%;
+    height: 50%;
+}
+
+.vertical-child-left {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 10px 0px 0px;
+}
+
+.vertical-child-right {
+    width: 50%;
+    height: 100%;
+}
+
+.vertical-child-left button {
+    margin-left: 30px;
+    width: 150px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.footer-a {
+    text-decoration: underline;
+    color: white;
 }

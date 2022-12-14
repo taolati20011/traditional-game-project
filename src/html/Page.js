@@ -83,6 +83,18 @@ class Page extends Component {
           <p>{props.description}</p>
         </div>
       </div>
+      <footer>
+          <div class="footer-vertical flex-row-justify-between">
+            <div class="vertical-child-left">
+            </div>
+            <div class="vertical-child-right">
+            </div>
+          </div>
+          <div class="footer-vertical flex-col-align-center">
+            <span>© Copyright 2022. All rights reserved</span>
+            <span ><a class="footer-a">Terms of Service</a> | <a class="footer-a">Privacy Policy</a></span>
+          </div>
+        </footer>
     </body>
       );
   }
