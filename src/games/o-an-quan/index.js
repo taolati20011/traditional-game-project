@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const initBoard = () => {
         boxs.forEach((box) => {
             box.style.backgroundColor = '#ffffffcc';
-            box.innerHTML = board[box.id-1];
+            box.innerText = board[box.id-1];
         })
         document.querySelector('.baseO > p').innerHTML = 0;
         document.querySelector('.baseX > p').innerHTML = 0;
@@ -26,14 +26,14 @@ window.addEventListener('DOMContentLoaded', () => {
         if (s == 'X') {
             for (let x = 7; x <= 11; x++) {
                 console.log('X');
-                boxs[x].innerHTML = 1;
+                boxs[x].innerText = 1;
             }
             document.querySelector('.baseX > p').innerHTML -= 5;
         }
         if (s == 'O') {
             for (let x = 1; x <= 5; x++) {
                 console.log('O');
-                boxs[x].innerHTML = 1;
+                boxs[x].innerText = 1;
             }
             document.querySelector('.baseO > p').innerHTML -= 5;
         }
@@ -63,20 +63,16 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const isEmptyBoard = (xs) => {
         if (xs == 'X') {
-            console.log('X');
             for (let x = 8; x <= 11; x++) {
-                console.log(x + " " + boxs[x].innerHTML);
-                if (boxs[x].innerHTML != '' && boxs[x].innerHTML != 0) {
+                if (boxs[x].innerText != '' && boxs[x].innerText != 0) {
                     return false;
                 }
             }
             return true;
         }
         if (xs == 'O') {
-            console.log('O');
             for (let x = 1; x <= 5; x++) {
-                console.log(x + " " + boxs[x].innerHTML);
-                if (boxs[x].innerHTML != '' && boxs[x].innerHTML != 0) {
+                if (boxs[x].innerText != '' && boxs[x].innerText != 0) {
                     return false;
                 }
             }
@@ -86,7 +82,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const updateBoard = (index, direction) => {
         // console.log(index.id + " " + direction.id);
-        var total = index.innerHTML;
+        var total = index.innerText;
         if (currentPlayer == 'X') {
             var t = 1;
             if (Number(direction.id) < Number(index.id)) {
@@ -100,8 +96,8 @@ window.addEventListener('DOMContentLoaded', () => {
             while (true) {
                 var nextIndex = nextIndexByT(currentIndex, t);
                 // console.log(currentIndex);
-                document.getElementById(String(nextIndex)).innerHTML++;
-                document.getElementById(String(firstIndex)).innerHTML--;
+                document.getElementById(String(nextIndex)).innerText++;
+                document.getElementById(String(firstIndex)).innerText--;
                 currentIndex = nextIndex;
                 total--;
                 // console.log(total + " " + currentIndex + " " + document.getElementById(String(currentIndex)).innerHTML);
@@ -111,7 +107,7 @@ window.addEventListener('DOMContentLoaded', () => {
                         break;
                     }
                     else {
-                        var new_total = document.getElementById(String(nextIndex)).innerHTML;
+                        var new_total = document.getElementById(String(nextIndex)).innerText;
                         if (new_total != 0) {
                             total = new_total;
                             currentIndex = nextIndex;
@@ -120,18 +116,18 @@ window.addEventListener('DOMContentLoaded', () => {
                         }
                         else {
                             var d = 0;
-                            while (document.getElementById(String(nextIndex)).innerHTML == 0
-                                && document.getElementById(String(nextIndexByT(nextIndex, t))).innerHTML != 0) {
+                            while (document.getElementById(String(nextIndex)).innerText == 0
+                                && document.getElementById(String(nextIndexByT(nextIndex, t))).innerText != 0) {
                                     if (d == 0 && (nextIndexByT(nextIndex, t) == 1 || nextIndexByT(nextIndex, t) == 7)) {
                                         // console.log("BREAK");
                                         break;
                                     }
                                     d++;
-                                    var tt = Number(document.querySelector('.baseX > p').innerHTML) + Number(document.getElementById(String(nextIndexByT(nextIndex, t))).innerHTML);
+                                    var tt = Number(document.querySelector('.baseX > p').innerText) + Number(document.getElementById(String(nextIndexByT(nextIndex, t))).innerText);
                                     // console.log("HELLO");
-                                    document.querySelector('.baseX > p').innerHTML = tt;
+                                    document.querySelector('.baseX > p').innerText = tt;
                                     // console.log(nextIndexByT(nextIndex, t));
-                                    document.getElementById(toString(nextIndexByT(nextIndex, t))).innerHTML = 0;
+                                    document.getElementById(toString(nextIndexByT(nextIndex, t))).innerText = 0;
                                     // console.log(nextIndex);
                                     nextIndex = nextIndexByT(nextIndexByT(nextIndex, t), t);
                                     // console.log(nextIndex);
@@ -156,18 +152,18 @@ window.addEventListener('DOMContentLoaded', () => {
             while (true) {
                 var nextIndex = nextIndexByT(currentIndex, t);
                 // console.log(currentIndex);
-                document.getElementById(String(nextIndex)).innerHTML++;
-                document.getElementById(String(firstIndex)).innerHTML--;
+                document.getElementById(String(nextIndex)).innerText++;
+                document.getElementById(String(firstIndex)).innerText--;
                 currentIndex = nextIndex;
                 total--;
-                // console.log(total + " " + currentIndex + " " + document.getElementById(String(currentIndex)).innerHTML);
+                // console.log(total + " " + currentIndex + " " + document.getElementById(String(currentIndex)).innerText);
                 if (total == 0) {
                     var nextIndex = nextIndexByT(currentIndex, t);
                     if (nextIndex == 1 | nextIndex == 7) {
                         break;
                     }
                     else {
-                        var new_total = document.getElementById(String(nextIndex)).innerHTML;
+                        var new_total = document.getElementById(String(nextIndex)).innerText;
                         if (new_total != 0) {
                             total = new_total;
                             currentIndex = nextIndex;
@@ -176,17 +172,17 @@ window.addEventListener('DOMContentLoaded', () => {
                         }
                         else {
                             var d = 0;
-                            while (document.getElementById(String(nextIndex)).innerHTML == 0
-                                && document.getElementById(toString(nextIndexByT(nextIndex, t))).innerHTML != 0) {
+                            while (document.getElementById(String(nextIndex)).innerText == 0
+                                && document.getElementById(toString(nextIndexByT(nextIndex, t))).innerText != 0) {
                                     if (d == 0 && (nextIndexByT(nextIndex, t) == 1 || nextIndexByT(nextIndex, t) == 7)) {
                                         // console.log("BREAK");
                                         break;
                                     }
                                     d++;
-                                    var tt = Number(document.querySelector('.baseO > p').innerHTML) + Number(document.getElementById(String(nextIndexByT(nextIndex, t))).innerHTML);
+                                    var tt = Number(document.querySelector('.baseO > p').innerHTML) + Number(document.getElementById(String(nextIndexByT(nextIndex, t))).innerText);
                                     // console.log("HELLO");
                                     document.querySelector('.baseO > p').innerHTML = tt;
-                                    document.getElementById(String(nextIndexByT(nextIndex, t))).innerHTML = 0;
+                                    document.getElementById(String(nextIndexByT(nextIndex, t))).innerText = 0;
                                     // console.log(nextIndex);
                                     // console.log("t" + " " + t);
                                     nextIndex = nextIndexByT(nextIndexByT(nextIndex, t), t);
@@ -200,6 +196,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 
             }
         }
+        renderReset()
     }
 
     function handleResultValidation() {
@@ -279,7 +276,7 @@ window.addEventListener('DOMContentLoaded', () => {
             return;
         }
         if (turn == 0) {
-            if (box.innerHTML == 0 || box.id == 1 | box.id == 7) {
+            if (box.innerText == 0 || box.id == 1 | box.id == 7) {
                 return;
             }
         }
@@ -308,9 +305,35 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    const renderReset = () => {
+        var link1 = '<img src="./images/stone.jpg"></img>';
+        var link2 = '<img src="./images/morestone.png"></img>';
+        boxs.forEach(box => {
+            if (Number(box.innerText) >= 10) {
+                if (box.getElementsByTagName('img')[0] != undefined) {
+                    box.getElementsByTagName('img')[0].getAttribute('src') = ""
+                }
+                box.insertAdjacentHTML('beforeend', link2);
+            }
+            else if (Number(box.innerText) >= 1) {
+                if (box.getElementsByTagName('img')[0] != undefined) {
+                    box.getElementsByTagName('img')[0].getAttribute('src') = ""
+                }
+                box.insertAdjacentHTML('beforeend', link1)
+            }
+            else if (Number(box.innerText) == 0) {
+                if (box.getElementsByTagName('img')[0] != undefined) {
+                    box.getElementsByTagName('img')[0].getAttribute('src') = ""
+                }
+            }
+        })
+    }
+
+    renderReset()
+
     boxs.forEach((box, index) => {
+        console.log(box.innerText)
         var a1, b1;
-        
         box.addEventListener('mouseenter', () => {
             if (currentPlayer == 'X') {
                 a1 = 8;
