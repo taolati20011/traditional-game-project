@@ -1,7 +1,7 @@
 import '../App.css';
 import '../../src/css/style.css';
 import '../../src/css/style1.css';
-import '../css/style2.css'
+import '../css/style2.css';
 import React, { Component, useEffect, useState } from 'react';
 import Image from './images/124010.png';
 
@@ -191,10 +191,10 @@ export default class Home extends Component {
           </div>
         </div>
         <footer>
-          <div class="footer-vertical flex-row-justify-between">
+          <div class="footer-vertical flex-row-justify-end">
             <div class="vertical-child-left">
-            </div>
-            <div class="vertical-child-right">
+              <p>Bấm vào đây để đóng góp ý kiến:</p>
+              <button>Click me!</button>
             </div>
           </div>
           <div class="footer-vertical flex-col-align-center">

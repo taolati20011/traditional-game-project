@@ -150,10 +150,10 @@ class Page extends Component {
           </div>
         </div>
         <footer>
-          <div class="footer-vertical flex-row-justify-between">
+          <div class="footer-vertical flex-row-justify-end">
             <div class="vertical-child-left">
-            </div>
-            <div class="vertical-child-right">
+              <p>Bấm vào đây để đóng góp ý kiến:</p>
+              <button>Click me!</button>
             </div>
           </div>
           <div class="footer-vertical flex-col-align-center">
