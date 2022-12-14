@@ -15,6 +15,8 @@
 #content-right {
     width: 70%;
     background-color: #240436;
+    word-break: break-word;
+    padding: 20px 30px 0px 30px;
 }
 
 #content-right h1{
