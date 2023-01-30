@@ -12,6 +12,7 @@ import {
 import PageGame from "../src/pages/PageGame";
 import ForgetPassword from './login/ForgetPassword.js';
 import ResetPassword from './login/ResetPassword.js';
+import Addgame from './login/AddGame.js';
 
 const AppLink = () => {
   let routes = useRoutes([
@@ -22,6 +23,7 @@ const AppLink = () => {
     { path: "/register", element: <Register/>},
     { path: "/forget-password", element: <ForgetPassword/>},
     { path: "/reset-password", element: <ResetPassword/>},
+    { path: "/addgame", element: <Addgame/>},
     // ...
   ]);
   return routes;

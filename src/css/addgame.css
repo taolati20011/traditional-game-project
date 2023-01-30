@@ -1,0 +1,109 @@
+.addGame-form-container {
+    margin: 0;
+    padding: 0;
+    background: #1a0327;
+    min-height: 100vh;
+    width: 100vw;
+    font-family: sans-serif;
+}
+
+.background-form {
+    height: 100vh;
+    width: 100vw;
+}
+
+.addGame-form {
+    color: #000;
+    background: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+
+.addGame-form h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.addGame-form p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.addGame-form input, select {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.addGame-form label {
+    margin-bottom: 10px;
+}
+
+.addGame-form input[type="text"],
+input[type="password"],
+select {
+    border: 1px solid #ccc;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #000;
+    font-size: 16px;
+    padding-left: 3%;
+}
+
+.addGame-form input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #fb2525;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.addGame-form input[type="submit"]:hover {
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+}
+
+.addGame-form a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgray;
+}
+
+.addGame-form a:hover {
+    color: #ffc107;
+}
+
+.addGame-form button {
+    background-color: #f0f0f0;
+}
+
+.addGame-form button:hover {
+    background-color: #e4e2e2;
+}
+
+.addGame-form button:active {
+    background-color: #f0f0f0;
+    box-shadow: 0 1px #666;
+    transform: translateY(2px);
+}
