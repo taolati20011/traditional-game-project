@@ -5,8 +5,6 @@ import Register from './login/Register.js'
 import ListUser from './html/ListUser.js';
 import {
   BrowserRouter as Router,
-  Routes,
-  Route,
   useRoutes,
 } from "react-router-dom";
 import PageGame from "../src/pages/PageGame";
@@ -14,7 +12,7 @@ import ForgetPassword from './login/ForgetPassword.js';
 import ResetPassword from './login/ResetPassword.js';
 import Addgame from './login/AddGame.js';
 import ListGame from './login/ListGame.js';
-
+import ListEmployee from './login/ListEmployee.js';
 
 const AppLink = () => {
   let routes = useRoutes([
@@ -25,8 +23,9 @@ const AppLink = () => {
     { path: "/register", element: <Register/>},
     { path: "/forget-password", element: <ForgetPassword/>},
     { path: "/reset-password", element: <ResetPassword/>},
-    { path: "/addgame", element: <Addgame/>},
-    { path: "/listgame", element: <ListGame/>},
+    { path: "/add-game", element: <Addgame/>},
+    { path: "/list-game", element: <ListGame/>},
+    { path: "/list-employee", element: <ListEmployee/>}
     // ...
   ]);
   return routes;

@@ -7,6 +7,26 @@ class UserService {
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
         return axios.get(USER_LIST_BASE_URL);
     }
+    getEmployees(){
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
+        return axios.get(USER_LIST_BASE_URL);
+    }
+
+    createEmployee(employee){
+        return axios.post(USER_LIST_BASE_URL, employee);
+    }
+
+    getEmployeeById(employeeId){
+        return axios.get(USER_LIST_BASE_URL + '/' + employeeId);
+    }
+
+    updateEmployee(employee, employeeId){
+        return axios.put(USER_LIST_BASE_URL + '/' + employeeId, employee);
+    }
+
+    deleteEmployee(employeeId){
+        return axios.delete(USER_LIST_BASE_URL + '/' + employeeId);
+    }
 }
 
 export default new UserService()
