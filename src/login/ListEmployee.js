@@ -1,12 +1,32 @@
 import React, { Component } from 'react'
 import UserService from '../services/UserService'
+import {
+    Button,
+    InputGroup,
+    FormControl,
+    FormGroup,
+    Card
+} from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faList,
+    faEdit,
+    faTrash,
+    faStepBackward,
+    faFastBackward,
+    faStepForward,
+    faFastForward,
+    faSearch,
+    faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 
 class ListEmployeeComponent extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-                employees: []
+                employees: [],
+                val: ""
         }
         this.addEmployee = this.addEmployee.bind(this);
         this.editEmployee = this.editEmployee.bind(this);
@@ -35,12 +55,63 @@ class ListEmployeeComponent extends Component {
         this.props.history.push('/add-employee/_add');
     }
 
+    inputSearch = (event) => {
+        this.setState({val: event.target.value})
+    }
+
+    doFilter = () => {
+        UserService.getEmployeesByFilter(this.state.val).then((res) => {
+            this.setState({ employees: res.data});
+        }).catch((error) => {
+            if (error) {
+                this.setState({employees: []});
+            }
+        });
+    }
+
+    cancelSearch = () => {
+        this.setState({val: ''})
+        UserService.getEmployees().then((res) => {
+            this.setState({ employees: res.data});
+        });
+    }
+
     render() {
+        const {employees, val} = this.state;
         return (
             <div>
                  <h2 className="text-center">Users List</h2>
                  <div>
                     <button className="btn btn-primary" onClick={this.addEmployee}> Add Employee</button>
+                    <div style={{ float: "left" }}>
+
+                        </div>
+                        <div style={{ float: "right" }}>
+                            <InputGroup>
+                                <FormControl
+                                    placeholder="Search"
+                                    name="search"
+                                    value={val}
+                                    className={"info-border bg-dark text-white"}
+                                    onChange={this.inputSearch}
+                                />
+                                <FormGroup> 
+                                    <Button size="sm"
+                                        variant="outline-info"
+                                        type="button"
+                                        onClick={this.doFilter}
+                                    ><FontAwesomeIcon icon={faSearch} /></Button>
+
+
+                                    <Button size="sm"
+                                        variant="outline-danger"
+                                        type="button"
+                                        onClick={this.cancelSearch}
+                                    >
+                                        <FontAwesomeIcon icon={faTimes} /></Button>
+                                </FormGroup>
+                            </InputGroup>
+                    </div>
                  </div>
                  <br></br>
                  <div className = "row">

@@ -11,7 +11,10 @@ class UserService {
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
         return axios.get(USER_LIST_BASE_URL);
     }
-
+    getEmployeesByFilter(words){
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
+        return axios.get("http://localhost:8080/api/user/find-all-by-filter?words="+words);
+    }
     createEmployee(employee){
         return axios.post(USER_LIST_BASE_URL, employee);
     }
