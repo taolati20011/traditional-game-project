@@ -87,7 +87,6 @@ class ListGameComponent extends Component {
                             </InputGroup>
                         </div>
                     </div>
-                    <br></br>
                     <div className="row">
                         <table className="table table-striped table-bordered">
 

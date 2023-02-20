@@ -58,7 +58,6 @@
 .addGame-form input[type="text"],
 input[type="password"],
 select {
-    border: 1px solid #ccc;
     background: transparent;
     outline: none;
     height: 40px;
