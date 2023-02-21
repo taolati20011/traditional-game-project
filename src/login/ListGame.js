@@ -25,6 +25,7 @@ class ListGameComponent extends Component {
 
         this.state = {
             games: [],
+            val: ""
         }
         this.addGame = this.addGame.bind(this);
         this.editGame = this.editGame.bind(this);
@@ -53,7 +54,29 @@ class ListGameComponent extends Component {
         this.props.history.push('/add-game/_add');
     }
 
+    inputSearch = (event) => {
+        this.setState({val: event.target.value})
+    }
+
+    doFilter = () => {
+        GameService.getGameByFilter(this.state.val).then((res) => {
+            this.setState({ games: res.data});
+        }).catch((error) => {
+            if (error) {
+                this.setState({games: []});
+            }
+        });
+    }
+
+    cancelSearch = () => {
+        this.setState({val: ''})
+        GameService.getGames().then((res) => {
+            this.setState({ games: res.data});
+        });
+    }
+
     render() {
+        const {games, val} = this.state;
         return (
             <div className="flex-col-align-center">
                 <h2 className="text-center">Games List</h2>
@@ -69,11 +92,14 @@ class ListGameComponent extends Component {
                                     placeholder="Search"
                                     name="search"
                                     className={"info-border bg-dark text-white"}
+                                    value={val}
+                                    onChange={this.inputSearch}
                                 />
                                 <FormGroup>
                                     <Button size="sm"
                                         variant="outline-info"
                                         type="button"
+                                        onClick={this.doFilter}
                                     ><FontAwesomeIcon icon={faSearch} /></Button>
 
 
@@ -87,6 +113,7 @@ class ListGameComponent extends Component {
                             </InputGroup>
                         </div>
                     </div>
+                    <br></br>
                     <div className="row">
                         <table className="table table-striped table-bordered">
 

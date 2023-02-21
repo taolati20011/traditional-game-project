@@ -8,6 +8,11 @@ class UserService {
         return axios.get(GAME_LIST_BASE_URL);
     }
 
+    getGameByFilter(words){
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
+        return axios.get("http://localhost:8080/api/game/get-all-by-filter?words="+words);
+    }
+
     createGame(employee){
         return axios.post(GAME_LIST_BASE_URL, employee);
     }
