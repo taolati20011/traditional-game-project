@@ -96,14 +96,14 @@ class ListGameComponent extends Component {
                                     onChange={this.inputSearch}
                                 />
                                 <FormGroup>
-                                    <Button size="sm"
+                                    <Button
                                         variant="outline-info"
                                         type="button"
                                         onClick={this.doFilter}
                                     ><FontAwesomeIcon icon={faSearch} /></Button>
 
 
-                                    <Button size="sm"
+                                    <Button
                                         variant="outline-danger"
                                         type="button"
                                         onClick={this.cancelSearch}
