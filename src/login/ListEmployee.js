@@ -20,6 +20,8 @@ import {
     FormGroup,
     Card
 } from "react-bootstrap";
+import Container from '../form/Container';
+import '../form/style.css';
 
 class ListEmployeeComponent extends Component {
     constructor(props) {
@@ -30,7 +32,8 @@ class ListEmployeeComponent extends Component {
             val: "",
             currentPage: 1,
             employeesPerPage: 5,
-            isOpen: false
+            isOpen: false,
+            triggerText : 'Open form'
         }
         this.addEmployee = this.addEmployee.bind(this);
         this.editEmployee = this.editEmployee.bind(this);
@@ -119,6 +122,10 @@ class ListEmployeeComponent extends Component {
         }
     };
 
+    onSubmit = (event) => {
+        event.preventDefault(event);
+    };
+
 
     render() {
         const { employees, val, currentPage, employeesPerPage } = this.state;
@@ -133,8 +140,8 @@ class ListEmployeeComponent extends Component {
                 <h2 className="text-center">Users List</h2>
                 <div style={{ width: "80%" }}>
                     <div>                    
-                        <button className="btn btn-primary" onClick={this.addEmployee}> Add Employee</button>             
-                        <p style={{color: "black"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <Container triggerText={this.state.triggerText} onClick={this.onSubmit}>
+                        </Container>             
                         <div style={{ float: "left" }}>
 
                         </div>

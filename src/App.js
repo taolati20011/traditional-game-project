@@ -13,6 +13,7 @@ import ResetPassword from './login/ResetPassword.js';
 import Addgame from './login/AddGame.js';
 import ListGame from './login/ListGame.js';
 import ListEmployee from './login/ListEmployee.js';
+import Simple from './form/Simple.js';
 
 const AppLink = () => {
   let routes = useRoutes([
@@ -25,7 +26,8 @@ const AppLink = () => {
     { path: "/reset-password", element: <ResetPassword/>},
     { path: "/add-game", element: <Addgame/>},
     { path: "/list-game", element: <ListGame/>},
-    { path: "/list-employee", element: <ListEmployee/>}
+    { path: "/list-employee", element: <ListEmployee/>},
+    { path: "/simple", element: <Simple/>}
     // ...
   ]);
   return routes;
