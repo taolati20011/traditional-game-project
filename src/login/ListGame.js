@@ -19,13 +19,16 @@ import {
     faSearch,
     faTimes,
 } from "@fortawesome/free-solid-svg-icons";
+import Container from "../form/game/Container";
+import "../form/style.css";
 class ListGameComponent extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
             games: [],
-            val: ""
+            val: "",
+            triggerText: "Add game"
         }
         this.addGame = this.addGame.bind(this);
         this.editGame = this.editGame.bind(this);
@@ -82,7 +85,8 @@ class ListGameComponent extends Component {
                 <h2 className="text-center">Games List</h2>
                 <div style={{ width: "80%" }}>
                     <div>
-                        <button className="btn btn-primary" onClick={this.addGame}> Add Game</button>
+                        <Container triggerText={this.state.triggerText} onClick={this.onSubmit}>
+                        </Container>       
                         <div style={{ float: "left" }}>
 
                         </div>
@@ -134,11 +138,11 @@ class ListGameComponent extends Component {
                                         game =>
                                             <tr key={game.gameId}>
                                                 <td style={{ width: "4%" }}> {game.gameId} </td>
-                                                <td > {game.gameName} </td>
-                                                <td style={{ width: "5%" }}> {game.gameType} </td>
-                                                <td style={{ width: "60%" }}> {game.gameDescription} </td>
-                                                <td> {game.releaseDate} </td>
-                                                <td> {game.releaseLocation} </td>
+                                                <td style={{ width: "8%" }}> {game.gameName} </td>
+                                                <td style={{ width: "8%" }}> {game.gameType} </td>
+                                                <td style={{ width: "40%" }}> {game.gameDescription} </td>
+                                                <td style={{ width: "10%" }}>  {game.releaseDate} </td>
+                                                <td style={{ width: "10%" }}>  {game.releaseLocation} </td>
                                                 <td style={{ width: "16%" }}>
                                                     <button onClick={() => this.editGame(game.id)} className="btn btn-info">Update </button>
                                                     <button style={{ marginLeft: "10px" }} onClick={() => this.deleteGame(game.id)} className="btn btn-danger">Delete </button>
