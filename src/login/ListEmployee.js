@@ -19,7 +19,7 @@ import {
     FormGroup,
     Card
 } from "react-bootstrap";
-import Container from '../form/Container';
+import Container from '../form/user/Container';
 import '../form/style.css';
 
 class ListEmployeeComponent extends Component {
@@ -32,7 +32,7 @@ class ListEmployeeComponent extends Component {
             currentPage: 1,
             employeesPerPage: 5,
             isOpen: false,
-            triggerText : 'Open form'
+            triggerText : 'Add user'
         }
         this.addEmployee = this.addEmployee.bind(this);
         this.editEmployee = this.editEmployee.bind(this);

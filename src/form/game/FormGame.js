@@ -3,41 +3,31 @@ export const Form = ({ onSubmit }) => {
   return (
     <form onSubmit={onSubmit}>
       <div className="form-group">
-        <label htmlFor="username">Username</label>
+        <label htmlFor="gameName">gameName</label>
         <input className="form-control" id="username" />
       </div>
       <div className="form-group">
-        <label htmlFor="password">Password</label>
+        <label htmlFor="gameDescription">gameDescription</label>
         <input className="form-control" id="password" />
       </div>
       <div className="form-group">
-        <label htmlFor="fullname">FullName</label>
+        <label htmlFor="releaseDate">releaseDate</label>
         <input className="form-control" id="fullname" />
       </div>
       <div className="form-group">
-        <label htmlFor="address">Address</label>
+        <label htmlFor="releaseLocation">releaseLocation</label>
         <input className="form-control" id="address" />
       </div>
       <div className="form-group">
-        <label htmlFor="phone">Phone</label>
-        <input className="form-control" id="phone" />
-      </div>
-      <div className="form-group">
-        <label htmlFor="gender">Gender</label>
+        <label htmlFor="gametype">Game type</label>
         <select className="form-control" id="gender">
-          <option hidden>Chọn giới tính</option>
-          <option value="nam">Nam</option>
-          <option value="nu">Nữ</option>
+          <option hidden>Select game type</option>
+          <option value="1">Tình yêu</option>
+          <option value="2">Phong tục</option>
+          <option value="3">Chiến trận</option>
+          <option value="4">Nghề nghiệp</option>
+          <option value="5">Trí tuệ</option>
         </select>
-      </div>
-      <div className="form-group">
-        <label htmlFor="email">Email address</label>
-        <input
-          type="email"
-          className="form-control"
-          id="email"
-          placeholder="name@example.com"
-        /> <br/>
       </div>
       <div className="form-group">
         <button className="form-control btn btn-primary" type="submit">
