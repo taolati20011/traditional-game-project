@@ -1,7 +1,7 @@
 #introduction-wrapper {
     width: 100%;
     height: 70vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../html/images/background_1.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../html/images/home-background.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -83,7 +83,7 @@
 }
 
 .section-1-img .img-3 {
-    background: url(../html/images/lat-bai.png);
+    background: url(../html/images/lat-bai.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -95,7 +95,7 @@
 }
 
 .section-1-img .img-5 {
-    background: url(../html/images/co-caro.png);
+    background: url(../html/images/co-caro.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -107,7 +107,7 @@
 }
 
 .section-1-img .img-7 {
-    background: url(../html/images/bit-mat-bat-de.png);
+    background: url(../html/images/bit-mat-bat-de.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -119,13 +119,13 @@
 }
 
 .section-1-img .img-9 {
-    background: url(../html/images/keo-co.png);
+    background: url(../html/images/keo-co.jpg);
     background-size: cover;
     background-position: center;
 }
 
 .section-1-img .img-10 {
-    background: url(../html/images/keo-cua-lua-xe.jfif);
+    background: url(../html/images/keo-cua-lua-xe.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -143,13 +143,13 @@
 }
 
 .section-1-img .img-13 {
-    background: url(../html/images/nhay-day.png);
+    background: url(../html/images/nhay-day.jpg);
     background-size: cover;
     background-position: center;
 }
 
 .section-1-img .img-14 {
-    background: url(../html/images/nhay-lo-co.jfif);
+    background: url(../html/images/nhay-lo-co.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -161,7 +161,7 @@
 }
 
 .section-1-img .img-16 {
-    background: url(../html/images/rong-ran-len-may.png);
+    background: url(../html/images/rong-ran-len-may.jpg);
     background-size: cover;
     background-position: center;
 }

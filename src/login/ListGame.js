@@ -19,13 +19,17 @@ import {
     faSearch,
     faTimes,
 } from "@fortawesome/free-solid-svg-icons";
+import Container from '../form/Container';
+
 class ListGameComponent extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
             games: [],
-            val: ""
+            val: "",
+            isOpen: false,
+            triggerText : 'Open form'
         }
         this.addGame = this.addGame.bind(this);
         this.editGame = this.editGame.bind(this);
@@ -82,7 +86,8 @@ class ListGameComponent extends Component {
                 <h2 className="text-center">Games List</h2>
                 <div style={{ width: "80%" }}>
                     <div>
-                        <button className="btn btn-primary" onClick={this.addGame}> Add Game</button>
+                    <Container triggerText={this.state.triggerText} onClick={this.onSubmit}>
+                        </Container>
                         <div style={{ float: "left" }}>
 
                         </div>
