@@ -133,8 +133,17 @@ class Page extends Component {
         <div id="content-wrapper" class="flex-row-justify-between">
           <div id="content-left" class="flex-col-align-center">
             <div class="image-container">
-              <img src={gameIcon} width="225px" height="225px" alt="game_pic" />
+              <img src={gameIcon} width="504.57px" height="329.79px" alt="game_pic" />
             </div>
+            <div class="image-container">
+              <img src={gameIcon} width="155.79px" height="118.24px" alt="game_pic"/>
+              <img src={gameIcon} width="155.79px" height="118.24px" alt="game_pic"/>
+              <img src={gameIcon} width="155.79px" height="118.24px" alt="game_pic"/>
+            </div>
+          </div>
+          <div id="content-right" class="flex-col-align-center">
+            <h1>Mô tả {props.gameName}</h1>
+            <p>{props.description}</p>
             <div class="button-container">
               {urlGame ? (
                 <button class="content-button">
@@ -143,10 +152,6 @@ class Page extends Component {
                 </button>
               ) : (<button class="content-button-black"> <a>Chơi game</a></button>)}
             </div>
-          </div>
-          <div id="content-right" class="flex-col-align-center">
-            <h1>Mô tả {props.gameName}</h1>
-            <p>{props.description}</p>
           </div>
         </div>
         <footer>
