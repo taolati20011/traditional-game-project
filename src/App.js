@@ -7,7 +7,7 @@ import {
   BrowserRouter as Router,
   useRoutes,
 } from "react-router-dom";
-// import PageGame from "../src/pages/PageGame";
+import PageGame from "../src/pages/PageGame";
 import ForgetPassword from './login/ForgetPassword.js';
 import ResetPassword from './login/ResetPassword.js';
 import Addgame from './login/AddGame.js';
@@ -17,7 +17,7 @@ import ListEmployee from './login/ListEmployee.js';
 const AppLink = () => {
   let routes = useRoutes([
     { path: "/", element: <Home /> },
-    // { path: "/game/:id", element: <PageGame/> },
+    { path: "/game/:id", element: <PageGame/> },
     { path: "/login", element: <Login/>},
     { path: "/list-user", element: <ListUser/>},
     { path: "/register", element: <Register/>},
