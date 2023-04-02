@@ -38,7 +38,7 @@ export default class Addgame extends Component {
             headers: myHeaders
         };
 
-        fetch("http://localhost:8080/api/game/add", requestOptions)
+        fetch("http://13.210.125.44:8080/api/game/add", requestOptions)
         .then(response => response.text())
         .then(result => {
             alert(result)

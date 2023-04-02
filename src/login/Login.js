@@ -33,7 +33,7 @@ export default class Login extends Component {
             redirect: 'follow'
         }
 
-        fetch("http://localhost:8080/api/user/login", requestOptions)
+        fetch("http://13.210.125.44:8080/api/user/login", requestOptions)
             .then(response => {
                 if (response.status == 400) {
                     alert("Username or password is wrong! Please check it again!")

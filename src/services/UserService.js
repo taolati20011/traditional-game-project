@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const USER_LIST_BASE_URL = "http://localhost:8080/api/user/view-all?pageSize=5";
+const USER_LIST_BASE_URL = "http://13.210.125.44:8080/api/user/view-all?pageSize=5";
 
 class UserService {
     getUsers() {
@@ -13,7 +13,7 @@ class UserService {
     }
     getEmployeesByFilter(words){
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
-        return axios.get("http://localhost:8080/api/user/find-all-by-filter?words="+words);
+        return axios.get("http://13.210.125.44:8080/api/user/find-all-by-filter?words="+words);
     }
     createEmployee(employee){
         return axios.post(USER_LIST_BASE_URL, employee);

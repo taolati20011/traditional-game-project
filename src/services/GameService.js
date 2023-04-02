@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const GAME_LIST_BASE_URL = "http://localhost:8080/api/game/get-all";
+const GAME_LIST_BASE_URL = "http://13.210.125.44:8080/api/game/get-all";
 
 class UserService {
     getGames(){
@@ -10,7 +10,7 @@ class UserService {
 
     getGameByFilter(words){
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
-        return axios.get("http://localhost:8080/api/game/get-all-by-filter?words="+words);
+        return axios.get("http://13.210.125.44:8080/api/game/get-all-by-filter?words="+words);
     }
 
     createGame(employee){
