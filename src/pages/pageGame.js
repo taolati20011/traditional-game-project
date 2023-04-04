@@ -8,7 +8,6 @@ import {useParams} from "react-router-dom";
 const PageGame = () => {
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(false);
-  const token = localStorage.getItem("accessToken");
   let { id } = useParams();
 
   const URL = "/api/game/get-detail/" + "?game-id=" + id;
@@ -16,11 +15,7 @@ const PageGame = () => {
   useEffect(() => {
     setLoading(true);
 
-    fetch(URL, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
+    fetch(URL)
       .then(response => response.json())
       .then(data => {
         setGroups(data);
