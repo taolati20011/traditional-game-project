@@ -7,7 +7,7 @@ import {
   BrowserRouter as Router,
   useRoutes,
 } from "react-router-dom";
-import PageGame from "../src/pages/PageGame";
+import PageGame from "./pages/PageGame";
 import ForgetPassword from './login/ForgetPassword.js';
 import ResetPassword from './login/ResetPassword.js';
 import Addgame from './login/AddGame.js';
