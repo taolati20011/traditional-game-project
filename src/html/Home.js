@@ -4,6 +4,8 @@ import '../../src/css/style1.css';
 import '../css/style2.css';
 import React, { Component, useEffect, useState } from 'react';
 import Image from './images/124010.png';
+import wallpaper from "../html/images/wallpaper.png";
+
 
 export default class Home extends Component {
   constructor(props) {
@@ -57,13 +59,18 @@ export default class Home extends Component {
           ) : (<button type="button" id="btn"><a href="/login"><i class="play-logo"></i>Login</a></button>)}
         </div>
 
-        <div id="introduction-wrapper">
+        <div class="home-wallpaper flex-col-align-center">
+          <img src={wallpaper} alt="wallpaper" max-width="100%" object-fit="contain" />
+        </div>
+        <div class="introduction-wrapper">
           <div class="introduction-container">
             <h1>Giới thiệu</h1>
             <p>Trò chơi dân gian là những hoạt động vui chơi giải trí do quần chúng nhân dân sáng tạo ra và được lưu truyền tự nhiên qua nhiều thế hệ.
               Trò chơi dân gian diễn ra mọi lúc, mọi nơi, không hạn định về mặt thời gian, không gian và phản ánh đời sống tinh thần, văn hóa của dân tộc.
               Trò chơi dân gian là tài sản chung của cả một xã hội, nó không phải của riêng một cá nhân nào, trò chơi dân gian gắn liền với sự tồn tại, phát triển của một cộng đồng người trong nhiều chặng đường phát triển khác nhau.
             </p>
+          </div>
+          <div class="introduction-container">
           </div>
         </div>
 
@@ -116,7 +123,7 @@ export default class Home extends Component {
                 <a href="/game/9">
                   <div class="img img-9"></div>
                   <figcaption>Kéo co</figcaption>
-                </a>          
+                </a>
               </div>
             </div>
 
@@ -190,16 +197,10 @@ export default class Home extends Component {
             </div>
           </div>
         </div>
-        <footer>
-          <div class="footer-vertical flex-row-justify-end">
-            <div class="vertical-child-left">
-              <p>Bấm vào đây để đóng góp ý kiến:</p>
-              <button>Click me!</button>
-            </div>
-          </div>
+        <footer className='flex-col-align-center'>
+          <div class="footer-vertical flex-col-align-center"></div>
           <div class="footer-vertical flex-col-align-center">
-            <span>© Copyright 2022. All rights reserved</span>
-            <span ><a class="footer-a">Terms of Service</a> | <a class="footer-a">Privacy Policy</a></span>
+            <span style={{position: 'absolute', bottom: '42.78px'}}>© Copyright 2022</span>
           </div>
         </footer>
       </body>
