@@ -19,7 +19,8 @@ const PageGame = () => {
     fetch(URL,  {
       mode: 'cors',
       headers: {
-        'Access-Control-Allow-Origin':'*'
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*'
       }
     })
       .then(response => response.json())
