@@ -11,7 +11,7 @@ const PageGame = () => {
   let { id } = useParams();
   const navigate = useNavigate();
 
-  const URL = "/api/game/get-detail/" + "?game-id=" + id;
+  const URL = "http://13.210.125.44:8080/api/game/get-detail/" + "?game-id=" + id;
 
   useEffect(() => {
     setLoading(true);
