@@ -16,7 +16,12 @@ const PageGame = () => {
   useEffect(() => {
     setLoading(true);
 
-    fetch(URL)
+    fetch(URL,  {
+      mode: 'cors',
+      headers: {
+        'Access-Control-Allow-Origin':'*'
+      }
+    })
       .then(response => response.json())
       .then(data => {
         setGroups(data);
