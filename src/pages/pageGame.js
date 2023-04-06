@@ -21,7 +21,9 @@ const PageGame = () => {
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': '*',
-        'Access-Control-Allow-Methods': "POST, GET, OPTIONS, DELETE, PUT"
+        'Access-Control-Allow-Methods': "POST, GET, OPTIONS, DELETE, PUT",
+        'X-Requested-With': '*',
+        'Access-Control-Allow-Credentials': 'true'
       }
     })
       .then(response => response.json())
