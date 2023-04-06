@@ -116,12 +116,12 @@ class Page extends Component {
             <p>The Game Zone</p>
           </div>
           <ul class="navbar">
-            <li><a href="/" class="active"> Home </a></li>
-            <li><a href="#">Tình yêu</a></li>
-            <li><a href="#">Phong tục</a></li>
-            <li><a href="#">Chiến trận</a></li>
-            <li><a href="#">Trí tuệ</a></li>
-            <li><a href="#">Nghề nghiệp</a></li>
+            <li><a href=".." class="active"> Home </a></li>
+            <li><a href="..#type1">Trí tuệ</a></li>
+            <li><a href="#type2">Phong tục</a></li>
+            <li><a href="#type3">Chiến trận</a></li>
+            <li><a href="#type4">Tình yêu</a></li>
+            <li><a href="#type5">Nghề nghiệp</a></li>
           </ul>
           {currentUser ? (
             <div class="hello-user">
@@ -154,16 +154,10 @@ class Page extends Component {
             </div>
           </div>
         </div>
-        <footer>
-          <div class="footer-vertical flex-row-justify-end">
-            <div class="vertical-child-left">
-              <p>Bấm vào đây để đóng góp ý kiến:</p>
-              <button>Click me!</button>
-            </div>
-          </div>
+        <footer className='flex-col-align-center'>
+          <div class="footer-vertical flex-col-align-center"></div>
           <div class="footer-vertical flex-col-align-center">
-            <span>© Copyright 2022. All rights reserved</span>
-            <span ><a class="footer-a">Terms of Service</a> | <a class="footer-a">Privacy Policy</a></span>
+            <span style={{position: 'absolute', bottom: '42.78px'}}>© Copyright 2022</span>
           </div>
         </footer>
       </body>

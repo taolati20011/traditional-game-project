@@ -3,12 +3,13 @@ import '../App.css';
 import '../css/style.css';
 import '../css/style1.css';
 import Page from '../html/Page';
-import {useParams} from "react-router-dom";
+import { useNavigate, useParams } from 'react-router-dom';
 
 const PageGame = () => {
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(false);
   let { id } = useParams();
+  const navigate = useNavigate();
 
   const URL = "/api/game/get-detail/" + "?game-id=" + id;
 
@@ -25,6 +26,10 @@ const PageGame = () => {
 
   if (loading) {
     return <p>Loading...</p>;
+  }
+
+  if (groups.gameName == null || groups.gameDescription == null) {
+    navigate("/not-found");
   }
 
   return (

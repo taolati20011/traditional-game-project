@@ -50,6 +50,8 @@ class ListGameComponent extends Component {
     componentDidMount() {
         GameService.getGames().then((res) => {
             this.setState({ games: res.data });
+        }).catch (error => {
+            window.location.replace("/access-denied");
         });
     }
 

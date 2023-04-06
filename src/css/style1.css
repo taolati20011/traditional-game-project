@@ -19,6 +19,7 @@
     padding: 20px 30px 0px 30px;
     border-radius: 42px;
     height: 471.24px;
+    position: relative;
 }
 
 #content-right h1{
@@ -29,7 +30,7 @@
 #content-right p{
     text-align: justify;
     color: #ffd05b;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .image-container {
@@ -49,29 +50,31 @@
     flex-direction: column;
     align-items: center;
     position: absolute;
-    bottom: 0px;
+    bottom: 10px;
 }
 
 .content-button {
-    height: 50px;
-    width: 100px;
-    background-color: #5cb85c;
+    height: 43.07px;
+    width: 185.86px;
+    background-image: url("../html/images/Play\ button.png");
+    background-size: 100% 100%;
+    background-color: #861014;
     color: white;
     font-size: 15px;
     font-weight: bold;
-    position: relative;
-    right: 10%;
+    border: none !important;
 }
 
 #content-right .content-button-black {
-    height: 50px;
-    width: 100px;
-    background-color: rgb(90,90,90);
+    height: 43.07px;
+    width: 185.86px;
+    background-image: url("../html/images/Play_button_black-removebg-preview.png");
+    background-size: 100% 100%;
+    background-color: #861014;
     color: yellow;
     font-size: 15px;
     font-weight: bold;
-    position: absolute;
-    bottom: 0px;
+    border: none !important;
 }
 
 button.content-button-black {
@@ -80,9 +83,13 @@ button.content-button-black {
 }
 
 .content-button:hover {
-    background-color: #5cb85cc5;
+    background-image: url("../html/images/Play_button_green-removebg-preview.png");
+    background-size: 100% 100%;
+    background-color: #861014;
 }
 
 .content-button:active {
-    background-color: #5cb85c9a;
+    background-image: url("../html/images/Play_button_green-removebg-preview.png");
+    background-size: 100% 100%;
+    background-color: #861014;
 }

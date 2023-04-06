@@ -56,6 +56,8 @@ class ListEmployeeComponent extends Component {
     componentDidMount() {
         UserService.getEmployees().then((res) => {
             this.setState({ employees: res.data });
+        }).catch (error => {
+            window.location.replace("/access-denied");
         });
     }
 

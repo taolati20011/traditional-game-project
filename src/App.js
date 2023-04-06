@@ -7,12 +7,14 @@ import {
   BrowserRouter as Router,
   useRoutes,
 } from "react-router-dom";
-import PageGame from "./pages/PageGame";
+import PageGame from './pages/pageGame.js';
 import ForgetPassword from './login/ForgetPassword.js';
 import ResetPassword from './login/ResetPassword.js';
 import Addgame from './login/AddGame.js';
 import ListGame from './login/ListGame.js';
 import ListEmployee from './login/ListEmployee.js';
+import NotFound from './errors/pages/NotFound.js';
+import AccessDenied from './errors/pages/AccessDenied.js';
 
 const AppLink = () => {
   let routes = useRoutes([
@@ -25,7 +27,9 @@ const AppLink = () => {
     { path: "/reset-password", element: <ResetPassword/>},
     { path: "/add-game", element: <Addgame/>},
     { path: "/list-game", element: <ListGame/>},
-    { path: "/list-employee", element: <ListEmployee/>}
+    { path: "/list-employee", element: <ListEmployee/>},
+    { path: "/not-found", element: <NotFound/>},
+    { path: "/access-denied", element: <AccessDenied/>}
     // ...
   ]);
   return routes;
