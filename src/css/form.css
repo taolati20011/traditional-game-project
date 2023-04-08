@@ -192,3 +192,7 @@ input[type="password"] {
     border: 1px solid #999;
     font-size: 20px;
   }
+
+  .redirect-message {
+    margin-top: 20px;
+  }

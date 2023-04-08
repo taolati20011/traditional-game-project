@@ -208,3 +208,8 @@ footer span {
     height: 50px;
     border-radius: 5px;
 }
+
+.alert-message {
+    position: sticky;
+    top: 0;
+}

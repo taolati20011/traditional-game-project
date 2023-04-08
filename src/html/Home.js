@@ -110,7 +110,7 @@ export default class Home extends Component {
               <div class="section-1-img">
                 <a href="/game/6">
                   <div class="img img-6"></div>
-                  <figcaption>Bắn Bi</figcaption>
+                  <figcaption>Bắn bi</figcaption>
                 </a>
                 <a href="/game/7"
                 ><div class="img img-7"></div>

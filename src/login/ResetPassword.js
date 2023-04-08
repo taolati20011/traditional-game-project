@@ -2,13 +2,17 @@ import React, { Component } from 'react'
 import background from '../html/images/background_1.jpg';
 import avatar from '../html/images/forget-password.png';
 import "../css/form.css"
+import SuccessAlert from '../errors/alert/SuccessAlert';
+import ErrorAlert from '../errors/alert/ErrorAlert';
 
 export default class ResetPassword extends Component {
     constructor(props) {
         super(props)
         this.state = {
             "password": "",
-            "token": ""
+            "token": "",
+            "alert": 0,
+            "message": 0
         }
     }
 
@@ -37,15 +41,41 @@ export default class ResetPassword extends Component {
                 return response.text()
             })
             .then(result => {
-                alert(result)
                 if (result == "Password Change Successful") {
-                    window.location.replace("/login")
+                    this.setState({
+                        alert: 1,
+                        message: result
+                    })
+                    this.forceUpdate();
+                    setTimeout(function() {window.location.replace("/login");}, 5000)
+                }
+                else {
+                    this.setState({
+                        alert: 2,
+                        message: result
+                    })
+                    this.forceUpdate();
                 }
             })
     }
 
+    renderAlert = () => {
+        switch(this.state.alert) {
+            case 1:
+                return <SuccessAlert message={this.state.message}></SuccessAlert>
+            case 2:
+                return <ErrorAlert message={this.state.message}></ErrorAlert>
+            default:
+                return null;
+        }
+    }
+
     render() {
         return (
+            <body>
+                <div class="alert-message">
+                    {this.renderAlert()}
+                </div>
             <div class="form-body-container">
                 <img class="background-form" src={background}></img>
                 <div class="formbox resetbox">
@@ -57,7 +87,7 @@ export default class ResetPassword extends Component {
                     }}>
                         <div>
                             <label>Input new password here:</label>
-                            <input type="text" name="password" onChange={this.setParams}></input>
+                            <input type="password" name="password" onChange={this.setParams}></input>
                         </div>
                         <div>
                             <label>Input token here:</label>
@@ -69,6 +99,7 @@ export default class ResetPassword extends Component {
                     </form>
                 </div>
             </div>
+            </body>
         )
     }
 }

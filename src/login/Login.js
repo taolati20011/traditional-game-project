@@ -3,13 +3,17 @@ import background from '../html/images/background_1.jpg';
 import avatar from '../html/images/avatar.png';
 import "../css/form.css"
 import axios from 'axios';
+import SuccessAlert from '../errors/alert/SuccessAlert';
+import ErrorAlert from '../errors/alert/ErrorAlert';
 
 export default class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
             "username": "",
-            "password": ""
+            "password": "",
+            "alert": 0,
+            "message": ""
         }
     }
 
@@ -36,53 +40,79 @@ export default class Login extends Component {
         fetch("http://13.210.125.44:8080/api/user/login", requestOptions)
             .then(response => {
                 if (response.status == 400) {
-                    alert("Username or password is wrong! Please check it again!")
-                    return
+                    this.setState({
+                        alert: 2,
+                        message: "Username or password is wrong! Please check it again!"
+                    })
+                    this.forceUpdate();
+                    return;
                 }
                 else return response.json()
             })
             .then(result => {
                 console.log(result)
                 if (result.accessToken) {
-                    alert("Login Successful")
+                    this.setState({
+                        alert: 1,
+                        message: "Login Successful!"
+                    })
+                    this.forceUpdate();
                     localStorage.setItem("username", result.username)
                     localStorage.setItem("accessToken", result.accessToken)
-                    window.location.replace("/")
+                    setTimeout(function() {window.location.replace("/");}, 5000)
                 }
                 else {
-                    alert("Server is down!\nPlease contact admin to open server!")
+                    this.state.alert = 2;
+                    this.state.message = "Server is down! Please contact admin to open server!";
+                    this.forceUpdate();
+                    return;
                 }
             })
+    }
+
+    renderAlert = () => {
+        switch(this.state.alert) {
+            case 1:
+                return <SuccessAlert message={this.state.message}></SuccessAlert>
+            case 2:
+                return <ErrorAlert message={this.state.message}></ErrorAlert>
+            default:
+                return null;
+        }
     }
 
     render() {
         return (
         <body>
-        <div class="form-body-container">
-        <img class="background-form" src={background}></img>
-            <div class="formbox">
-                <img src={avatar} class="avatar" alt="avatar icon"></img>
-                <h1> Login Here </h1>
-        <form onSubmit = {e => {
-            e.preventDefault();
-            this.login()
-        }}>
-            <div>
-                <label>Username:</label>
-                <input type="text" name="username" placeholder="Enter username" onChange={this.setParams}></input>
+            <div class="alert-message">
+                {this.renderAlert()}
             </div>
-            <div>
-                <label>Password:</label>
-                <input type="password" name="password" placeholder="Enter password" onChange={this.setParams}></input>
+            <div class="form-body-container">
+                <img class="background-form" src={background}></img>
+                <div class="formbox">
+                    <img src={avatar} class="avatar" alt="avatar icon"></img>
+                    <h1> Login Here </h1>
+                    <form onSubmit = {e => {
+                        e.preventDefault();
+                        this.login()
+                    }}>
+                        <div>
+                            <label>Username:</label>
+                            <input type="text" name="username" placeholder="Enter username" onChange={this.setParams}></input>
+                        </div>
+                        <div>
+                            <label>Password:</label>
+                            <input type="password" name="password" placeholder="Enter password" onChange={this.setParams}></input>
+                        </div>
+                        <div>
+                            <button type="submit">Login</button>
+                        </div>
+                        <a href="/forget-password">Forget your password?</a><br></br>
+                        <a href="/register">Dont have an account?</a>
+                    </form>
+                    {this.state.alert == 1 ? (<div class="redirect-message"><h1> Đang tự động chuyển hướng tới trang chủ </h1></div>) : ""}
+                </div>
             </div>
-            <div>
-                <button type="submit">Login</button>
-            </div>
-            <a href="/forget-password">Forget your password?</a><br></br>
-            <a href="/register">Dont have an account?</a>
-        </form>
-        </div>
-        </div>
         </body>
         )
     }

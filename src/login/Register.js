@@ -3,6 +3,8 @@ import background from '../html/images/background_1.jpg';
 import avatar from '../html/images/avatar.png';
 import "../css/form.css"
 import "../css/style.css"
+import SuccessAlert from '../errors/alert/SuccessAlert';
+import ErrorAlert from '../errors/alert/ErrorAlert';
 
 export default class Register extends Component {
     constructor(props) {
@@ -14,7 +16,9 @@ export default class Register extends Component {
             "userFullname": "",
             "userPhone": "",
             "userEmail": "",
-            "userGender": ""
+            "userGender": "",
+            "alert": 0,
+            "type": 0
         }
     }
 
@@ -61,15 +65,41 @@ export default class Register extends Component {
                 for (let i = 0; i <= result.length; i++) {
                     console.log(result[i])
                 }
-                alert(result)
                 if (result == "Register successful") {
-                    window.location.replace("/login")
+                    this.setState({
+                        alert: 1,
+                        message: result + "!"
+                    })
+                    this.forceUpdate();
+                    setTimeout(function() {window.location.replace("/login");}, 5000)
+                }
+                else {
+                    this.setState({
+                        alert: 2,
+                        message: result
+                    })
+                    this.forceUpdate();
                 }
             })
     }
 
+    renderAlert = () => {
+        switch(this.state.alert) {
+            case 1:
+                return <SuccessAlert message={this.state.message}></SuccessAlert>
+            case 2:
+                return <ErrorAlert message={this.state.message}></ErrorAlert>
+            default:
+                return null;
+        }
+    }
+
     render() {
         return (
+            <body>
+            <div class="alert-message">
+                {this.renderAlert()}
+            </div>
             <div class="form-body-container">
                 <img class="background-form" src={background}></img>
                 <div class="formbox registerbox">
@@ -87,7 +117,7 @@ export default class Register extends Component {
 
                             <div>
                                 <label>Password:</label>
-                                <input type="text" name="password" onChange={this.setParams}></input>
+                                <input type="password" name="password" onChange={this.setParams}></input>
                             </div>
                         </div>
                         <div class="registerrow">
@@ -121,6 +151,7 @@ export default class Register extends Component {
                     </form>
                 </div>
             </div>
+            </body>
         )
     }
 }
