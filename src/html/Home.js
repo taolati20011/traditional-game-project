@@ -3,9 +3,16 @@ import '../../src/css/style.css';
 import '../../src/css/style1.css';
 import '../css/style2.css';
 import React, { Component, useEffect, useState } from 'react';
+import { HashLink } from 'react-router-hash-link';
 import Image from './images/124010.png';
 import wallpaper from "../html/images/wallpaper.png";
 
+const scrollWithOffset = (el) => {
+  const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+  const yOffset = -100; 
+  console.log(window.pageYOffset)
+  window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' }); 
+}
 
 export default class Home extends Component {
   constructor(props) {
@@ -44,12 +51,12 @@ export default class Home extends Component {
             <p>The Game Zone</p>
           </div>
           <ul class="navbar">
-            <li><a href="." class="active"> Home </a></li>
-            <li><a href="#type1">Trí tuệ</a></li>
-            <li><a href="#type2">Phong tục</a></li>
-            <li><a href="#type3">Chiến trận</a></li>
-            <li><a href="#type4">Tình yêu</a></li>
-            <li><a href="#type5">Nghề nghiệp</a></li>
+            <li><HashLink smooth to="#">Trang chủ</HashLink></li>
+            <li><HashLink smooth to="#type1" scroll={el => scrollWithOffset(el)}>Trí tuệ</HashLink></li>
+            <li><HashLink smooth to="#type2" scroll={el => scrollWithOffset(el)}>Phong tục</HashLink></li>
+            <li><HashLink smooth to="#type3" scroll={el => scrollWithOffset(el)}>Chiến trận</HashLink></li>
+            <li><HashLink smooth to="#type4" scroll={el => scrollWithOffset(el)}>Tình yêu</HashLink></li>
+            <li><HashLink smooth to="#type5" scroll={el => scrollWithOffset(el)}>Nghề nghiệp</HashLink></li>
           </ul>
           {currentUser ? (
             <div class="hello-user">
