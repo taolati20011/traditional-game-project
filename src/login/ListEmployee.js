@@ -32,14 +32,14 @@ class ListEmployeeComponent extends Component {
             currentPage: 1,
             employeesPerPage: 5,
             isOpen: false,
-            triggerText : 'Add user'
+            triggerText : 'Add user',
+            "alert": 0,
+            "type": 0
         }
         this.addEmployee = this.addEmployee.bind(this);
         this.editEmployee = this.editEmployee.bind(this);
         this.deleteEmployee = this.deleteEmployee.bind(this);
     }
-
-
 
     deleteEmployee(id) {
         UserService.deleteEmployee(id).then(res => {
@@ -61,7 +61,7 @@ class ListEmployeeComponent extends Component {
         });
     }
 
-    addEmployee() {
+    createEmployee() {
         this.props.history.push('/add-employee/_add');
     }
 
@@ -77,6 +77,20 @@ class ListEmployeeComponent extends Component {
                 this.setState({ employees: [] });
             }
         });
+    }
+
+    handleKeyPress = (event) => {
+        console.log(1)
+        if (event.key === 'Enter') {
+            console.log(2)
+            UserService.getEmployeesByFilter(this.state.val).then((res) => {
+                this.setState({ employees: res.data });
+            }).catch((error) => {
+                if (error) {
+                    this.setState({ employees: [] });
+                }
+            });
+        }
     }
 
     cancelSearch = () => {
@@ -135,8 +149,8 @@ class ListEmployeeComponent extends Component {
         const currentEmployees = employees.slice(firstIndex, lastIndex);
         const totalPages = Math.ceil(employees.length / employeesPerPage);
 
-
         return (
+            <body>
             <div className="flex-col-align-center">
                 <h2 className="text-center">Users List</h2>
                 <div style={{ width: "80%" }}>
@@ -154,6 +168,7 @@ class ListEmployeeComponent extends Component {
                                     value={val}
                                     className={"info-border bg-dark text-white"}
                                     onChange={this.inputSearch}
+                                    onKeyDown={this.handleKeyPress}
                                 />
                                 <FormGroup>
                                     <Button
@@ -264,6 +279,7 @@ class ListEmployeeComponent extends Component {
                 </div>
 
             </div>
+            </body>
         )
     }
 }

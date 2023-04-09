@@ -56,7 +56,14 @@ export default class ForgetPassword extends Component {
                         message: result
                     })
                     this.forceUpdate();
+                    return;
                 }
+            })
+            .catch (error => {
+                this.state.alert = 2;
+                this.state.message = "Server is down! Please contact admin to open server!";
+                this.forceUpdate();
+                return;
             })
     }
 

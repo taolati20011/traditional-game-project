@@ -50,7 +50,6 @@ export default class Login extends Component {
                 else return response.json()
             })
             .then(result => {
-                console.log(result)
                 if (result.accessToken) {
                     this.setState({
                         alert: 1,
@@ -68,6 +67,12 @@ export default class Login extends Component {
                     return;
                 }
             })
+            .catch (error => {
+                this.state.alert = 2;
+                this.state.message = "Server is down! Please contact admin to open server!";
+                this.forceUpdate();
+                return;
+            });
     }
 
     renderAlert = () => {
