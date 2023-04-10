@@ -6,12 +6,19 @@ import React, { Component, useEffect, useState } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import Image from './images/124010.png';
 import wallpaper from "../html/images/wallpaper.png";
+import TriTue from "../html/images/tri-tue.png"
+import PhongTuc from "../html/images/phong-tuc.png"
+import ChienTran from "../html/images/chien-tran.png"
+import TinhYeu from "../html/images/tinh-yeu.png"
+import SuNghiep from "../html/images/su-nghiep.png"
+import LetsPlayButton from "../html/images/lets-play.png"
+import LatBai from "../html/images/lat-bai.jpg"
 
 const scrollWithOffset = (el) => {
   const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
-  const yOffset = -100; 
+  const yOffset = -100;
   console.log(window.pageYOffset)
-  window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' }); 
+  window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
 }
 
 export default class Home extends Component {
@@ -69,24 +76,34 @@ export default class Home extends Component {
         <div class="home-wallpaper flex-col-align-center">
           <img src={wallpaper} alt="wallpaper" max-width="100%" object-fit="contain" />
         </div>
-        <div class="introduction-wrapper">
-          <div class="introduction-container">
-            <h1>Giới thiệu</h1>
-            <p>Trò chơi dân gian là những hoạt động vui chơi giải trí do quần chúng nhân dân sáng tạo ra và được lưu truyền tự nhiên qua nhiều thế hệ.
-              Trò chơi dân gian diễn ra mọi lúc, mọi nơi, không hạn định về mặt thời gian, không gian và phản ánh đời sống tinh thần, văn hóa của dân tộc.
-              Trò chơi dân gian là tài sản chung của cả một xã hội, nó không phải của riêng một cá nhân nào, trò chơi dân gian gắn liền với sự tồn tại, phát triển của một cộng đồng người trong nhiều chặng đường phát triển khác nhau.
-            </p>
-          </div>
-          <div class="introduction-container">
+        <div className='introduction'>
+          <div className='introduction-border'></div>
+          <div class="introduction-wrapper">
+            <div class="introduction-container">
+              <h1>Giới thiệu</h1>
+              <p>Trò chơi dân gian là những hoạt động vui chơi giải trí do quần chúng nhân dân sáng tạo ra và được lưu truyền tự nhiên qua nhiều thế hệ.
+                Trò chơi dân gian diễn ra mọi lúc, mọi nơi, không hạn định về mặt thời gian, không gian và phản ánh đời sống tinh thần, văn hóa của dân tộc.
+                Trò chơi dân gian là tài sản chung của cả một xã hội, nó không phải của riêng một cá nhân nào, trò chơi dân gian gắn liền với sự tồn tại, phát triển của một cộng đồng người trong nhiều chặng đường phát triển khác nhau.
+              </p>
+              <img src={LetsPlayButton} alt="lets'play" style={{ marginTop: "20px" }}></img>
+            </div>
+            <div className='introduction-container'>
+              <div class="introduction-container-right">
+                <img src={LatBai} alt='lat-bai.png'></img>
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="content-wrapper">
           <div class="section-1-wrapper">
-            <h1>Thể loại</h1>
+            <div className='section-1-h1'>
+              <h1>Thể loại</h1>
+            </div>
             <div class="section-1-container" id="type1">
-              <h4>Trí tuệ</h4>
-              <br />
+              <div className='type-container'>
+                <img src={TriTue}></img>
+              </div>
               <div class="section-1-img">
                 <a href="/game/1">
                   <div class="img img-1"></div>
@@ -100,20 +117,13 @@ export default class Home extends Component {
                   <div class="img img-3"></div>
                   <figcaption>Lật thẻ</figcaption>
                 </a>
-                <a href="/game/4">
-                  <div class="img img-4"></div>
-                  <figcaption>Cờ toán Việt Nam</figcaption>
-                </a>
-                <a href="/game/5">
-                  <div class="img img-5"></div>
-                  <figcaption>Tíc tắc toe</figcaption>
-                </a>
               </div>
             </div>
 
             <div class="section-1-container" id="type2">
-              <h4>Phong tục</h4>
-              <br />
+              <div className='type-container'>
+                <img src={PhongTuc}></img>
+              </div>
               <div class="section-1-img">
                 <a href="/game/6">
                   <div class="img img-6"></div>
@@ -123,20 +133,17 @@ export default class Home extends Component {
                 ><div class="img img-7"></div>
                   <figcaption>Bịt mắt bắt dê</figcaption>
                 </a>
-                <a href="/game/8">
-                  <div class="img img-8"></div>
+                <a href="/game/8"
+                ><div class="img img-8"></div>
                   <figcaption>Cá sấu lên bờ</figcaption>
-                </a>
-                <a href="/game/9">
-                  <div class="img img-9"></div>
-                  <figcaption>Kéo co</figcaption>
                 </a>
               </div>
             </div>
 
             <div class="section-1-container" id="type3">
-              <h4>Chiến trận</h4>
-              <br />
+              <div className='type-container'>
+                <img src={ChienTran}></img>
+              </div>
               <div class="section-1-img">
                 <a href="/game/10">
                   <div class="img img-10"></div>
@@ -150,16 +157,13 @@ export default class Home extends Component {
                   <div class="img img-12"></div>
                   <figcaption>Một hai ba</figcaption>
                 </a>
-                <a href="/game/13">
-                  <div class="img img-13"></div>
-                  <figcaption>Nhảy dây</figcaption>
-                </a>
               </div>
             </div>
 
             <div class="section-1-container" id="type4">
-              <h4>Tình yêu</h4>
-              <br />
+              <div className='type-container'>
+                <img src={TinhYeu}></img>
+              </div>
               <div class="section-1-img">
                 <a href="/game/14">
                   <div class="img img-14"></div>
@@ -173,16 +177,13 @@ export default class Home extends Component {
                   <div class="img img-16"></div>
                   <figcaption>Rồng rắn lên mây</figcaption>
                 </a>
-                <a href="/game/17">
-                  <div class="img img-17"></div>
-                  <figcaption>Trốn tìm</figcaption>
-                </a>
               </div>
             </div>
 
             <div class="section-1-container" id="type5">
-              <h4>Nghề nghiệp</h4>
-              <br />
+              <div className='type-container'>
+                <img src={SuNghiep}></img>
+              </div>
               <div class="section-1-img">
                 <a href="#">
                   <div class="img img-0"></div>
@@ -196,10 +197,6 @@ export default class Home extends Component {
                   <div class="img img-0"></div>
                   <figcaption>ten game</figcaption>
                 </a>
-                <a href="#">
-                  <div class="img img-0"></div>
-                  <figcaption>ten game</figcaption>
-                </a>
               </div>
             </div>
           </div>
@@ -207,7 +204,7 @@ export default class Home extends Component {
         <footer className='flex-col-align-center'>
           <div class="footer-vertical flex-col-align-center"></div>
           <div class="footer-vertical flex-col-align-center">
-            <span style={{position: 'absolute', bottom: '42.78px'}}>© Copyright 2022</span>
+            <span style={{ position: 'absolute', bottom: '42.78px' }}>© Copyright 2022</span>
           </div>
         </footer>
       </body>
