@@ -10,7 +10,7 @@ import TriTue from "../html/images/tri-tue.png"
 import PhongTuc from "../html/images/phong-tuc.png"
 import ChienTran from "../html/images/chien-tran.png"
 import TinhYeu from "../html/images/tinh-yeu.png"
-import SuNghiep from "../html/images/su-nghiep.png"
+import NgheNghiep from "../html/images/nghe-nghiep.png"
 import LetsPlayButton from "../html/images/lets-play.png"
 import LatBai from "../html/images/lat-bai.jpg"
 
@@ -182,7 +182,7 @@ export default class Home extends Component {
 
             <div class="section-1-container" id="type5">
               <div className='type-container'>
-                <img src={SuNghiep}></img>
+                <img src={NgheNghiep}></img>
               </div>
               <div class="section-1-img">
                 <a href="#">
