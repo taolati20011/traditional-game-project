@@ -34,9 +34,13 @@ class ListEmployeeComponent extends Component {
             isOpen: false,
             triggerText : 'Add user',
             "alert": 0,
-            "type": 0
+            "type": 0,
+            "access-denied": 0,
+            "internal-server-error": 0,
+            totalEmployee: 0,
+            pageNo: 0
         }
-        this.addEmployee = this.addEmployee.bind(this);
+        // this.addEmployee = this.addEmployee.bind(this);
         this.editEmployee = this.editEmployee.bind(this);
         this.deleteEmployee = this.deleteEmployee.bind(this);
     }
@@ -50,19 +54,45 @@ class ListEmployeeComponent extends Component {
         this.props.history.push(`/view-employee/${id}`);
     }
     editEmployee(id) {
-        this.props.history.push(`/add-employee/${id}`);
+        
     }
 
     componentDidMount() {
-        UserService.getEmployees().then((res) => {
+        UserService.getTotalNumberOfEmployee().then((res) => {
+            console.log(res)
+            this.setState({ totalEmployee: res.data})
+            console.log(this.state.totalEmployee)
+        }).catch (error => {
+            window.location.replace("/access-denied");
+        })
+
+        UserService.getEmployees(this.state.employeesPerPage, this.state.pageNo).then((res) => {
             this.setState({ employees: res.data });
         }).catch (error => {
             window.location.replace("/access-denied");
         });
     }
 
-    createEmployee() {
-        this.props.history.push('/add-employee/_add');
+    createEmployee(e) {
+        e.preventDefault(e);
+        const employee = {
+            "username": e.target.username.value,
+            "password": e.target.password.value,
+            "userAddress": e.target.userAddress.value,
+            "userFullname": e.target.userFullname.value,
+            "userPhone": e.target.userPhone.value,
+            "userEmail": e.target.userEmail.value,
+            "userGender": e.target.userGender.value
+        }
+
+        UserService.createEmployee(employee).then((res) => {
+            if (res.status == 200) {
+                window.location.replace("#");
+                return;
+            }
+        }).catch((error) => {
+            console.log(error);
+        })
     }
 
     inputSearch = (event) => {
@@ -80,9 +110,7 @@ class ListEmployeeComponent extends Component {
     }
 
     handleKeyPress = (event) => {
-        console.log(1)
         if (event.key === 'Enter') {
-            console.log(2)
             UserService.getEmployeesByFilter(this.state.val).then((res) => {
                 this.setState({ employees: res.data });
             }).catch((error) => {
@@ -95,7 +123,7 @@ class ListEmployeeComponent extends Component {
 
     cancelSearch = () => {
         this.setState({ val: '' })
-        UserService.getEmployees().then((res) => {
+        UserService.getEmployees(this.state.employeesPerPage, 0).then((res) => {
             this.setState({ employees: res.data });
         });
     }
@@ -129,7 +157,7 @@ class ListEmployeeComponent extends Component {
     nextPage = () => {
         if (
             this.state.currentPage <
-            Math.ceil(this.props.employees.length / this.state.employeesPerPage)
+            Math.ceil(this.state.employees.length / this.state.employeesPerPage)
         ) {
             this.setState({
                 currentPage: this.state.currentPage + 1,
@@ -141,13 +169,13 @@ class ListEmployeeComponent extends Component {
         event.preventDefault(event);
     };
 
-
     render() {
         const { employees, val, currentPage, employeesPerPage } = this.state;
+        const totalEmployee = this.state.totalEmployee;
         const lastIndex = currentPage * employeesPerPage;
         const firstIndex = lastIndex - employeesPerPage;
         const currentEmployees = employees.slice(firstIndex, lastIndex);
-        const totalPages = Math.ceil(employees.length / employeesPerPage);
+        const totalPages = Math.ceil(totalEmployee/ employeesPerPage);
 
         return (
             <body>
@@ -155,15 +183,15 @@ class ListEmployeeComponent extends Component {
                 <h2 className="text-center">Users List</h2>
                 <div style={{ width: "80%" }}>
                     <div>                    
-                        <Container triggerText={this.state.triggerText} onClick={this.onSubmit}>
-                        </Container>             
+                        <Container triggerText={this.state.triggerText} onClick={this.onSubmit} onSubmit={this.createEmployee}>
+                        </Container>
                         <div style={{ float: "left" }}>
 
                         </div>
                         <div style={{ float: "right" }}>
                             <InputGroup>
                                 <FormControl
-                                    placeholder="Search"
+                                    placeholder="Search by name"
                                     name="search"
                                     value={val}
                                     className={"info-border bg-dark text-white"}
@@ -217,7 +245,7 @@ class ListEmployeeComponent extends Component {
                                                 <td> {employee.userEmail} </td>
                                                 <td> {employee.userGender} </td>
                                                 <td>
-                                                    <button onClick={() => this.editEmployee(employee.id)} className="btn btn-info">Update </button>
+                                                    <Container triggerText={"Update"} onClick={() => this.editEmployee(employee.id)} className="btn btn-info">Update </Container>
                                                     <button style={{ marginLeft: "10px" }} onClick={() => this.deleteEmployee(employee.id)} className="btn btn-danger">Delete </button>
                                                     <button style={{ marginLeft: "10px" }} onClick={() => this.viewEmployee(employee.id)} className="btn btn-info">View </button>
                                                 </td>

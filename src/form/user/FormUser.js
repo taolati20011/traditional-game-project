@@ -11,31 +11,31 @@ export const Form = ({ onSubmit }) => {
         <input className="form-control" id="password" />
       </div>
       <div className="form-group">
-        <label htmlFor="fullname">FullName</label>
-        <input className="form-control" id="fullname" />
+        <label htmlFor="userFullname">FullName</label>
+        <input className="form-control" id="userFullname" />
       </div>
       <div className="form-group">
-        <label htmlFor="address">Address</label>
-        <input className="form-control" id="address" />
+        <label htmlFor="userAddress">Address</label>
+        <input className="form-control" id="userAddress" />
       </div>
       <div className="form-group">
-        <label htmlFor="phone">Phone</label>
-        <input className="form-control" id="phone" />
+        <label htmlFor="userPhone">Phone</label>
+        <input className="form-control" id="userPhone" />
       </div>
       <div className="form-group">
-        <label htmlFor="gender">Gender</label>
-        <select className="form-control" id="gender">
-          <option hidden>Select gender</option>
-          <option value="nam">Male</option>
-          <option value="nu">Female</option>
+        <label htmlFor="userGender">Gender</label>
+        <select className="form-control" id="userGender">
+          <option hidden value="">Select gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
         </select>
       </div>
       <div className="form-group">
-        <label htmlFor="email">Email address</label>
+        <label htmlFor="userEmail">Email address</label>
         <input
           type="email"
           className="form-control"
-          id="email"
+          id="userEmail"
           placeholder="name@example.com"
         /> <br/>
       </div>

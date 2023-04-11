@@ -19,10 +19,10 @@ export class Container extends Component {
       this.closeModal();
     }
   };
-  onClickOutside = (event) => {
-    if (this.modal && this.modal.contains(event.target)) return;
-    this.closeModal();
-  };
+  // onClickOutside = (event) => {
+  //   if (this.modal && this.modal.contains(event.target)) return;
+  //   this.closeModal();
+  // };
 
   toggleScrollLock = () => {
     document.querySelector('html').classList.toggle('scroll-lock');
