@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const GAME_LIST_BASE_URL = "http://localhost:8080/api/game";
-const IMAGE_LIST_BASE_URL = "http://localhost:8080/api/image";
+const GAME_LIST_BASE_URL = "http://13.210.125.44:8080/api/game";
+const IMAGE_LIST_BASE_URL = "http://13.210.125.44:8080/api/image";
 
 class UserService {
     getGames(pageSize, pageNo){

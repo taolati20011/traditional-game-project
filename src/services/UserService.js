@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const USER_LIST_BASE_URL = "http://localhost:8080/api/user";
+const USER_LIST_BASE_URL = "http://13.210.125.44:8080/api/user";
 
 class UserService {
     getUsers() {
