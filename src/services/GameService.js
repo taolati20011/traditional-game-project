@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const GAME_LIST_BASE_URL = "http://localhost:8080/api/game";
+const IMAGE_LIST_BASE_URL = "http://localhost:8080/api/image";
 
 class UserService {
     getGames(pageSize, pageNo){
@@ -32,6 +33,30 @@ class UserService {
     deleteGame(gameId){
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
         return axios.delete(GAME_LIST_BASE_URL + '/delete/' + gameId);
+    }
+
+    uploadMainImage(gameId, isMainImage, file){
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
+        let fd = new FormData();
+        fd.append('file', file)
+        return axios.post(IMAGE_LIST_BASE_URL + '/upload?gameId=' + gameId + '&isMainImage=' + isMainImage, fd , {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            }
+        });
+    }
+
+    uploadCoverImage(gameId, isMainImage, files){
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
+        let fd = new FormData();
+        for (let i = 0 ; i < files.length ; i++) {
+            fd.append("file", files[i]);
+        }
+        return axios.post(IMAGE_LIST_BASE_URL + '/uploadMultiple?gameId=' + gameId + '&isMainImage=' + isMainImage, fd, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            }
+        });
     }
 }
 

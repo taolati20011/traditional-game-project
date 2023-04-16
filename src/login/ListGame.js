@@ -21,6 +21,20 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Container from "../form/game/Container";
 import "../form/style.css";
+import S3FileUpload from 'react-s3';
+//Optional Import
+import { uploadFile } from 'react-s3';
+import {BUCKET_NAME, BUCKET_REGION, ACCESS_KEY, SC_ACCESS_KEY} from "../constance/ApiURL";
+
+const validTypeFiles = ['image/jpg', 'image/jpeg', 'image/png'];
+ 
+const config = {
+    bucketName: BUCKET_NAME,
+    // dirName: 'photos', /* optional */
+    region: BUCKET_REGION,
+    accessKeyId: ACCESS_KEY,
+    secretAccessKey: SC_ACCESS_KEY
+}
 
 const gameNull = {
     "gameName": "",
@@ -284,6 +298,46 @@ class ListGameComponent extends Component {
         }
     }
 
+    uploadFile = (gameId, event) => {
+        if (event.target.files.length == 0) {
+            return;
+        }
+        const file = event.target.files[0];
+        if (!validTypeFiles.find(type => type === file.type)) {
+            console.log("Error file file");
+        }
+
+        GameService.uploadMainImage(gameId, true, file).then((res) => {
+            console.log(res);
+            this.window.reload();
+        }).catch (error => {
+            window.location.replace("/access-denied");
+        })
+    }
+
+    uploadMultiFile = (gameId, event) => {
+        if (event.target.files.length == 0) {
+            return;
+        }
+        const files = event.target.files;
+        console.log(files)
+        for (let i = 0; i < files.length; i++) {
+            if (!validTypeFiles.find(type => type === files[i].type)) {
+                console.log("Error file file");
+                return;
+            }
+        }
+
+        GameService.uploadCoverImage(gameId, false, files).then((res) => {
+            console.log(res);
+            return;
+            // this.window.reload();
+        }).catch (error => {
+            console.log(error)
+            // window.location.replace("/access-denied");
+        })
+    }
+
     render() {
         const {games, val} = this.state;
         const {currentPage, gamesPerPage } = this.state;
@@ -355,6 +409,14 @@ class ListGameComponent extends Component {
                                                 <td style={{ width: "16%" }}>
                                                     <Container triggerText={"Update"} onSubmit={(e) => this.editGame(game.gameId, e)} filledValue={game} className="btn btn-info">Update </Container>
                                                     <button style={{ marginLeft: "10px" }} onClick={() => this.deleteGame(game.gameId)} className="btn btn-danger">Delete </button>
+                                                    <div className="form-group">
+                                                        <label htmlFor="image"> Game image </label>
+                                                        <input style={{opacity: 1, display: "block"}} id='file' type='file' onChange={(e) => this.uploadFile(game.gameId, e)}/>
+                                                    </div>
+                                                    <div className="form-group">
+                                                        <label htmlFor="cover-image"> Cover images </label>
+                                                        <input style={{opacity: 1, display: "block", marginBottom: "10px" }} onChange={(e) => this.uploadMultiFile(game.gameId, e)} type="file" id="files" name="files" multiple/>
+                                                    </div>
                                                 </td>
                                             </tr>
                                     )

@@ -46,7 +46,7 @@
     font-weight: bold;
 }
 
-.addGame-form input, select {
+.addGame-form input, .addGame-form select {
     width: 100%;
     margin-bottom: 20px;
 }
