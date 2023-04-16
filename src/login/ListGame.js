@@ -351,6 +351,7 @@ class ListGameComponent extends Component {
         const file = event.target.files[0];
         if (!validTypeFiles.find(type => type === file.type)) {
             console.log("Error file file");
+            return;
         }
 
         GameService.uploadMainImage(gameId, true, file).then((res) => {
