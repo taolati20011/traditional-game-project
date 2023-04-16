@@ -26,7 +26,7 @@ import S3FileUpload from 'react-s3';
 import { uploadFile } from 'react-s3';
 import {BUCKET_NAME, BUCKET_REGION, ACCESS_KEY, SC_ACCESS_KEY} from "../constance/ApiURL";
 
-const validTypeFiles = ['image/jpg', 'image/jpeg', 'image/png'];
+const validTypeFiles = ['image/jpg', 'image/jpeg', 'image/png', 'image/jfif'];
  
 const config = {
     bucketName: BUCKET_NAME,
