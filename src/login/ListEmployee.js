@@ -61,7 +61,13 @@ class ListEmployeeComponent extends Component {
                 window.location.reload();
                 return;
             });
-        });
+        }).catch (error => {
+            if (error.response.status == 401 | error.response.status == 403) {
+                window.location.replace("/access-denied");
+                return;
+            }
+            window.location.replace("/internal-server-error");
+        });;
     }
     viewEmployee(id) {
         this.props.history.push(`/view-employee/${id}`);
@@ -83,9 +89,13 @@ class ListEmployeeComponent extends Component {
                 window.location.reload();
                 return;
             }
-        }).catch((error) => {
-            console.log(error);
-        })
+        }).catch (error => {
+            if (error.response.status == 401 | error.response.status == 403) {
+                window.location.replace("/access-denied");
+                return;
+            }
+            window.location.replace("/internal-server-error");
+        });
     }
 
     componentDidMount() {
@@ -99,13 +109,21 @@ class ListEmployeeComponent extends Component {
                 });
             })
         }).catch (error => {
-            window.location.replace("/access-denied");
-        })
+            if (error.response.status == 401 | error.response.status == 403) {
+                window.location.replace("/access-denied");
+                return;
+            }
+            window.location.replace("/internal-server-error");
+        });
 
         UserService.getEmployees(this.state.employeesPerPage, this.state.currentPage - 1).then((res) => {
             this.setState({ employees: res.data });
         }).catch (error => {
-            window.location.replace("/access-denied");
+            if (error.response.status == 401 | error.response.status == 403) {
+                window.location.replace("/access-denied");
+                return;
+            }
+            window.location.replace("/internal-server-error");
         });
     }
 
@@ -126,9 +144,13 @@ class ListEmployeeComponent extends Component {
                 window.location.reload();
                 return;
             }
-        }).catch((error) => {
-            console.log(error);
-        })
+        }).catch (error => {
+            if (error.response.status == 401 | error.response.status == 403) {
+                window.location.replace("/access-denied");
+                return;
+            }
+            window.location.replace("/internal-server-error");
+        });
     }
 
     inputSearch = (event) => {
@@ -148,8 +170,12 @@ class ListEmployeeComponent extends Component {
                         });
                     })
                 }).catch (error => {
-                    window.location.replace("/access-denied");
-                })
+                    if (error.response.status == 401 | error.response.status == 403) {
+                        window.location.replace("/access-denied");
+                        return;
+                    }
+                    window.location.replace("/internal-server-error");
+                });
             });
         }).catch((error) => {
             if (error) {
@@ -172,8 +198,12 @@ class ListEmployeeComponent extends Component {
                             });
                         })
                     }).catch (error => {
-                        window.location.replace("/access-denied");
-                    })
+                        if (error.response.status == 401 | error.response.status == 403) {
+                            window.location.replace("/access-denied");
+                            return;
+                        }
+                        window.location.replace("/internal-server-error");
+                    });
                 });
             }).catch((error) => {
                 if (error) {
@@ -197,8 +227,12 @@ class ListEmployeeComponent extends Component {
                             });
                         })
                     }).catch (error => {
-                        window.location.replace("/access-denied");
-                    })
+                        if (error.response.status == 401 | error.response.status == 403) {
+                            window.location.replace("/access-denied");
+                            return;
+                        }
+                        window.location.replace("/internal-server-error");
+                    });
                 });
             }).catch((error) => {
                 if (error) {
@@ -218,7 +252,11 @@ class ListEmployeeComponent extends Component {
                     });
                 });
             }).catch (error => {
-                window.location.replace("/access-denied");
+                if (error.response.status == 401 | error.response.status == 403) {
+                    window.location.replace("/access-denied");
+                    return;
+                }
+                window.location.replace("/internal-server-error");
             });
         }
     };
@@ -232,7 +270,11 @@ class ListEmployeeComponent extends Component {
                     });
                 });
             }).catch (error => {
-                window.location.replace("/access-denied");
+                if (error.response.status == 401 | error.response.status == 403) {
+                    window.location.replace("/access-denied");
+                    return;
+                }
+                window.location.replace("/internal-server-error");
             });
         }
     };
@@ -246,7 +288,11 @@ class ListEmployeeComponent extends Component {
                     });
                 });
             }).catch (error => {
-                window.location.replace("/access-denied");
+                if (error.response.status == 401 | error.response.status == 403) {
+                    window.location.replace("/access-denied");
+                    return;
+                }
+                window.location.replace("/internal-server-error");
             });
         }
     };
@@ -260,7 +306,11 @@ class ListEmployeeComponent extends Component {
                     });
                 });
             }).catch (error => {
-                window.location.replace("/access-denied");
+                if (error.response.status == 401 | error.response.status == 403) {
+                    window.location.replace("/access-denied");
+                    return;
+                }
+                window.location.replace("/internal-server-error");
             });
         }
     };
@@ -277,7 +327,11 @@ class ListEmployeeComponent extends Component {
                     });
                 });
             }).catch (error => {
-                window.location.replace("/access-denied");
+                if (error.response.status == 401 | error.response.status == 403) {
+                    window.location.replace("/access-denied");
+                    return;
+                }
+                window.location.replace("/internal-server-error");
             });
         }
     }

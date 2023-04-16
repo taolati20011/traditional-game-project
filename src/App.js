@@ -15,6 +15,7 @@ import ListGame from './login/ListGame.js';
 import ListEmployee from './login/ListEmployee.js';
 import NotFound from './errors/pages/NotFound.js';
 import AccessDenied from './errors/pages/AccessDenied.js';
+import InternalServerError from './errors/pages/InternalServerError.js';
 
 const AppLink = () => {
   let routes = useRoutes([
@@ -29,7 +30,8 @@ const AppLink = () => {
     { path: "/list-game", element: <ListGame/>},
     { path: "/list-employee", element: <ListEmployee/>},
     { path: "/not-found", element: <NotFound/>},
-    { path: "/access-denied", element: <AccessDenied/>}
+    { path: "/access-denied", element: <AccessDenied/>},
+    { path: "/internal-server-error", element: <InternalServerError/>}
     // ...
   ]);
   return routes;

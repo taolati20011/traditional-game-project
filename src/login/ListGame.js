@@ -73,6 +73,12 @@ class ListGameComponent extends Component {
                 window.location.reload();
                 return;
             });
+        }).catch (error => {
+            if (error.response.status == 401 | error.response.status == 403) {
+                window.location.replace("/access-denied");
+                return;
+            }
+            window.location.replace("/internal-server-error");
         });
     }
     viewGame(id) {
@@ -92,12 +98,16 @@ class ListGameComponent extends Component {
 
         GameService.updateGame(id, game).then((res) => {
             if (res.status == 200) {
-                // window.location.reload();
+                window.location.reload();
                 return;
             }
-        }).catch((error) => {
-            console.log(error);
-        })
+        }).catch (error => {
+            if (error.response.status == 401 | error.response.status == 403) {
+                window.location.replace("/access-denied");
+                return;
+            }
+            window.location.replace("/internal-server-error");
+        });
     }
 
     componentDidMount() {
@@ -109,13 +119,21 @@ class ListGameComponent extends Component {
                 });
             })
         }).catch (error => {
-            // window.location.replace("/access-denied");
-        })
+            if (error.response.status == 401 | error.response.status == 403) {
+                window.location.replace("/access-denied");
+                return;
+            }
+            window.location.replace("/internal-server-error");
+        });
 
         GameService.getGames(this.state.gamesPerPage, this.state.currentPage - 1).then((res) => {
             this.setState({ games: res.data })
         }).catch (error => {
-            // window.location.replace("/access-denied");
+            if (error.response.status == 401 | error.response.status == 403) {
+                window.location.replace("/access-denied");
+                return;
+            }
+            window.location.replace("/internal-server-error");
         });
     }
 
@@ -133,12 +151,16 @@ class ListGameComponent extends Component {
 
         GameService.createGame(game).then((res) => {
             if (res.status == 200) {
-                // window.location.reload();
+                window.location.reload();
                 return;
             }
-        }).catch((error) => {
-            console.log(error);
-        })
+        }).catch (error => {
+            if (error.response.status == 401 | error.response.status == 403) {
+                window.location.replace("/access-denied");
+                return;
+            }
+            window.location.replace("/internal-server-error");
+        });
     }
 
     inputSearch = (event) => {
@@ -196,7 +218,11 @@ class ListGameComponent extends Component {
                     });
                 });
             }).catch (error => {
-                window.location.replace("/access-denied");
+                if (error.response.status == 401 | error.response.status == 403) {
+                    window.location.replace("/access-denied");
+                    return;
+                }
+                window.location.replace("/internal-server-error");
             });
         }
     };
@@ -210,7 +236,11 @@ class ListGameComponent extends Component {
                     });
                 });
             }).catch (error => {
-                window.location.replace("/access-denied");
+                if (error.response.status == 401 | error.response.status == 403) {
+                    window.location.replace("/access-denied");
+                    return;
+                }
+                window.location.replace("/internal-server-error");
             });
         }
     };
@@ -224,7 +254,11 @@ class ListGameComponent extends Component {
                     });
                 });
             }).catch (error => {
-                window.location.replace("/access-denied");
+                if (error.response.status == 401 | error.response.status == 403) {
+                    window.location.replace("/access-denied");
+                    return;
+                }
+                window.location.replace("/internal-server-error");
             });
         }
     };
@@ -238,7 +272,11 @@ class ListGameComponent extends Component {
                     });
                 });
             }).catch (error => {
-                window.location.replace("/access-denied");
+                if (error.response.status == 401 | error.response.status == 403) {
+                    window.location.replace("/access-denied");
+                    return;
+                }
+                window.location.replace("/internal-server-error");
             });
         }
     };
@@ -255,7 +293,11 @@ class ListGameComponent extends Component {
                     });
                 });
             }).catch (error => {
-                window.location.replace("/access-denied");
+                if (error.response.status == 401 | error.response.status == 403) {
+                    window.location.replace("/access-denied");
+                    return;
+                }
+                window.location.replace("/internal-server-error");
             });
         }
     }
@@ -287,8 +329,12 @@ class ListGameComponent extends Component {
                             });
                         })
                     }).catch (error => {
-                        window.location.replace("/access-denied");
-                    })
+                        if (error.response.status == 401 | error.response.status == 403) {
+                            window.location.replace("/access-denied");
+                            return;
+                        }
+                        window.location.replace("/internal-server-error");
+                    });
                 });
             }).catch((error) => {
                 if (error) {
@@ -309,10 +355,15 @@ class ListGameComponent extends Component {
 
         GameService.uploadMainImage(gameId, true, file).then((res) => {
             console.log(res);
-            this.window.reload();
+            window.location.reload();
+            return;
         }).catch (error => {
-            window.location.replace("/access-denied");
-        })
+            if (error.response.status == 401 | error.response.status == 403) {
+                window.location.replace("/access-denied");
+                return;
+            }
+            window.location.replace("/internal-server-error");
+        });
     }
 
     uploadMultiFile = (gameId, event) => {
@@ -330,12 +381,15 @@ class ListGameComponent extends Component {
 
         GameService.uploadCoverImage(gameId, false, files).then((res) => {
             console.log(res);
+            window.location.reload();
             return;
-            // this.window.reload();
         }).catch (error => {
-            console.log(error)
-            // window.location.replace("/access-denied");
-        })
+            if (error.response.status == 401 | error.response.status == 403) {
+                window.location.replace("/access-denied");
+                return;
+            }
+            window.location.replace("/internal-server-error");
+        });
     }
 
     render() {
