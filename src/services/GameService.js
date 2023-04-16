@@ -1,32 +1,37 @@
 import axios from 'axios';
 
-const GAME_LIST_BASE_URL = "http://13.210.125.44:8080/api/game/get-all";
+const GAME_LIST_BASE_URL = "http://localhost:8080/api/game";
 
 class UserService {
-    getGames(){
+    getGames(pageSize, pageNo){
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
-        return axios.get(GAME_LIST_BASE_URL);
+        return axios.get(GAME_LIST_BASE_URL + "/get-all-by-filter"+ "?pageSize=" + pageSize + "&pageNo=" + pageNo);
     }
 
-    getGameByFilter(words){
+    getGameByFilter(words, pageSize, pageNo){
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
-        return axios.get("http://13.210.125.44:8080/api/game/get-all-by-filter?words="+words);
+        return axios.get(GAME_LIST_BASE_URL+ "/get-all-by-filter?words="+words+ "&pageSize=" + pageSize + "&pageNo=" + pageNo);
     }
 
-    createGame(employee){
-        return axios.post(GAME_LIST_BASE_URL, employee);
+    getTotalNumberOfGame(words) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
+        return axios.get(GAME_LIST_BASE_URL + "/count-game?words=" + words);
     }
 
-    getGameById(employeeId){
-        return axios.get(GAME_LIST_BASE_URL + '/' + employeeId);
+    createGame(game){
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
+        axios.defaults.headers.common['Content-Type'] = 'application/json';
+        return axios.post(GAME_LIST_BASE_URL + "/add", game);
     }
 
-    updateGame(employee, employeeId){
-        return axios.put(GAME_LIST_BASE_URL + '/' + employeeId, employee);
+    updateGame(gameId, game){
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
+        return axios.put(GAME_LIST_BASE_URL + '/edit/' + gameId, game);
     }
 
-    deleteGame(employeeId){
-        return axios.delete(GAME_LIST_BASE_URL + '/' + employeeId);
+    deleteGame(gameId){
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
+        return axios.delete(GAME_LIST_BASE_URL + '/delete/' + gameId);
     }
 }
 

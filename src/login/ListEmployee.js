@@ -22,6 +22,16 @@ import {
 import Container from '../form/user/Container';
 import '../form/style.css';
 
+const employeeNull = {
+    "username": "",
+    "password": "",
+    "userAddress": "",
+    "userFullname": "",
+    "userPhone": "",
+    "userEmail": "",
+    "userGender": ""
+}
+
 class ListEmployeeComponent extends Component {
     constructor(props) {
         super(props)
@@ -31,14 +41,8 @@ class ListEmployeeComponent extends Component {
             val: "",
             currentPage: 1,
             employeesPerPage: 5,
-            isOpen: false,
-            triggerText : 'Add user',
-            "alert": 0,
-            "type": 0,
-            "access-denied": 0,
-            "internal-server-error": 0,
-            totalEmployee: 0,
-            pageNo: 0
+            totalEmployee: undefined,
+            totalPages: undefined
         }
         // this.addEmployee = this.addEmployee.bind(this);
         this.editEmployee = this.editEmployee.bind(this);
@@ -47,26 +51,58 @@ class ListEmployeeComponent extends Component {
 
     deleteEmployee(id) {
         UserService.deleteEmployee(id).then(res => {
-            this.setState({ employees: this.state.employees.filter(employee => employee.id !== id) });
+            this.setState({ 
+                employees: this.state.employees.filter(employee => employee.id !== id),
+                totalEmployee: this.state.totalEmployee - 1,
+                currentPage: 1,
+                totalPages: Math.ceil(this.state.totalEmployee/ this.state.employeesPerPage),
+                val: ""
+            }, () => {
+                window.location.reload();
+                return;
+            });
         });
     }
     viewEmployee(id) {
         this.props.history.push(`/view-employee/${id}`);
     }
-    editEmployee(id) {
-        
+    editEmployee(id, e) {
+        e.preventDefault(e);
+        const employee = {
+            "username": e.target.username.value,
+            "password": e.target.password.value,
+            "userAddress": e.target.userAddress.value,
+            "userFullname": e.target.userFullname.value,
+            "userPhone": e.target.userPhone.value,
+            "userEmail": e.target.userEmail.value,
+            "userGender": e.target.userGender.value
+        }
+
+        UserService.updateEmployee(id, employee).then((res) => {
+            if (res.status == 200) {
+                window.location.reload();
+                return;
+            }
+        }).catch((error) => {
+            console.log(error);
+        })
     }
 
     componentDidMount() {
-        UserService.getTotalNumberOfEmployee().then((res) => {
-            console.log(res)
-            this.setState({ totalEmployee: res.data})
-            console.log(this.state.totalEmployee)
+        UserService.getTotalNumberOfEmployee(this.state.val).then((res) => {
+            this.setState({ totalEmployee: res.data}, () => {
+                let totalEmployee = this.state.totalEmployee;
+                const employeesPerPage = this.state.employeesPerPage;
+                var x = Math.ceil(totalEmployee / employeesPerPage);
+                this.setState({totalPages: x}, () => {
+                    this.forceUpdate();
+                });
+            })
         }).catch (error => {
             window.location.replace("/access-denied");
         })
 
-        UserService.getEmployees(this.state.employeesPerPage, this.state.pageNo).then((res) => {
+        UserService.getEmployees(this.state.employeesPerPage, this.state.currentPage - 1).then((res) => {
             this.setState({ employees: res.data });
         }).catch (error => {
             window.location.replace("/access-denied");
@@ -87,7 +123,7 @@ class ListEmployeeComponent extends Component {
 
         UserService.createEmployee(employee).then((res) => {
             if (res.status == 200) {
-                window.location.replace("#");
+                window.location.reload();
                 return;
             }
         }).catch((error) => {
@@ -100,8 +136,21 @@ class ListEmployeeComponent extends Component {
     }
 
     doFilter = () => {
-        UserService.getEmployeesByFilter(this.state.val).then((res) => {
-            this.setState({ employees: res.data });
+        UserService.getEmployeesByFilter(this.state.val, this.state.employeesPerPage, 0).then((res) => {
+            this.setState({ employees: res.data }, () => {
+                UserService.getTotalNumberOfEmployee(this.state.val).then((res) => {
+                    this.setState({ totalEmployee: res.data}, () => {
+                        let totalEmployee = this.state.totalEmployee;
+                        const employeesPerPage = this.state.employeesPerPage;
+                        var x = Math.ceil(totalEmployee / employeesPerPage);
+                        this.setState({totalPages: x, currentPage: 1}, () => {
+                            this.forceUpdate();
+                        });
+                    })
+                }).catch (error => {
+                    window.location.replace("/access-denied");
+                })
+            });
         }).catch((error) => {
             if (error) {
                 this.setState({ employees: [] });
@@ -111,8 +160,21 @@ class ListEmployeeComponent extends Component {
 
     handleKeyPress = (event) => {
         if (event.key === 'Enter') {
-            UserService.getEmployeesByFilter(this.state.val).then((res) => {
-                this.setState({ employees: res.data });
+            UserService.getEmployeesByFilter(this.state.val, this.state.employeesPerPage, 0).then((res) => {
+                this.setState({ employees: res.data }, () => {
+                    UserService.getTotalNumberOfEmployee(this.state.val).then((res) => {
+                        this.setState({ totalEmployee: res.data}, () => {
+                            let totalEmployee = this.state.totalEmployee;
+                            const employeesPerPage = this.state.employeesPerPage;
+                            var x = Math.ceil(totalEmployee / employeesPerPage);
+                            this.setState({totalPages: x, currentPage: 1}, () => {
+                                this.forceUpdate();
+                            });
+                        })
+                    }).catch (error => {
+                        window.location.replace("/access-denied");
+                    })
+                });
             }).catch((error) => {
                 if (error) {
                     this.setState({ employees: [] });
@@ -122,60 +184,112 @@ class ListEmployeeComponent extends Component {
     }
 
     cancelSearch = () => {
-        this.setState({ val: '' })
-        UserService.getEmployees(this.state.employeesPerPage, 0).then((res) => {
-            this.setState({ employees: res.data });
-        });
+        this.setState({ val: '' }, () => {
+            UserService.getEmployeesByFilter(this.state.val, this.state.employeesPerPage, 0).then((res) => {
+                this.setState({ employees: res.data }, () => {
+                    UserService.getTotalNumberOfEmployee(this.state.val).then((res) => {
+                        this.setState({ totalEmployee: res.data}, () => {
+                            let totalEmployee = this.state.totalEmployee;
+                            const employeesPerPage = this.state.employeesPerPage;
+                            var x = Math.ceil(totalEmployee / employeesPerPage);
+                            this.setState({totalPages: x, currentPage: 1}, () => {
+                                this.forceUpdate();
+                            });
+                        })
+                    }).catch (error => {
+                        window.location.replace("/access-denied");
+                    })
+                });
+            }).catch((error) => {
+                if (error) {
+                    this.setState({ employees: [] });
+                }
+                    this.forceUpdate()
+            });
+        })
     }
 
     firstPage = () => {
-        if (this.state.currentPage > 1) {
-            this.setState({
-                currentPage: 1,
+        if (this.state.currentPage > 0) {
+            UserService.getEmployeesByFilter(this.state.val, this.state.employeesPerPage, 0).then((res) => {
+                this.setState({ employees: res.data }, () => {
+                    this.setState({currentPage: 1}, () => {
+                        this.forceUpdate();
+                    });
+                });
+            }).catch (error => {
+                window.location.replace("/access-denied");
             });
         }
     };
 
     prevPage = () => {
-        if (this.state.currentPage > 1) {
-            this.setState({
-                currentPage: this.state.currentPage - 1,
+        if (this.state.currentPage > 0) {
+            UserService.getEmployeesByFilter(this.state.val, this.state.employeesPerPage, this.state.currentPage - 2).then((res) => {
+                this.setState({ employees: res.data }, () => {
+                    this.setState({currentPage: this.state.currentPage - 1}, () => {
+                        this.forceUpdate();
+                    });
+                });
+            }).catch (error => {
+                window.location.replace("/access-denied");
             });
         }
     };
 
     lastPage = () => {
-        if (
-            this.state.currentPage < Math.ceil(this.props.employees.length / this.state.employeesPerPage)
-        ) {
-            this.setState({
-                currentPage: Math.ceil(this.props.employees.length / this.state.employeesPerPage),
+        if (this.state.currentPage < this.state.totalPages) {
+            UserService.getEmployeesByFilter(this.state.val, this.state.employeesPerPage, this.state.totalPages - 1).then((res) => {
+                this.setState({ employees: res.data }, () => {
+                    this.setState({currentPage: this.state.totalPages}, () => {
+                        this.forceUpdate();
+                    });
+                });
+            }).catch (error => {
+                window.location.replace("/access-denied");
             });
         }
     };
 
     nextPage = () => {
-        if (
-            this.state.currentPage <
-            Math.ceil(this.state.employees.length / this.state.employeesPerPage)
-        ) {
-            this.setState({
-                currentPage: this.state.currentPage + 1,
+        if (this.state.currentPage < this.state.totalPages) {
+            UserService.getEmployeesByFilter(this.state.val, this.state.employeesPerPage, this.state.currentPage).then((res) => {
+                this.setState({ employees: res.data }, () => {
+                    this.setState({currentPage: this.state.currentPage + 1}, () => {
+                        this.forceUpdate();
+                    });
+                });
+            }).catch (error => {
+                window.location.replace("/access-denied");
             });
         }
     };
 
+    changePage = (event) => {
+        if (event.key == "Enter") {
+            var input = event.target.value;
+            input = input <= 0 ? 1 : (input > this.state.totalPages ? this.state.totalPages : input);
+            UserService.getEmployeesByFilter(this.state.val, this.state.employeesPerPage, input - 1).then((res) => {
+                this.setState({ employees: res.data }, () => {
+                    this.setState({currentPage: input}, () => {
+                        event.target.value = input;
+                        this.forceUpdate();
+                    });
+                });
+            }).catch (error => {
+                window.location.replace("/access-denied");
+            });
+        }
+    }
+
     onSubmit = (event) => {
         event.preventDefault(event);
+        this.forceUpdate()
     };
 
     render() {
         const { employees, val, currentPage, employeesPerPage } = this.state;
-        const totalEmployee = this.state.totalEmployee;
-        const lastIndex = currentPage * employeesPerPage;
-        const firstIndex = lastIndex - employeesPerPage;
-        const currentEmployees = employees.slice(firstIndex, lastIndex);
-        const totalPages = Math.ceil(totalEmployee/ employeesPerPage);
+        const totalPages = this.state.totalPages;
 
         return (
             <body>
@@ -183,7 +297,7 @@ class ListEmployeeComponent extends Component {
                 <h2 className="text-center">Users List</h2>
                 <div style={{ width: "80%" }}>
                     <div>                    
-                        <Container triggerText={this.state.triggerText} onClick={this.onSubmit} onSubmit={this.createEmployee}>
+                        <Container triggerText={"Add user"} onClick={this.onSubmit} onSubmit={this.createEmployee} filledValue={employeeNull}>
                         </Container>
                         <div style={{ float: "left" }}>
 
@@ -245,9 +359,8 @@ class ListEmployeeComponent extends Component {
                                                 <td> {employee.userEmail} </td>
                                                 <td> {employee.userGender} </td>
                                                 <td>
-                                                    <Container triggerText={"Update"} onClick={() => this.editEmployee(employee.id)} className="btn btn-info">Update </Container>
-                                                    <button style={{ marginLeft: "10px" }} onClick={() => this.deleteEmployee(employee.id)} className="btn btn-danger">Delete </button>
-                                                    <button style={{ marginLeft: "10px" }} onClick={() => this.viewEmployee(employee.id)} className="btn btn-info">View </button>
+                                                    <Container triggerText={"Update"} onSubmit={(e) => this.editEmployee(employee.userId, e)} filledValue={employee} className="btn btn-info">Update </Container>
+                                                    <button style={{ marginLeft: "10px" }} onClick={() => this.deleteEmployee(employee.userId)} className="btn btn-danger">Delete </button>
                                                 </td>
                                             </tr>
                                     )
@@ -278,10 +391,11 @@ class ListEmployeeComponent extends Component {
                                         </Button>
 
                                         <input
-                                            className={"page-num"}
+                                            id="input-page"
+                                            type="text"
+                                            className="page-num"
                                             name="currentPage"
-                                            value={currentPage}
-                                            onChange={this.changePage}
+                                            value={this.state.currentPage}
                                         ></input>
 
                                         <Button

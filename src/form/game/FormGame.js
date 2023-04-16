@@ -1,32 +1,48 @@
 import React from 'react';
-export const Form = ({ onSubmit }) => {
+
+const getGameType = (typeId) => {
+  switch(typeId) {
+    case 1:
+      return "Trí tuệ";
+    case 2:
+      return "Phong tục";
+    case 3:
+      return "Chiến trận";
+    case 4:
+      return "Tình yêu";
+    case 5:
+      return "Nghề nghiệp";
+  }
+}
+
+export const Form = ({ onSubmit, filledValue }) => {
   return (
     <form onSubmit={onSubmit}>
       <div className="form-group">
         <label htmlFor="gameName">gameName</label>
-        <input className="form-control" id="username" />
+        <input defaultValue={filledValue.gameName} className="form-control" id="gameName" />
       </div>
       <div className="form-group">
         <label htmlFor="gameDescription">gameDescription</label>
-        <input className="form-control" id="password" />
+        <textarea defaultValue={filledValue.gameDescription} className="form-control text-truncate" id="gameDescription" style={{ height: "150px",}} />
       </div>
       <div className="form-group">
         <label htmlFor="releaseDate">releaseDate</label>
-        <input className="form-control" id="fullname" />
+        <input defaultValue={filledValue.releaseDate} type="date" className="form-control" id="releaseDate" />
       </div>
       <div className="form-group">
         <label htmlFor="releaseLocation">releaseLocation</label>
-        <input className="form-control" id="address" />
+        <input defaultValue={filledValue.releaseLocation} className="form-control" id="releaseLocation" />
       </div>
       <div className="form-group">
-        <label htmlFor="gametype">Game type</label>
-        <select className="form-control" id="gender">
+        <label htmlFor="typeId">Game type</label>
+        <select defaultValue={getGameType(filledValue.typeId)} className="form-control" id="typeId">
           <option hidden>Select game type</option>
-          <option value="1">Tình yêu</option>
+          <option value="1">Trí tuệ</option>
           <option value="2">Phong tục</option>
           <option value="3">Chiến trận</option>
-          <option value="4">Nghề nghiệp</option>
-          <option value="5">Trí tuệ</option>
+          <option value="4">Tình yêu</option>
+          <option value="5">Nghề nghiệp</option>
         </select>
       </div>
       <div className="form-group">

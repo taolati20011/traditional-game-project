@@ -1,30 +1,30 @@
 import React from 'react';
-export const Form = ({ onSubmit }) => {
+export const Form = ({ onSubmit, filledValue }) => {
   return (
     <form onSubmit={onSubmit}>
       <div className="form-group">
         <label htmlFor="username">Username</label>
-        <input className="form-control" id="username" />
+        <input defaultValue={filledValue.username} className="form-control" id="username" />
       </div>
       <div className="form-group">
         <label htmlFor="password">Password</label>
-        <input className="form-control" id="password" />
+        <input type="password" defaultValue={filledValue.password} className="form-control border" id="password" />
       </div>
       <div className="form-group">
         <label htmlFor="userFullname">FullName</label>
-        <input className="form-control" id="userFullname" />
+        <input defaultValue={filledValue.userFullname} className="form-control" id="userFullname" />
       </div>
       <div className="form-group">
         <label htmlFor="userAddress">Address</label>
-        <input className="form-control" id="userAddress" />
+        <input defaultValue={filledValue.userAddress} className="form-control" id="userAddress" />
       </div>
       <div className="form-group">
         <label htmlFor="userPhone">Phone</label>
-        <input className="form-control" id="userPhone" />
+        <input defaultValue={filledValue.userPhone} className="form-control" id="userPhone" />
       </div>
       <div className="form-group">
         <label htmlFor="userGender">Gender</label>
-        <select className="form-control" id="userGender">
+        <select defaultValue={filledValue.userGender} className="form-control" id="userGender">
           <option hidden value="">Select gender</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
@@ -37,6 +37,7 @@ export const Form = ({ onSubmit }) => {
           className="form-control"
           id="userEmail"
           placeholder="name@example.com"
+          defaultValue={filledValue.userEmail}
         /> <br/>
       </div>
       <div className="form-group">

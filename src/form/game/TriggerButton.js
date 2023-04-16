@@ -1,8 +1,8 @@
 import React from 'react';
 const Trigger = ({ triggerText, buttonRef, showModal }) => {
   return (
-    <button
-      className="btn btn-lg btn-danger center modal-button"
+    <button style={{ height: "38.13px",}}
+      className="btn btn-danger"
       ref={buttonRef}
       onClick={showModal}
     >

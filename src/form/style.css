@@ -84,3 +84,8 @@
     margin-right: 17px;
   }
   
+  #gameDescription {
+    line-break: auto;
+    white-space: break-spaces;
+    overflow-y: scroll
+  }
