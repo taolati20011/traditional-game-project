@@ -1,0 +1,31 @@
+ 
+ .swiper {
+    margin-left: 15px;
+ }
+
+  .swiper-slide {
+    max-width: fit-content;
+    width: 322px;
+    text-align: center;
+    font-size: 18px;
+  }
+  
+  .swiper-container .swiper-zoom-container>img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      object-position: center;
+  }
+
+  .swiper-slide .swiper-slide-active {
+    width: 322px;
+  }
+
+  .swiper-slide-active {
+    width: 322px;
+  }
+
+  .swiper-slide img {
+    border-radius: 18.1954px;
+    margin-bottom: 15px;
+  }

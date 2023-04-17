@@ -16,6 +16,8 @@ import ListEmployee from './login/ListEmployee.js';
 import NotFound from './errors/pages/NotFound.js';
 import AccessDenied from './errors/pages/AccessDenied.js';
 import InternalServerError from './errors/pages/InternalServerError.js';
+import GroupGame from './login/groupGame/GroupGame.js';
+import slides from './login/groupGame/mock.json';
 
 const AppLink = () => {
   let routes = useRoutes([
@@ -31,7 +33,8 @@ const AppLink = () => {
     { path: "/list-employee", element: <ListEmployee/>},
     { path: "/not-found", element: <NotFound/>},
     { path: "/access-denied", element: <AccessDenied/>},
-    { path: "/internal-server-error", element: <InternalServerError/>}
+    { path: "/internal-server-error", element: <InternalServerError/>},
+    { path: "/group-game", element: <GroupGame slides={slides}/>}
     // ...
   ]);
   return routes;

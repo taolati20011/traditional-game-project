@@ -4,6 +4,12 @@ import '../../src/css/style1.css';
 import '../css/style2.css';
 import React, { Component, useEffect, useState } from 'react';
 import { HashLink } from 'react-router-hash-link';
+import {Swiper, SwiperSlide} from "swiper/react";
+import { Navigation, Pagination, Scrollbar, A11y, EffectCube } from 'swiper';
+import 'swiper/swiper-bundle.min.css';
+import '../login/groupGame/style.css';
+import GroupGame from '../login/groupGame/GroupGame';
+
 import Image from './images/124010.png';
 import wallpaper from "../html/images/wallpaper.png";
 import TriTue from "../html/images/tri-tue.png"
@@ -13,6 +19,7 @@ import TinhYeu from "../html/images/tinh-yeu.png"
 import NgheNghiep from "../html/images/nghe-nghiep.png"
 import LetsPlayButton from "../html/images/lets-play.png"
 import LatBai from "../html/images/lat-bai.jpg"
+import slides from '../login/groupGame/mock.json';
 
 const scrollWithOffset = (el) => {
   const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
@@ -26,7 +33,8 @@ export default class Home extends Component {
     super(props);
     this.logOut = this.logOut.bind(this);
     this.state = {
-      currentUser: undefined
+      currentUser: undefined,
+      images: []
     }
   }
 
@@ -47,6 +55,7 @@ export default class Home extends Component {
 
   render() {
     const { currentUser } = this.state;
+    console.log(slides)
 
     return (
       <body class="home-body">
@@ -104,7 +113,9 @@ export default class Home extends Component {
               <div className='type-container'>
                 <img src={TriTue}></img>
               </div>
-              <div class="section-1-img">
+              <GroupGame slides={slides}>
+              </GroupGame>
+              {/* <div class="section-1-img">
                 <a href="/game/1">
                   <div class="img img-1"></div>
                   <figcaption>Dung dăng dung dẻ</figcaption>
@@ -117,7 +128,7 @@ export default class Home extends Component {
                   <div class="img img-3"></div>
                   <figcaption>Lật thẻ</figcaption>
                 </a>
-              </div>
+              </div> */}
             </div>
 
             <div class="section-1-container" id="type2">
