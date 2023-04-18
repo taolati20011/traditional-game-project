@@ -32,6 +32,7 @@
     color: #ffd05b;
     font-size: 20px;
     overflow-y: scroll;
+    height: 77%;
 }
 
 .image-container {
@@ -50,7 +51,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 15px;
+    bottom: 10px;
+    position: absolute;
 }
 
 .content-button {
