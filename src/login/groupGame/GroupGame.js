@@ -2,6 +2,10 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y, EffectCube } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
 
+const toHref = (s) => {
+  return "/game/" + s;
+}
+
 const GroupGame = ({ slides }) => {
   return (
     <Swiper
@@ -13,10 +17,14 @@ const GroupGame = ({ slides }) => {
       effect={"fade"}
     >
       {slides.map((slide) => (
+        (slide.image == "" ? null :
         <SwiperSlide key={slide.image}>
-          <img src={slide.image} alt={slide.title} style={{height: 216, width: 332}}/>
-          <figcaption>{slide.title}</figcaption>
+          <a href={toHref(slide.gameId)}>
+            <img src={slide.image} alt={slide.title} style={{height: 216, width: 332}}/>
+            <figcaption class="title-figcaption">{slide.title}</figcaption>
+          </a>
         </SwiperSlide>
+        )
       ))}
     </Swiper>
   )

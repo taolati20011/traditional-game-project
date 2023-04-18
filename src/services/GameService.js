@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-const GAME_LIST_BASE_URL = "http://13.210.125.44:8080/api/game";
-const IMAGE_LIST_BASE_URL = "http://13.210.125.44:8080/api/image";
+const GAME_LIST_BASE_URL = "http://localhost:8080/api/game";
+const IMAGE_LIST_BASE_URL = "http://localhost:8080/api/image";
+const TYPE_LIST_BASE_URL = "http://localhost:8080/api/type"
 
 class UserService {
     getGames(pageSize, pageNo){
@@ -57,6 +58,21 @@ class UserService {
                 'Content-Type': 'multipart/form-data',
             }
         });
+    }
+
+    getMainImageByType(){
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
+        return axios.get(GAME_LIST_BASE_URL + "/get-main-file")
+    }
+
+    getCoverImageByType(typeId){
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
+        return axios.get(GAME_LIST_BASE_URL + "/get-cover-file/" + typeId)
+    }
+
+    getAllType(){
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
+        return axios.get(TYPE_LIST_BASE_URL + "/get-all");
     }
 }
 

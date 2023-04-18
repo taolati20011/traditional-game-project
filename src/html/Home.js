@@ -20,6 +20,8 @@ import NgheNghiep from "../html/images/nghe-nghiep.png"
 import LetsPlayButton from "../html/images/lets-play.png"
 import LatBai from "../html/images/lat-bai.jpg"
 import slides from '../login/groupGame/mock.json';
+import GameService from '../services/GameService';
+import { Box, CircularProgress } from '@mui/material';
 
 const scrollWithOffset = (el) => {
   const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
@@ -34,7 +36,9 @@ export default class Home extends Component {
     this.logOut = this.logOut.bind(this);
     this.state = {
       currentUser: undefined,
-      images: []
+      images: [],
+      types: [],
+      isFetch: false
     }
   }
 
@@ -46,6 +50,25 @@ export default class Home extends Component {
         currentUser: user
       });
     }
+
+    GameService.getAllType().then(res => {
+      this.setState({ types: res.data }, () => {
+        GameService.getMainImageByType().then((res1) => {
+          this.setState({ images: res1.data }, () => {
+            this.setState({ isFetch: true }, () => {
+              this.forceUpdate();
+            })
+          })
+        })
+      })
+    }).catch (error => {
+      if (error.response.status == 401 | error.response.status == 403) {
+          window.location.replace("/access-denied");
+          return;
+      }
+      window.location.replace("/internal-server-error");
+    });
+
   }
 
   logOut() {
@@ -55,7 +78,14 @@ export default class Home extends Component {
 
   render() {
     const { currentUser } = this.state;
-    console.log(slides)
+
+    if (!this.state.isFetch) {
+      return (
+        <Box sx={{ display: 'flex', justifyContent: 'center'}}>
+          <CircularProgress />
+        </Box>
+      )
+    }
 
     return (
       <body class="home-body">
@@ -109,107 +139,19 @@ export default class Home extends Component {
             <div className='section-1-h1'>
               <h1>Thể loại</h1>
             </div>
-            <div class="section-1-container" id="type1">
-              <div className='type-container'>
-                <img src={TriTue}></img>
-              </div>
-              <GroupGame slides={slides}>
-              </GroupGame>
-              {/* <div class="section-1-img">
-                <a href="/game/1">
-                  <div class="img img-1"></div>
-                  <figcaption>Dung dăng dung dẻ</figcaption>
-                </a>
-                <a href="/game/2"
-                ><div class="img img-2"></div>
-                  <figcaption>Ô ăn quan</figcaption>
-                </a>
-                <a href="/game/3">
-                  <div class="img img-3"></div>
-                  <figcaption>Lật thẻ</figcaption>
-                </a>
-              </div> */}
-            </div>
 
-            <div class="section-1-container" id="type2">
-              <div className='type-container'>
-                <img src={PhongTuc}></img>
-              </div>
-              <div class="section-1-img">
-                <a href="/game/6">
-                  <div class="img img-6"></div>
-                  <figcaption>Bắn bi</figcaption>
-                </a>
-                <a href="/game/7"
-                ><div class="img img-7"></div>
-                  <figcaption>Bịt mắt bắt dê</figcaption>
-                </a>
-                <a href="/game/8"
-                ><div class="img img-8"></div>
-                  <figcaption>Cá sấu lên bờ</figcaption>
-                </a>
-              </div>
-            </div>
-
-            <div class="section-1-container" id="type3">
-              <div className='type-container'>
-                <img src={ChienTran}></img>
-              </div>
-              <div class="section-1-img">
-                <a href="/game/10">
-                  <div class="img img-10"></div>
-                  <figcaption>Kéo cưa lừa xẻ</figcaption>
-                </a>
-                <a href="/game/11"
-                ><div class="img img-11"></div>
-                  <figcaption>Mèo đuổi chuột</figcaption>
-                </a>
-                <a href="/game/12">
-                  <div class="img img-12"></div>
-                  <figcaption>Một hai ba</figcaption>
-                </a>
-              </div>
-            </div>
-
-            <div class="section-1-container" id="type4">
-              <div className='type-container'>
-                <img src={TinhYeu}></img>
-              </div>
-              <div class="section-1-img">
-                <a href="/game/14">
-                  <div class="img img-14"></div>
-                  <figcaption>Nhảy lò cò</figcaption>
-                </a>
-                <a href="/game/15"
-                ><div class="img img-15"></div>
-                  <figcaption>Oẳn tù tì</figcaption>
-                </a>
-                <a href="/game/16">
-                  <div class="img img-16"></div>
-                  <figcaption>Rồng rắn lên mây</figcaption>
-                </a>
-              </div>
-            </div>
-
-            <div class="section-1-container" id="type5">
-              <div className='type-container'>
-                <img src={NgheNghiep}></img>
-              </div>
-              <div class="section-1-img">
-                <a href="#">
-                  <div class="img img-0"></div>
-                  <figcaption>ten game</figcaption>
-                </a>
-                <a href="#"
-                ><div class="img img-0"></div>
-                  <figcaption>ten game</figcaption>
-                </a>
-                <a href="#">
-                  <div class="img img-0"></div>
-                  <figcaption>ten game</figcaption>
-                </a>
-              </div>
-            </div>
+            {
+              this.state.images.map(
+                image => 
+                  <div class="section-1-container" id="type1">
+                    <div className='type-container'>
+                      <img src={image[0].typeImage}></img>
+                    </div>
+                    <GroupGame slides={image}>
+                    </GroupGame>
+                  </div>
+              )
+            }
           </div>
         </div>
         <footer className='flex-col-align-center'>
