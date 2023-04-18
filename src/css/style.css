@@ -10,7 +10,7 @@
     background: #9A1C20;
     font-family: 'Dosis';
     min-height: 100vh;
-    width: 100vw;
+    width: 100%;
     overflow: auto;
 }
 
@@ -157,7 +157,6 @@ ul.navbar li a:hover:not(.active) {
 }
 
 .hello-user p {
-    width: 250px;
     margin-left: 10px;
     font-size: 20px;
     padding-top: 20px;
