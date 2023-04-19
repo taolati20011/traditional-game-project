@@ -179,7 +179,9 @@ class ListEmployeeComponent extends Component {
             });
         }).catch((error) => {
             if (error) {
-                this.setState({ employees: [] });
+                this.setState({ employees: [] }, () => {
+                    this.forceUpdate();
+                });
             }
         });
     }
@@ -207,7 +209,9 @@ class ListEmployeeComponent extends Component {
                 });
             }).catch((error) => {
                 if (error) {
-                    this.setState({ employees: [] });
+                    this.setState({ employees: [] }, () => {
+                        this.forceUpdate()
+                    });
                 }
             });
         }
@@ -236,9 +240,10 @@ class ListEmployeeComponent extends Component {
                 });
             }).catch((error) => {
                 if (error) {
-                    this.setState({ employees: [] });
+                    this.setState({ employees: [] }, () => {
+                        this.forceUpdate()
+                    });
                 }
-                    this.forceUpdate()
             });
         })
     }
