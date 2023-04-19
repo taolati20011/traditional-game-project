@@ -178,7 +178,9 @@ class ListGameComponent extends Component {
                         });
                     }).catch((error) => {
                         if (error) {
-                            this.setState({games: []});
+                            this.setState({games: []}, () => {
+                                this.forceUpdate();
+                            });
                         }
                     });
                     this.forceUpdate();
@@ -199,7 +201,9 @@ class ListGameComponent extends Component {
                             });
                         }).catch((error) => {
                             if (error) {
-                                this.setState({games: []});
+                                this.setState({games: []}, () => {
+                                    this.forceUpdate()
+                                });
                             }
                         });
                         this.forceUpdate();
