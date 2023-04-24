@@ -57,11 +57,13 @@ class Page extends Component {
         } )
       })
     }).catch(error => {
-      if (error.response.status == 404) {
-        window.location.replace("/not-found");
-        return;
-    }
-    window.location.replace("/internal-server-error");
+      if (error.response) {
+        if (error.response.status == 404) {
+          window.location.replace("/not-found");
+          return;
+        }
+      }
+      window.location.replace("/internal-server-error");
     })
   }
 
@@ -73,59 +75,16 @@ class Page extends Component {
     switch (props.gameName) {
       case "Ô ăn quan":
         urlGame = "https://traditional-games.vercel.app/o-an-quan/index.html";
-        // gameIcon = oAnQuan;
         break;
       case "Lật bài":
         urlGame = "https://traditional-games.vercel.app/flipCard/quiz14.html";
-        // gameIcon = latBai;
         break;
       case "Cờ toán Việt Nam":
         urlGame = "https://traditional-games.vercel.app/chess_vn/index.html";
-        // gameIcon = coToan;
         break;
       case "Tíc tắc toe":
         urlGame = "https://traditional-games.vercel.app/tic-tac-toe/index.html";
-        // gameIcon = coCaro;
         break;
-      // case "Bắn bi":
-      //   gameIcon = banBi;
-      //   break;
-      // case "Bịt mắt bắt dê":
-      //   gameIcon = bitMatBatDe;
-      //   break;
-      // case "Cá sấu lên bờ":
-      //   gameIcon = caSauLenBo;
-      //   break;
-      // case "Kéo co":
-      //   gameIcon = keoCo;
-      //   break;
-      // case "Kéo cưa lừa xẻ":
-      //   gameIcon = keoCua;
-      //   break;
-      // case "Mèo đuổi chuột":
-      //   gameIcon = meoDuoiChuot;
-      //   break;
-      // case "Một hai ba":
-      //   gameIcon = motHaiBa;
-      //   break;
-      // case "Nhảy dây":
-      //   gameIcon = nhayDay;
-      //   break;
-      // case "Nhảy lò cò":
-      //   gameIcon = nhayLoCo;
-      //   break;
-      // case "Oẳn tù tì":
-      //   gameIcon = oanTuTi;
-      //   break;
-      // case "Rồng rắn lên mây":
-      //   gameIcon = rongRan;
-      //   break;
-      // case "Trốn tìm":
-      //   gameIcon = tronTim;
-      //   break;
-      // case "Dung dăng dung dẻ":
-      //   gameIcon = dungDang;
-      //   break; 
     }
     if (!this.state.isFetch) {
       return (
@@ -175,7 +134,7 @@ class Page extends Component {
             <div class="button-container">
               {urlGame ? (
                 <button class="content-button">
-                  <a href={urlGame}>Chơi game
+                  <a class="play-button-in-page" href={urlGame}>Chơi game
                   </a>
                 </button>
               ) : (<button class="content-button-black"> <a>Chơi game</a></button>)}

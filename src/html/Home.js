@@ -124,7 +124,9 @@ export default class Home extends Component {
                 Trò chơi dân gian diễn ra mọi lúc, mọi nơi, không hạn định về mặt thời gian, không gian và phản ánh đời sống tinh thần, văn hóa của dân tộc.
                 Trò chơi dân gian là tài sản chung của cả một xã hội, nó không phải của riêng một cá nhân nào, trò chơi dân gian gắn liền với sự tồn tại, phát triển của một cộng đồng người trong nhiều chặng đường phát triển khác nhau.
               </p>
-              <img src={LetsPlayButton} alt="lets'play" style={{ marginTop: "20px" }}></img>
+              <a href="https://traditional-games.vercel.app/">
+                <img src={LetsPlayButton} alt="lets'play" style={{ marginTop: "20px" }}></img>
+              </a>
             </div>
             <div className='introduction-container'>
               <div class="introduction-container-right">

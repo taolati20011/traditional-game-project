@@ -40,3 +40,9 @@
 table {
   margin-left:10px;
 }
+
+.play-button-in-page {
+  text-decoration: none;
+  font-size: 20px;
+  color: #991C20;
+}
