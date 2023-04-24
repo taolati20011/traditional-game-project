@@ -2,28 +2,13 @@ import React, { Component } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import fbIcon from './images/124010.png';
 import notAvailable from "../html/images/not-available.png";
-import oAnQuan from "../html/images/o-an-quan.jpg";
-import latBai from "../html/images/lat-bai.jpg";
-import coToan from "../html/images/co-toan.jpg";
-import coCaro from "../html/images/co-caro.jpg";
-import banBi from "../html/images/ban-bi.jpg";
-import bitMatBatDe from "../html/images/bit-mat-bat-de.jpg";
-import caSauLenBo from "../html/images/ca-sau-len-bo.jpg";
-import keoCo from "../html/images/keo-co.jpg";
-import keoCua from "../html/images/keo-cua-lua-xe.jpg";
-import meoDuoiChuot from "../html/images/meo-duoi-chuot.jpg";
-import motHaiBa from "../html/images/mot-hai-ba.jpg";
-import nhayDay from "../html/images/nhay-day.jpg";
-import nhayLoCo from "../html/images/nhay-lo-co.jpg";
-import oanTuTi from "../html/images/oan-tu-ti.jpg";
-import rongRan from "../html/images/rong-ran-len-may.jpg";
-import tronTim from "../html/images/tron-tim.jpg";
-import dungDang from "../html/images/dung-dang-dung-de.jpg";
+import GameService from '../services/GameService';
+import { Box, CircularProgress } from '@mui/material';
 
 const scrollWithOffset = (el) => {
   const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
   const yOffset = 350; 
-  console.log(window.pageYOffset)
+  // console.log(window.pageYOffset)
   window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' }); 
 }
 
@@ -33,8 +18,12 @@ class Page extends Component {
     this.logOut = this.logOut.bind(this);
     this.state = {
       currentUser: undefined,
+      gameId: undefined,
       gameName: undefined,
-      description: undefined
+      description: undefined,
+      mainImage: undefined,
+      coverImages: [],
+      isFetch: false
     }
   }
 
@@ -53,66 +42,97 @@ class Page extends Component {
     localStorage.removeItem("accessToken")
   }
 
+  getImageData(id) {
+    GameService.getAllImage(id).then(res => {
+      const imageArray = res.data;
+      const size = imageArray.length;
+      this.setState({
+        mainImage: imageArray.slice(size-1),
+        coverImages: imageArray.slice(0, size-1)
+      }, () => {
+        this.setState({
+          isFetch: true
+        }, () => {
+          this.forceUpdate();
+        } )
+      })
+    }).catch(error => {
+      if (error.response.status == 404) {
+        window.location.replace("/not-found");
+        return;
+    }
+    window.location.replace("/internal-server-error");
+    })
+  }
+
   renderPage(props) {
     const { currentUser } = this.state;
     var urlGame = null;
     var gameIcon = notAvailable;
+    this.getImageData(props.gameId);
     switch (props.gameName) {
       case "Ô ăn quan":
-        urlGame = "http://127.0.0.1:5500/src/games/o-an-quan/index.html";
-        gameIcon = oAnQuan;
+        urlGame = "https://traditional-games.vercel.app/o-an-quan/index.html";
+        // gameIcon = oAnQuan;
         break;
       case "Lật bài":
-        urlGame = "http://127.0.0.1:5500/src/games/flipCard/quiz14.html";
-        gameIcon = latBai;
+        urlGame = "https://traditional-games.vercel.app/flipCard/quiz14.html";
+        // gameIcon = latBai;
         break;
       case "Cờ toán Việt Nam":
-        urlGame = "http://127.0.0.1:5500/src/games/chess_vn/index.html";
-        gameIcon = coToan;
+        urlGame = "https://traditional-games.vercel.app/chess_vn/index.html";
+        // gameIcon = coToan;
         break;
       case "Tíc tắc toe":
-        urlGame = "http://127.0.0.1:5500/src/games/tic-tac-toe/index.html";
-        gameIcon = coCaro;
+        urlGame = "https://traditional-games.vercel.app/tic-tac-toe/index.html";
+        // gameIcon = coCaro;
         break;
-      case "Bắn bi":
-        gameIcon = banBi;
-        break;
-      case "Bịt mắt bắt dê":
-        gameIcon = bitMatBatDe;
-        break;
-      case "Cá sấu lên bờ":
-        gameIcon = caSauLenBo;
-        break;
-      case "Kéo co":
-        gameIcon = keoCo;
-        break;
-      case "Kéo cưa lừa xẻ":
-        gameIcon = keoCua;
-        break;
-      case "Mèo đuổi chuột":
-        gameIcon = meoDuoiChuot;
-        break;
-      case "Một hai ba":
-        gameIcon = motHaiBa;
-        break;
-      case "Nhảy dây":
-        gameIcon = nhayDay;
-        break;
-      case "Nhảy lò cò":
-        gameIcon = nhayLoCo;
-        break;
-      case "Oẳn tù tì":
-        gameIcon = oanTuTi;
-        break;
-      case "Rồng rắn lên mây":
-        gameIcon = rongRan;
-        break;
-      case "Trốn tìm":
-        gameIcon = tronTim;
-        break;
-      case "Dung dăng dung dẻ":
-        gameIcon = dungDang;
-        break; 
+      // case "Bắn bi":
+      //   gameIcon = banBi;
+      //   break;
+      // case "Bịt mắt bắt dê":
+      //   gameIcon = bitMatBatDe;
+      //   break;
+      // case "Cá sấu lên bờ":
+      //   gameIcon = caSauLenBo;
+      //   break;
+      // case "Kéo co":
+      //   gameIcon = keoCo;
+      //   break;
+      // case "Kéo cưa lừa xẻ":
+      //   gameIcon = keoCua;
+      //   break;
+      // case "Mèo đuổi chuột":
+      //   gameIcon = meoDuoiChuot;
+      //   break;
+      // case "Một hai ba":
+      //   gameIcon = motHaiBa;
+      //   break;
+      // case "Nhảy dây":
+      //   gameIcon = nhayDay;
+      //   break;
+      // case "Nhảy lò cò":
+      //   gameIcon = nhayLoCo;
+      //   break;
+      // case "Oẳn tù tì":
+      //   gameIcon = oanTuTi;
+      //   break;
+      // case "Rồng rắn lên mây":
+      //   gameIcon = rongRan;
+      //   break;
+      // case "Trốn tìm":
+      //   gameIcon = tronTim;
+      //   break;
+      // case "Dung dăng dung dẻ":
+      //   gameIcon = dungDang;
+      //   break; 
+    }
+    if (!this.state.isFetch) {
+      return (
+        <Box sx={{ display: 'flex', justifyContent: 'center'}}>
+          <CircularProgress />
+        </Box>
+      )
     }
     return (
       <body class="page-body">
@@ -141,12 +161,12 @@ class Page extends Component {
         <div id="content-wrapper" class="flex-row-justify-between">
           <div id="content-left" class="flex-col-align-center">
             <div class="image-container">
-              <img src={gameIcon} width="504.57px" height="329.79px" alt="game_pic" />
+              <img src={this.state.mainImage[0].image} width="504.57px" height="329.79px" alt="game_pic" />
             </div>
             <div class="image-container">
-              <img src={gameIcon} width="155.79px" height="118.24px" alt="game_pic"/>
-              <img src={gameIcon} width="155.79px" height="118.24px" alt="game_pic"/>
-              <img src={gameIcon} width="155.79px" height="118.24px" alt="game_pic"/>
+              <img src={this.state.coverImages[0].image} width="155.79px" height="118.24px" alt="game_pic"/>
+              <img src={this.state.coverImages[1].image} width="155.79px" height="118.24px" alt="game_pic"/>
+              <img src={this.state.coverImages[2].image} width="155.79px" height="118.24px" alt="game_pic"/>
             </div>
           </div>
           <div id="content-right" class="flex-col-align-center">

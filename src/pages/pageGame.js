@@ -33,7 +33,7 @@ const PageGame = () => {
   }
 
   return (
-    <Page gameName={groups.gameName} description={groups.gameDescription}></Page>
+    <Page gameId = {id} gameName={groups.gameName} description={groups.gameDescription}></Page>
   );
 }
 

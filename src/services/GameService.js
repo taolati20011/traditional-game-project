@@ -74,6 +74,11 @@ class UserService {
         axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
         return axios.get(TYPE_LIST_BASE_URL + "/get-all");
     }
+
+    getAllImage(id){
+        axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
+        return axios.get(GAME_LIST_BASE_URL + "/get-cover-file/" + id);
+    }
 }
 
 export default new UserService()
