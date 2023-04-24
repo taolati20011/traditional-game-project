@@ -89,10 +89,6 @@
     margin-right: 50px;
 }
 
-.type-container a {
-    text-decoration: none;
-}
-
 .section-1-wrapper {
     display: flex;
     flex-direction: column;
@@ -126,6 +122,10 @@
     display: flex;
     flex-direction: row;
     margin-top: 60px;
+}
+
+.section-1-container a {
+    text-decoration: none;
 }
 
 .section-1-img {
