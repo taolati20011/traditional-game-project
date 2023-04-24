@@ -24,7 +24,6 @@ const AppLink = () => {
     { path: "/", element: <Home /> },
     { path: "/game/:id", element: <PageGame/> },
     { path: "/login", element: <Login/>},
-    { path: "/list-user", element: <ListUser/>},
     { path: "/register", element: <Register/>},
     { path: "/forget-password", element: <ForgetPassword/>},
     { path: "/reset-password", element: <ResetPassword/>},
