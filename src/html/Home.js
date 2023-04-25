@@ -91,10 +91,6 @@ export default class Home extends Component {
       <body class="home-body">
         <div id="head-wrapper">
           <div class="logo">
-            <i class="game-logo">
-              <a href="/"> <img src={Image} /> </a>
-            </i>
-            <p>The Game Zone</p>
           </div>
           <ul class="navbar">
             <li><HashLink smooth to="#">Trang chủ</HashLink></li>

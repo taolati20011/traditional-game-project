@@ -97,10 +97,6 @@ class Page extends Component {
       <body class="page-body">
         <div id="head-wrapper">
           <div class="logo">
-            <i class="game-logo">
-              <a href="/"> <img src={fbIcon} /> </a>
-            </i>
-            <p>The Game Zone</p>
           </div>
           <ul class="navbar">
             <li><HashLink smooth to="../#" >Trang chủ</HashLink></li>

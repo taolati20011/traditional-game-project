@@ -145,7 +145,7 @@ ul.navbar li a:hover:not(.active) {
 .hello-user {
     width: 250px;
     height: 100%;
-    background: red;
+    background: #FBA919;
     color: #000;
     outline: none;
     border: none;
