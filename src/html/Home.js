@@ -119,7 +119,6 @@ export default class Home extends Component {
               <p>Trò chơi dân gian là những hoạt động vui chơi giải trí do quần chúng nhân dân sáng tạo ra và được lưu truyền tự nhiên qua nhiều thế hệ.
                 Trò chơi dân gian diễn ra mọi lúc, mọi nơi, không hạn định về mặt thời gian, không gian và phản ánh đời sống tinh thần, văn hóa của dân tộc.
                 Trò chơi dân gian là tài sản chung của cả một xã hội, nó không phải của riêng một cá nhân nào, trò chơi dân gian gắn liền với sự tồn tại, phát triển của một cộng đồng người trong nhiều chặng đường phát triển khác nhau.
-                Sản phẩm này được xây dựng nhằm mục đích cung cấp trải nghiệm các trò chơi cũng như nắm bắt được nội dung trò chơi, cách thức chơi trò chơi, đề qua đó ghi nhớ và gìn giữ truyền thống của dân tộc.
               </p>
               <a href="https://traditional-games.vercel.app/">
                 <img src={LetsPlayButton} alt="lets'play" style={{ marginTop: "20px" }}></img>
