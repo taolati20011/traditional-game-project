@@ -71,7 +71,9 @@ class Page extends Component {
     const { currentUser } = this.state;
     var urlGame = null;
     var gameIcon = notAvailable;
-    this.getImageData(props.gameId);
+    if (!this.state.isFetch) {
+      this.getImageData(props.gameId);
+    }
     switch (props.gameName) {
       case "Ô ăn quan":
         urlGame = "https://traditional-games.vercel.app/o-an-quan/index.html";
