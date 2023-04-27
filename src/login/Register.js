@@ -116,27 +116,27 @@ export default class Register extends Component {
                             e.preventDefault();
                             this.register();
                         }}>
+                            <div class="registerrow">
+                                <div>
+                                    <label>Username:</label>
+                                    <input type="text" name="username" onChange={this.setParams}></input>
+                                </div>
 
-                            <div>
-                                <label>Username:</label>
-                                <input type="text" name="username" onChange={this.setParams}></input>
+                                <div>
+                                    <label>Password:</label>
+                                    <input type="password" name="password" onChange={this.setParams}></input>
+                                </div>
                             </div>
-
-                            <div>
-                                <label>Password:</label>
-                                <input type="password" name="password" onChange={this.setParams}></input>
+                            <div class="registerrow">
+                                <div>
+                                    <label>Address:</label>
+                                    <input type="text" name="userAddress" onChange={this.setParams}></input>
+                                </div>
+                                <div>
+                                    <label>FullName:</label>
+                                    <input type="text" name="userFullName" onChange={this.setParams}></input>
+                                </div>
                             </div>
-
-
-                            <div>
-                                <label>Address:</label>
-                                <input type="text" name="userAddress" onChange={this.setParams}></input>
-                            </div>
-                            <div>
-                                <label>FullName:</label>
-                                <input type="text" name="userFullName" onChange={this.setParams}></input>
-                            </div>
-
                             <div class="registerrow">
                                 <div>
                                     <label>Phone:</label>
