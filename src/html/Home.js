@@ -23,6 +23,22 @@ import slides from '../login/groupGame/mock.json';
 import GameService from '../services/GameService';
 import { Box, CircularProgress } from '@mui/material';
 
+var typeId = 0;
+const getTypeId = (s) => {
+  switch (s) {
+    case "Trí tuệ":
+      return "type1";
+    case "Phong tục":
+      return "type2";
+    case "Chiến trận":
+      return "type3";
+    case "Tình yêu":
+      return "type4";
+    case "Nghề nghiệp":
+      return "type5";
+  }
+}
+
 const scrollWithOffset = (el) => {
   const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
   const yOffset = -100;
@@ -141,7 +157,7 @@ export default class Home extends Component {
             {
               this.state.images.map(
                 image => 
-                  <div class="section-1-container" id="type1">
+                  <div class="section-1-container" id={getTypeId(image[0].typeGame)}>
                     <div className='type-container'>
                       <img src={image[0].typeImage}></img>
                     </div>
