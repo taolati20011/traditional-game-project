@@ -71,7 +71,7 @@ export default class Register extends Component {
                         message: result + "!"
                     })
                     this.forceUpdate();
-                    setTimeout(function() {window.location.replace("/login");}, 5000)
+                    setTimeout(function () { window.location.replace("/login"); }, 5000)
                 }
                 else {
                     this.setState({
@@ -82,7 +82,7 @@ export default class Register extends Component {
                     return;
                 }
             })
-            .catch (error => {
+            .catch(error => {
                 this.state.alert = 2;
                 this.state.message = "Server is down! Please contact admin to open server!";
                 this.forceUpdate();
@@ -91,7 +91,7 @@ export default class Register extends Component {
     }
 
     renderAlert = () => {
-        switch(this.state.alert) {
+        switch (this.state.alert) {
             case 1:
                 return <SuccessAlert message={this.state.message}></SuccessAlert>
             case 2:
@@ -104,19 +104,19 @@ export default class Register extends Component {
     render() {
         return (
             <body>
-            <div class="alert-message">
-                {this.renderAlert()}
-            </div>
-            <div class="form-body-container">
-                <img class="background-form" src={background}></img>
-                <div class="formbox registerbox">
-                    <img src={avatar} class="avatar"></img>
-                    <h1>Register</h1>
-                    <form onSubmit={e => {
-                        e.preventDefault();
-                        this.register();
-                    }}>
-                        <div class="registerrow">
+                <div class="alert-message">
+                    {this.renderAlert()}
+                </div>
+                <div class="form-body-container">
+                    <img class="background-form" src={background}></img>
+                    <div class="formbox registerbox">
+                        <img src={avatar} class="avatar"></img>
+                        <h1>Register</h1>
+                        <form onSubmit={e => {
+                            e.preventDefault();
+                            this.register();
+                        }}>
+
                             <div>
                                 <label>Username:</label>
                                 <input type="text" name="username" onChange={this.setParams}></input>
@@ -126,8 +126,8 @@ export default class Register extends Component {
                                 <label>Password:</label>
                                 <input type="password" name="password" onChange={this.setParams}></input>
                             </div>
-                        </div>
-                        <div class="registerrow">
+
+
                             <div>
                                 <label>Address:</label>
                                 <input type="text" name="userAddress" onChange={this.setParams}></input>
@@ -136,28 +136,32 @@ export default class Register extends Component {
                                 <label>FullName:</label>
                                 <input type="text" name="userFullName" onChange={this.setParams}></input>
                             </div>
-                        </div>
-                        <div class="registerrow">
-                            <div>
-                                <label>Phone:</label>
-                                <input type="text" name="userPhone" onChange={this.setParams}></input>
+
+                            <div class="registerrow">
+                                <div>
+                                    <label>Phone:</label>
+                                    <input type="text" name="userPhone" onChange={this.setParams}></input>
+                                </div>
+                                <div>
+                                    <label htmlFor="userGender">Gender</label>
+                                    <select className="form-control" id="userGender" onChange={this.setParams}>
+                                        <option hidden value="">Select gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+
+                                </div>
                             </div>
+
                             <div>
-                                <label>Gender:</label>
-                                <input type="text" name="userGender" onChange={this.setParams}></input>
-
+                                <label>Email:</label>
+                                <input type="text" name="userEmail" onChange={this.setParams}></input>
+                                <button type="submit">Register</button>
                             </div>
-                        </div>
 
-                        <div>
-                            <label>Email:</label>
-                            <input type="text" name="userEmail" onChange={this.setParams}></input>
-                            <button type="submit">Register</button>
-                        </div>
-
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
             </body>
         )
     }
