@@ -143,8 +143,8 @@ export default class Register extends Component {
                                     <input type="text" name="userPhone" onChange={this.setParams}></input>
                                 </div>
                                 <div>
-                                    <label htmlFor="userGender">Gender</label>
-                                    <select className="form-control" id="userGender" onChange={this.setParams}>
+                                    <label>Gender:</label>
+                                    <select className="form-control" name="userGender" onChange={this.setParams}>
                                         <option hidden value="">Select gender</option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
