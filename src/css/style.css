@@ -45,7 +45,6 @@ p {
     position: sticky;
     top: 0;
     box-sizing: border-box;
-    opacity: 0.9;
     z-index: 99;
     box-shadow: 0px 0px 40px 0px rgba(91, 91, 91, 0.2);
 }
@@ -71,7 +70,6 @@ p {
 .logo {
     width: 300px;
     height: 100%;
-    background: #550381;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -145,7 +143,7 @@ ul.navbar li a:hover:not(.active) {
 .hello-user {
     width: 250px;
     height: 100%;
-    background: red;
+    background: #FBA919;
     color: #000;
     outline: none;
     border: none;
