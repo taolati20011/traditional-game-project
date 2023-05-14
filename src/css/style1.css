@@ -80,7 +80,7 @@
     border: none !important;
 }
 
-button.content-button-black {
+.disable-play-button-in-page {
     cursor: not-allowed;
     pointer-events: all !important;
 }

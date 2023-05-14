@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { HashLink } from 'react-router-hash-link';
-import fbIcon from './images/124010.png';
+import PlayButton from './images/button-play.png';
+import PlayButtonDisabled from './images/button-play-disable.png';
 import notAvailable from "../html/images/not-available.png";
 import GameService from '../services/GameService';
 import { Box, CircularProgress } from '@mui/material';
@@ -131,11 +132,9 @@ class Page extends Component {
             <p>{props.description}</p>
             <div class="button-container">
               {urlGame ? (
-                <button class="content-button">
-                  <a class="play-button-in-page" href={urlGame}>Chơi game
-                  </a>
-                </button>
-              ) : (<button class="content-button-black"> <a>Chơi game</a></button>)}
+                <a class="play-button-in-page" href={urlGame}><img src={PlayButton}></img>
+                </a>
+              ) : (<a class="disable-play-button-in-page"><img src={PlayButtonDisabled}></img></a>)}
             </div>
           </div>
         </div>
