@@ -55,7 +55,7 @@ export default class Register extends Component {
             redirect: 'follow'
         }
 
-        fetch("http://13.210.125.44:8080/api/user/signup", requestOptions)
+        fetch("http://localhost:8080/api/user/signup", requestOptions)
             .then(response => {
                 return response.text()
             })

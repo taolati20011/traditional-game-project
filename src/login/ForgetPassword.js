@@ -37,7 +37,7 @@ export default class ForgetPassword extends Component {
             redirect: 'follow'
         };
 
-        fetch("http://13.210.125.44:8080/api/user/forgotpassword", requestOptions)
+        fetch("http://localhost:8080/api/user/forgotpassword", requestOptions)
             .then(response => {
                 return response.text()
             })
